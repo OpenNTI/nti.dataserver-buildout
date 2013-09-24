@@ -1,5 +1,6 @@
 -e git+https://github.com/NextThought/nti.nose_traceback_info.git#egg=nti.nose_traceback_info
 -e git+https://github.com/NextThought/nti.plasTeX.git#egg=nti.plasTeX
+-e git+https://github.com/NextThought/nti.geventwebsocket.git#egg=nti.geventwebsocket
 -e svn+https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/site-lib/geventwebsocket#egg=geventwebsocket
 -e svn+https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/lib/pywikipedia#egg=pywikipedia
 -e svn+https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/nti.dataserver#egg=nti.dataserver
