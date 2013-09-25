@@ -2,6 +2,7 @@
 -e git+https://github.com/NextThought/nti.plasTeX.git#egg=nti.plasTeX
 -e git+https://github.com/NextThought/nti.geventwebsocket.git#egg=nti.geventwebsocket
 -e svn+https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/lib/pywikipedia#egg=pywikipedia
+-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.testing/trunk#egg=nti.app.testing
 -e svn+https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/nti.dataserver#egg=nti.dataserver
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.client_preferences/trunk#egg=nti.app.client_preferences
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.zcml/trunk#egg=nti.recipes.zcml
