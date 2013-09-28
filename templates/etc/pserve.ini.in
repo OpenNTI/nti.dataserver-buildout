@@ -64,14 +64,14 @@ statsd_uri = statsd://127.0.0.1:8125
 get sync_changes = sync_changes
 
 ## pyramid_mailer
-mail.host = email-smtp.us-east-1.amazonaws.com
+mail.host = ${environment:smtp_server}
 # port 25 is often blocked by ISPs, use one of the alternates, 465 or 587
-mail.port = 587
-mail.tls = true
-mail.username = AKIAIOO43PY4ANWEYP2Q
-mail.default_sender = no-reply@nextthought.com
+mail.port = ${environment:smtp_port}
+mail.tls = ${environment:smtp_use_tls}
+mail.username = ${environment:smtp_username}
+mail.default_sender = ${email_default_from}
 mail.debug = 5
-mail.password = PASSWORD
+mail.password = ${environment:smtp_passwd}
 mail.queue_path = ${mail_queue_path}
 pyramid.includes = pyramid_mailer
 
@@ -96,13 +96,13 @@ use = egg:linesman#profiler
 [filter:paste_error]
 use = egg:WebError#error_catcher
 debug = ${debug}
-#error_email = alpha-support@nextthought.com
-#smtp_server = email-smtp.us-east-1.amazonaws.com
-#from_address = automated.emails@nextthought.com
-#smtp_username = AKIAIOO43PY4ANWEYP2Q
-#smtp_password = PASSWORD
-#smtp_use_tls = true
-#error_subject_prefix = 'Alpha Error: '
+error_email = ${email_error_to}
+smtp_server = ${environment:smtp_server}
+from_address = ${email_error_from}
+smtp_username = ${environment:smtp_username}
+smtp_password = ${environment:smtp_passwd}
+smtp_use_tls = ${environment:smtp_use_tls}
+error_subject_prefix = ${email_error_subject_prefix}
 
 
 # CORS needs to be outermost so that even 401 errors ond
