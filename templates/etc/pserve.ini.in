@@ -72,7 +72,7 @@ mail.username = AKIAIOO43PY4ANWEYP2Q
 mail.default_sender = no-reply@nextthought.com
 mail.debug = 5
 mail.password = PASSWORD
-mail.queue_path = /tmp/ds_maildir
+mail.queue_path = ${mail_queue_path}
 pyramid.includes = pyramid_mailer
 
 # The debugtoolbar seems to somehow interfere with the extjs app
@@ -130,10 +130,10 @@ use = egg:nti.dataserver#gunicorn
 host =
 port = %(http_port)s
 worker_class =  nti.appserver.gunicorn.GeventApplicationWorker
-workers = 1
+workers = ${workers}
 accesslog = -
-timeout = 3000
-#preload_app = true # Interferes with running a debugger in the sub-process since it doesn't exec()
+timeout = ${timeout}
+preload_app = ${preload_app}
 
 # Begin logging configuration
 
@@ -147,7 +147,7 @@ keys = console
 keys = generic
 
 [logger_root]
-level = TRACE
+level = INFO
 handlers = console
 
 [logger_dataserver]
