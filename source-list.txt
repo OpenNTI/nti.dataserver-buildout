@@ -9,4 +9,5 @@
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.mathcounts/trunk#egg=nti.app.sites.mathcounts
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.products.ou/trunk#egg=nti.app.products.ou
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.zcml/trunk#egg=nti.recipes.zcml
+-e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.passwords/trunk#egg=nti.recipes.passwords
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.relstorage/trunk#egg=nti.recipes.relstorage

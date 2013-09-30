@@ -88,11 +88,6 @@ pyramid.includes = pyramid_mailer
 [filter:linesman]
 use = egg:linesman#profiler
 
-# For some reason the gzip filter doesn't work with gunicorn
-# TODO: This is probably corrected now
-#[filter:gzip]
-#use = egg:Paste#gzip
-
 [filter:paste_error]
 use = egg:WebError#error_catcher
 debug = ${debug}
