@@ -10,9 +10,9 @@
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.demo/trunk#egg=nti.app.sites.demo
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.alpha/trunk#egg=nti.app.sites.alpha
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.litworld/trunk#egg=nti.app.sites.litworld
+-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.prmia/trunk#egg=nti.app.sites.prmia
 #-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.law/trunk#egg=nti.app.sites.law
 #-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.columbia/trunk#egg=nti.app.sites.columbia
-#-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.prmia/trunk#egg=nti.app.sites.prmia
 #-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.rwanda/trunk#egg=nti.app.sites.rwanda
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.products.ou/trunk#egg=nti.app.products.ou
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.zcml/trunk#egg=nti.recipes.zcml
