@@ -8,6 +8,7 @@
 
 	<lib:filesystemLibrary
 		directory="${global_content_directory}"
+		prefix="${global_content_location}"
 		/>
 
 </configure>

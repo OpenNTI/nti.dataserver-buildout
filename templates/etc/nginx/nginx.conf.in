@@ -1,88 +1,24 @@
-	sendfile		on;
-	tcp_nopush	   on;
-	directio 512;
-	aio on;
+user  ${nginx_user};
+worker_processes  ${nginx_workers};
 
-	keepalive_timeout  65;
-	keepalive_disable none;
+error_log  ${deployment:log-directory/nginx/error.log} warn;
+pid		   ${deployment:run-directory}/nginx.pid;
 
-	gzip  on;
-	gzip_types text/css text/javascript application/xml application/x-javascript application/javascript text/xml application/vnd.nextthought.workspace+json;
-	gzip_comp_level 9;
-	gzip_proxied any;
-	gzip_vary on;
-	gzip_http_version 1.0;
 
-	#need to map the landing cookie.  Can we get this in the location somehow?
-	map $http_cookie $site_landing_name {
-		default '';
-		~nti.landing_site_name=(?<mc>[^\;]+) $mc;
-	}
+events {
+	worker_connections	1024;
+}
 
-	upstream appserver {
-		server localhost:8081 fail_timeout=10;
-	}
-	open_file_cache max=1000; # inactive=600s;
-	open_file_cache_errors on;
 
-	server {
-		listen		 8080;
-		root   /Library/WebServer/Documents;
-		server_name	 alpha.nextthought.com;
-		proxy_http_version 1.1;
+http {
+	include		  mime.types;
+	default_type  application/octet-stream;
 
-		location /this/should/not/exist.html {
-			error_page 404 =503 /maintenance/index.html;
-		}
+	log_format	main  '$remote_addr - $remote_user [$time_local] "$request" '
+					  '$status $body_bytes_sent "$http_referer" '
+					  '"$http_user_agent" "$http_x_forwarded_for"';
 
-		location / {
-			index  index.html index.htm;
-			alias /opt/nti/NextThoughtWebApp/src/main/;
-			expires +1h;
-			add_header Cache-Control proxy-revalidate;
-		}
+	access_log	${deployment:log-directory/nginx/access.log}  main;
 
-		location /content/welcome/ {
-			alias /opt/nti/NextThoughtWebApp/src/main/content/welcome/;
-		}
-
-		location /content/ {
-			alias /var/www/html/content/;
-		}
-
-		location /purchasables/ {
-			alias /var/www/html/purchasables/;
-		}
-
-		location /login/ {
-			alias /opt/nti/NextThoughtLoginApp/src/main/WebApp/;
-		}
-
-		location /NextThoughtWebApp/ {
-			alias /opt/nti/NextThoughtWebApp/src/main/;
-		}
-
-		#Rewrite landing passed on the landing site cookie.	 Haproxy shouldn't let us here without that cookie
-		location /landing {
-			if ( $site_landing_name ){
-			   rewrite ^/landing /login/landing/$site_landing_name/ last;
-			}
-		}
-
-		location @proxy_to_app {
-			proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-			proxy_set_header Host $http_host;
-			proxy_buffering off;
-			proxy_redirect off;
-
-			proxy_pass	 http://appserver;
-		}
-
-		# deny access to .htaccess files, if Apache's document root
-		# concurs with nginx's one
-		#
-		location ~ /\.ht {
-			deny  all;
-		}
-
-	}
+	include conf.d/*.conf;
+}

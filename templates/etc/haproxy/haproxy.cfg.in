@@ -1,20 +1,20 @@
 global
 	log			127.0.0.1 local2
 	maxconn		4096 # Total Max Connections. This is dependent on ulimit
-	nbproc		3
+	nbproc		${haproxy_workers}
 
 defaults
 	mode		http
 	# If we don't set this, then we lose X-Forwarded-For
 	option http-server-close
 
-frontend httpredir 0.0.0.0:80
+frontend httpredir 0.0.0.0:${haproxy_redirect_to_ssl_port}
 	option httplog
 	log global
 	timeout client 600
 	default_backend ssl_backend
 
-frontend flashsocketredirct 0.0.0.0:843
+frontend flashsocketredirct 0.0.0.0:${haproxy_flashsocket_port}
 	mode tcp
 	timeout client 600
 	default_backend flash_backend
@@ -29,16 +29,16 @@ backend ssl_backend
 	# Redirect location without HTTP path causes some weird
 	# issues too for the pad in particular
 	# redirect prefix seems to do what we want
-	redirect prefix https://alpha.nextthought.com
+	redirect prefix https://${global_host_name}
 
-frontend all 127.0.0.1:8084
+frontend all 127.0.0.1:${haproxy_http_port}
 	option httplog
 	log global
 	timeout client 86400000
 	# Listen on the stunnel socket for incoming SSL in proxy mode
 	# We give it a specific id so that we can match in an ACL
 	# (We can't match on ssl itself because that's already been handled)
-	bind /var/run/ssl-frontend.sock user root mode 600 id 42 accept-proxy
+	bind ${stunnel_socket} ${haproxy_stunnel_socket_user} mode 600 id 42 accept-proxy
 	default_backend www_backend
 
 	acl is_websocket hdr(Upgrade) -i WebSocket
@@ -98,11 +98,11 @@ frontend all 127.0.0.1:8084
 backend www_backend
 	balance roundrobin
 	option forwardfor # This sets X-Forwarded-For
-	option httpchk GET /_ops/ping HTTP/1.1\r\nHost:\alpha.nextthought.com
+	option httpchk GET /_ops/ping HTTP/1.1\r\nHost:\${global_host_name}
 	timeout server 30000
 	timeout connect 4000
 	#server nginx 127.0.0.1:8080 weight 1 maxconn 1024 on-error mark-down check inter 7000 fastinter 1000 rise 2 fall 2
-	server nginx 127.0.0.1:8080 weight 1 maxconn 1024
+	server nginx 127.0.0.1:${nginx_http_port} weight 1 maxconn 1024
 	#errorloc 503 /this/should/not/exist.html
 
 
@@ -112,7 +112,7 @@ backend socket_backend
 	timeout queue 5000
 	timeout server 86400000
 	timeout connect 86400000
-	server dataserver 127.0.0.1:8081 weight 1 maxconn 1024
+	server dataserver 127.0.0.1:${dataserver_http_port} weight 1 maxconn 1024
   #	 errorloc 503 /this/should/not/exist.html
 
 backend flash_backend
@@ -123,5 +123,5 @@ backend flash_backend
 	timeout connect 86400000
 	balance roundrobin
 	option forwardfor # This sets X-Forwarded-For
-	server flashserver 127.0.0.1:10843 weight 1 maxconn 1024
+	server flashserver 127.0.0.1:${dataserver_flash_port} weight 1 maxconn 1024
   # errorloc 503 /this/should/not/exist.html

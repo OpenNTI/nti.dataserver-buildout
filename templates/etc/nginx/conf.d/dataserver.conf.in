@@ -1,0 +1,83 @@
+	sendfile		on;
+	tcp_nopush		on;
+	directio		512;
+	${aio}
+
+	keepalive_timeout  65;
+	keepalive_disable none;
+
+	gzip  on;
+	gzip_types text/css text/javascript application/xml application/x-javascript application/javascript text/xml application/vnd.nextthought.workspace+json;
+	gzip_comp_level 9;
+	gzip_proxied any;
+	gzip_vary on;
+	gzip_http_version 1.0;
+
+	#need to map the landing cookie.  Can we get this in the location somehow?
+	map $http_cookie $site_landing_name {
+		default '';
+		~nti.landing_site_name=(?<mc>[^\;]+) $mc;
+	}
+
+
+	open_file_cache max=1000; # inactive=600s;
+	open_file_cache_errors on;
+
+	server {
+		listen ${nginx_http_port};
+		# For single machine or developers,
+		# listening on a unix socket is convenient
+		# for use with haproxy
+		listen unix:${deployment:run-directory/nginx.sock};
+		root   ${global_content_directory};
+		server_name	 ${global_host_name};
+		proxy_http_version 1.1;
+		etag on;
+		if_modified_since before;
+		lingering_close on;
+		location /this/should/not/exist.html {
+			error_page 404 =503 /maintenance/index.html;
+		}
+
+		location / {
+			index  index.html index.htm;
+			alias ${webapp_path/src/main/};
+			expires +1h;
+			add_header Cache-Control proxy-revalidate;
+		}
+
+		location ${global_content_location} {
+			alias ${global_content_directory}/;
+		}
+
+		location ${global_content_location}welcome/ {
+			alias ${webapp_path/src/main/content/welcome/};
+		}
+
+		location /purchasables/ { # JAM: Not sure what this is
+			alias /var/www/html/purchasables/;
+		}
+
+		location /login/ {
+			alias ${loginapp_path/src/main/WebApp/};
+		}
+
+		location /NextThoughtWebApp/ { # JAM: BWC only? Can go?
+			alias ${webapp_path/src/main/};
+		}
+
+		#Rewrite landing passed on the landing site cookie.	 Haproxy shouldn't let us here without that cookie
+		location /landing {
+			if ( $site_landing_name ){
+			   rewrite ^/landing /login/landing/$site_landing_name/ last;
+			}
+		}
+
+		# deny access to .htaccess files, if Apache's document root
+		# concurs with nginx's one
+		#
+		location ~ /\.ht {
+			deny  all;
+		}
+
+	}
