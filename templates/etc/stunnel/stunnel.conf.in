@@ -1,12 +1,13 @@
-cert = /opt/nti/ssl_certs/srv_comb.pem.alpha
+cert = ${stunnel_cert_file}
 fips = no
 debug = debug
-#foreground = yes
+pid = ${deployment:run-directory/stunnel.pid}
+foreground = ${stunnel_foreground}
 [https]
-accept=443
+accept = ${stunnel_https_port}
 #verify = 0
 #connect = 80
-connect = /var/run/ssl-frontend.sock 
+connect = ${stunnel_socket}
 protocol = proxy
 sslVersion = all
 TIMEOUTclose = 0
