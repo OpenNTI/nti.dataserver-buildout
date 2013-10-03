@@ -1,0 +1,127 @@
+global
+	log			127.0.0.1 local2
+	maxconn		4096 # Total Max Connections. This is dependent on ulimit
+	nbproc		3
+
+defaults
+	mode		http
+	# If we don't set this, then we lose X-Forwarded-For
+	option http-server-close
+
+frontend httpredir 0.0.0.0:80
+	option httplog
+	log global
+	timeout client 600
+	default_backend ssl_backend
+
+frontend flashsocketredirct 0.0.0.0:843
+	mode tcp
+	timeout client 600
+	default_backend flash_backend
+
+backend ssl_backend
+	timeout server 30000
+	timeout connect 4000
+	# the server redir seems to be broken in 1.5 dev9
+	# It seems to be directly making the server connection and
+	# choking on the SSL response, resulting in empty data for the client
+	#server alphassl alpha.nextthought.com:443 backup redir https://alpha.nextthought.com
+	# Redirect location without HTTP path causes some weird
+	# issues too for the pad in particular
+	# redirect prefix seems to do what we want
+	redirect prefix https://alpha.nextthought.com
+
+frontend all 127.0.0.1:8084
+	option httplog
+	log global
+	timeout client 86400000
+	# Listen on the stunnel socket for incoming SSL in proxy mode
+	# We give it a specific id so that we can match in an ACL
+	# (We can't match on ssl itself because that's already been handled)
+	bind /var/run/ssl-frontend.sock user root mode 600 id 42 accept-proxy
+	default_backend www_backend
+
+	acl is_websocket hdr(Upgrade) -i WebSocket
+	acl is_websocket hdr_beg(Host) -i ws
+
+	acl is_dyn path_beg /dataserver
+	acl is_dyn path_beg /library
+	acl is_dyn path_beg /socket.io
+	acl is_dyn path_beg /dictionary
+	acl is_dyn path_beg /login/resources/css/site.css  #GH added to pass css to DS
+	acl is_dyn path_beg /login/resources/strings/site.js #GH added to pass	site strings to DS
+	acl is_dyn path_beg /resources/strings/site.js #CMU added to pass strings files to DS for redirection by site
+	acl is_dyn path_beg /resources/css/site.css
+
+	#Acls for the mess of a landing page
+	acl is_landing_site path_beg /landing/site.html #This needs to be proxyied to the ds
+	acl landing path_beg /landing #Is this a landing related request
+	acl landing_cookie hdr_sub(cookie) nti.landing_site_name #Do we have the cookies that tells us what site landing to user
+
+	#Acls for  optimizing away having to wait for a several second webapp load if we know we are def. not authed
+	acl is_maybe_authed hdr_sub(cookie) nti.auth_tkt #Do we have an auth.tkt if not we are def. not authed
+
+	acl is_ssl so_id 42
+
+	# Block some common attack vectors and private info
+	acl is_blocked_name path_end .php .asp .jsp .exe .aspx
+	acl is_blocked_name path_dir .nti_acl indexdir
+	block if is_blocked_name
+
+	acl is_host_cors url_sub ?h=
+
+	# Let gunicorn/nginx know if we are dealing with an incoming HTTPS request
+	# (This is a default 'secure-header' in gunicorns conf)
+	reqidel ^X-FORWARDED-PROTOCOL:.*
+	reqadd X-FORWARDED-PROTOCOL:\ ssl if is_ssl
+
+	# Go to the app by default
+	#redirect location /down/down.html code 302 if { path_beg /NextThoughtWebApp or path_beg /login }  #THIS IS FOR THE DOWN PAGE ONLY- NOT WORKING YET
+	#redirect location /NextThoughtWebApp/index.html code 301 if { path / }
+	redirect location /tutorials/index.html code 301 if { path /tutorials }
+	#redirect location /login/index.html?return=%2FNextThoughtWebApp%2Findex.html&host=https%3A%2F%2Falpha.nextthought.com code 301 if { path / }
+
+	#use_backend www_backend_up if is_down
+	use_backend www_backend if is_host_cors
+	use_backend socket_backend if is_websocket
+	use_backend socket_backend if is_dyn
+	#send the special landing site to the dataserver
+	use_backend socket_backend if is_landing_site
+
+	#If we are requesting a landing resource with no landing cookie and it isn't the special site send to login
+	redirect location /login/ code 302 if landing !landing_cookie !is_landing_site
+
+	#If we are trying to get to the webapp and we know there is no way we can be authenticated dont waste time going to the app
+	redirect location /landing/site.html code 302 if !is_maybe_authed { path / }
+
+
+backend www_backend
+	balance roundrobin
+	option forwardfor # This sets X-Forwarded-For
+	option httpchk GET /_ops/ping HTTP/1.1\r\nHost:\alpha.nextthought.com
+	timeout server 30000
+	timeout connect 4000
+	#server nginx 127.0.0.1:8080 weight 1 maxconn 1024 on-error mark-down check inter 7000 fastinter 1000 rise 2 fall 2
+	server nginx 127.0.0.1:8080 weight 1 maxconn 1024
+	#errorloc 503 /this/should/not/exist.html
+
+
+backend socket_backend
+	balance roundrobin
+	option forwardfor # This sets X-Forwarded-For
+	timeout queue 5000
+	timeout server 86400000
+	timeout connect 86400000
+	server dataserver 127.0.0.1:8081 weight 1 maxconn 1024
+  #	 errorloc 503 /this/should/not/exist.html
+
+backend flash_backend
+	mode tcp
+	balance roundrobin
+	timeout queue 5000
+	timeout server 86400000
+	timeout connect 86400000
+	balance roundrobin
+	option forwardfor # This sets X-Forwarded-For
+	server flashserver 127.0.0.1:10843 weight 1 maxconn 1024
+  # errorloc 503 /this/should/not/exist.html

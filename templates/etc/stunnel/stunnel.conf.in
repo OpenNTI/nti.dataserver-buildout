@@ -1,0 +1,12 @@
+cert = /opt/nti/ssl_certs/srv_comb.pem.alpha
+fips = no
+debug = debug
+#foreground = yes
+[https]
+accept=443
+#verify = 0
+#connect = 80
+connect = /var/run/ssl-frontend.sock 
+protocol = proxy
+sslVersion = all
+TIMEOUTclose = 0
