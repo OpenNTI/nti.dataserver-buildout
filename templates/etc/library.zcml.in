@@ -6,9 +6,8 @@
 	<include package="zope.component" />
 	<include package="nti.contentlibrary" file="meta.zcml" />
 
-	<lib:filesystemLibrary
-		directory="${global_content_directory}"
-		prefix="${global_content_location}"
+	<lib:${library-type}
+		${library-args}
 		/>
 
 </configure>
