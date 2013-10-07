@@ -1,5 +1,6 @@
 user  ${nginx_user};
 worker_processes  ${nginx_workers};
+daemon ${nginx_daemon};
 
 error_log  ${deployment:log-directory/nginx/error.log} warn;
 pid		   ${deployment:run-directory}/nginx.pid;
