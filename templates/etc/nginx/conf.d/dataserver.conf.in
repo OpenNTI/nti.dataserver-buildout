@@ -29,7 +29,7 @@
 		# listening on a unix socket is convenient
 		# for use with haproxy
 		listen unix:${deployment:run-directory/nginx.sock};
-		root   ${global_content_directory};
+		root   ${global_content_directory|shell-path};
 		server_name	 ${global_host_name};
 		proxy_http_version 1.1;
 		etag on;
@@ -41,29 +41,29 @@
 
 		location / {
 			index  index.html index.htm;
-			alias ${webapp_path/src/main/};
+			alias ${webapp_path/src/main/|shell-path}/;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
 		}
 
 		location ${global_content_location} {
-			alias ${global_content_directory}/;
+			alias ${global_content_directory/.|shell-path}/;
 		}
 
 		location ${global_content_location}welcome/ {
-			alias ${webapp_path/src/main/content/welcome/};
+			alias ${webapp_path/src/main/content/welcome/|shell-path}/;
 		}
 
 		location /purchasables/ { # JAM: Not sure what this is
 			alias /var/www/html/purchasables/;
 		}
 
-		location /login/ {
-			alias ${loginapp_path/src/main/WebApp/};
+		location ${loginapp_location} {
+			alias ${loginapp_path/src/main/WebApp/|shell-path}/;
 		}
 
 		location /NextThoughtWebApp/ { # JAM: BWC only? Can go?
-			alias ${webapp_path/src/main/};
+			alias ${webapp_path/src/main/|shell-path}/;
 		}
 
 		#Rewrite landing passed on the landing site cookie.	 Haproxy shouldn't let us here without that cookie
