@@ -1,2 +1,2 @@
 [redis]
-redis_url = file://${deployment:run-directory/redis.sock}
+redis_url = ${redis_client_url}

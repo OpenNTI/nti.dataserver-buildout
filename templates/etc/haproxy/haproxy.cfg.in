@@ -101,10 +101,7 @@ backend www_backend
 	option httpchk GET /_ops/ping HTTP/1.1\r\nHost:\${global_host_name}
 	timeout server 30000
 	timeout connect 4000
-	#server nginx 127.0.0.1:8080 weight 1 maxconn 1024 on-error mark-down check inter 7000 fastinter 1000 rise 2 fall 2
-	server nginx 127.0.0.1:${nginx_http_port} weight 1 maxconn 1024
-	#errorloc 503 /this/should/not/exist.html
-
+	${nginx_servers}
 
 backend socket_backend
 	balance roundrobin
@@ -112,8 +109,8 @@ backend socket_backend
 	timeout queue 5000
 	timeout server 86400000
 	timeout connect 86400000
-	server dataserver 127.0.0.1:${dataserver_http_port} weight 1 maxconn 1024
-  #	 errorloc 503 /this/should/not/exist.html
+	${dataserver_servers}
+
 
 backend flash_backend
 	mode tcp
@@ -123,5 +120,4 @@ backend flash_backend
 	timeout connect 86400000
 	balance roundrobin
 	option forwardfor # This sets X-Forwarded-For
-	server flashserver 127.0.0.1:${dataserver_flash_port} weight 1 maxconn 1024
-  # errorloc 503 /this/should/not/exist.html
+	${flash_servers}
