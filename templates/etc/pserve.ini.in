@@ -25,7 +25,6 @@
 [DEFAULT]
 show_exceptions_in_wsgi_errors = ${debug}
 the_deploy_root = ${deploy_root|shell-path}
-http_port = ${http-port}
 flash_policy_server_port = ${flash-port}
 sync_changes = True
 
@@ -126,13 +125,7 @@ pipeline =
 
 [server:main]
 use = egg:nti.dataserver#gunicorn
-host =
-port = %(http_port)s
-worker_class =  nti.appserver.gunicorn.GeventApplicationWorker
-workers = ${workers}
-accesslog = -
-timeout = ${timeout}
-preload_app = ${preload_app}
+config = ${deployment:etc-directory/gunicorn.conf.py}
 
 # Begin logging configuration
 

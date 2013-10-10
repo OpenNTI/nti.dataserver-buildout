@@ -1,0 +1,18 @@
+import multiprocessing
+
+# Let true and false be synonyms for ease of
+# the templaters
+true = True
+false = False
+
+# Listen on all addresses to this port
+bind = ":${http-port}"
+# Calculate worker number automatically if not
+# specified
+workers = "${workers}" or multiprocessing.cpu_count() * 2 + 1
+worker_class =  "nti.appserver.gunicorn.GeventApplicationWorker"
+accesslog = "-"
+timeout = ${timeout}
+preload_app = ${preload_app}
+
+forwarded_allow_ips = "${forwarded_allow_ips}" or "*"
