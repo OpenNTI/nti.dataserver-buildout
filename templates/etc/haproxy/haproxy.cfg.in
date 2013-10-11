@@ -22,14 +22,15 @@ frontend flashsocketredirct 0.0.0.0:${haproxy_flashsocket_port}
 backend ssl_backend
 	timeout server 30000
 	timeout connect 4000
-	# the server redir seems to be broken in 1.5 dev9
-	# It seems to be directly making the server connection and
-	# choking on the SSL response, resulting in empty data for the client
-	#server alphassl alpha.nextthought.com:443 backup redir https://alpha.nextthought.com
-	# Redirect location without HTTP path causes some weird
-	# issues too for the pad in particular
-	# redirect prefix seems to do what we want
-	redirect prefix https://${global_host_name}
+	# Simply send a 302 redirect to the same Host and path and query
+	# the client sent in the first place, but with the
+	# https protocol. The client will usually do a GET of
+	# the new Location.
+	# NOTE: If the Host contained a port, even the default of
+	# 80, it would be preserved, so we first rewrite the Host
+	# to remove any port
+	reqirep ^Host:\ (.*):[0-9]* Host:\ \1
+	redirect scheme https
 
 frontend all 127.0.0.1:${haproxy_http_port}
 	option httplog
