@@ -37,12 +37,15 @@ nti_create_ds = 1
 main_dictionary_path = %(the_deploy_root)s/wiktionary/dict.db
 # The site_zcml setting, if defined, is a path to a ZCML file
 # loaded after the standard config is loaded
+# Deprecated, handled with buildout
 #site_zcml = /path/to/site.zcml
 #deploy_root = %(deploy_root)s
 sync_changes = %(sync_changes)s
-devmode = 1
+# Deprecated, handled with buildout
+devmode = ${use_devmode}
+# deprecated, handled with buildout
 zcml_features = forums
-secure_cookies = 0
+secure_cookies = ${secure_cookies}
 cookie_secret = devmode cookie secret
 facebook.app.id = 272442356159055
 facebook.app.secret = 964997cea8939ffae988668f6c634f0c
