@@ -46,7 +46,7 @@ devmode = ${use_devmode}
 # deprecated, handled with buildout
 zcml_features = forums
 secure_cookies = ${secure_cookies}
-cookie_secret = devmode cookie secret
+cookie_secret = ${cookie_secret}
 facebook.app.id = 272442356159055
 facebook.app.secret = 964997cea8939ffae988668f6c634f0c
 
