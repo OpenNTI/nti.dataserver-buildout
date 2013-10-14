@@ -109,10 +109,10 @@ error_subject_prefix = ${email_error_subject_prefix}
 # CORS needs to be outermost so that even 401 errors ond
 # exceptions have the chance to get their responses wrapped
 [filter:nti_cors]
-use = egg:nti.dataserver#cors
+use = egg:nti.wsgi.cors#cors
 
 [filter:nti_cors_options]
-use = egg:nti.dataserver#cors_options
+use = egg:nti.wsgi.cors#cors_options
 
 [app:main]
 use = egg:nti.dataserver#gunicorn
