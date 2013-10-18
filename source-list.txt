@@ -19,6 +19,8 @@
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.rwanda/trunk#egg=nti.app.sites.rwanda
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.sites.columbia/trunk#egg=nti.app.sites.columbia
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.products.ou/trunk#egg=nti.app.products.ou
+-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.products.gradebook/trunk#egg=nti.app.products.gradebook
+-e svn+https://repos.nextthought.com/svn/nti-svn/nti.app.products.courses/trunk#egg=nti.app.products.courses
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.zcml/trunk#egg=nti.recipes.zcml
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.passwords/trunk#egg=nti.recipes.passwords
 -e svn+https://repos.nextthought.com/svn/nti-svn/nti.recipes.zodb/trunk#egg=nti.recipes.zodb
