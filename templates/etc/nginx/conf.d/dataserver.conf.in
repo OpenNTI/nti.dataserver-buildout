@@ -46,6 +46,10 @@
 			add_header Cache-Control proxy-revalidate;
 		}
 
+		location /config.js {
+			alias ${webapp_config_file};
+		}
+
 		location ${global_content_location} {
 			alias ${global_content_directory/.|shell-path}/;
 		}
