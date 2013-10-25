@@ -15,6 +15,9 @@ var $AppConfig = {
 		"login": "${unauth_location}",
 		"unsupported": "/login/unsupported.html"
 	},
+	"links" : {
+		${links}
+	},
 
 	"corsSalt": "${cors_salt}",
 	"allowIPad": ${allow_mobile_safari},
