@@ -4,6 +4,8 @@ var $AppConfig = {
 	"debugSocket": false,
 	"debugSocketVerbosely": false,
 
+	"enableLogging": ${enable_logging},
+
 	"enableSymbolicLinkingNav": true,
 
 	"features": {
