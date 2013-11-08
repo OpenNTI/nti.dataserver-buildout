@@ -27,13 +27,19 @@ var $AppConfig = {
 };
 
 if( ${enable_global_onerror} ){
-	window.onerror = function(){
-		//Just in case we don't get unregistered.
-		if((window.NextThought || {}).isInitialized){
-			return;
+	window.onerror = function(msg,url,line){
+		//strange, spec says we get a file url, ff seems to have given a stacktrace of sorts
+		var urls = url.split(/([\r\n]+)|(\s*-\>\s*)/);
+		//did it come from us?
+		var basePrefix = new RegExp("^" + location.protocol + '//' + location.host, "i");
+		if (basePrefix.test(urls[0])) {	
+			if((window.NextThought || {}).isInitialized){
+				return;
+			}
+			window.location.replace($AppConfig.server.unsupported);
 		}
-		window.location.replace($AppConfig.server.unsupported);
 	};
+
 }
 
 //frame buster
