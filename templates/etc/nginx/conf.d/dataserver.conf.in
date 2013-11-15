@@ -44,6 +44,8 @@
 			alias ${webapp_path/src/main/|shell-path}/;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
+			#a header so that we can do a head request and try to bust the cached redirect... see login app.
+			add_header X-NTI-WebApp true;
 		}
 
 		location /config.js {
