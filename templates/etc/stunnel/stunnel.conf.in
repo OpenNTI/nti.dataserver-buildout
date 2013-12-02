@@ -1,6 +1,5 @@
 cert = ${stunnel_cert_file}
 fips = no
-debug = debug
 pid = ${deployment:run-directory/stunnel.pid}
 foreground = ${stunnel_foreground}
 [https]
