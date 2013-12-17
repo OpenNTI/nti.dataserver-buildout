@@ -119,11 +119,11 @@ use = egg:nti.dataserver#gunicorn
 
 [pipeline:dataserver_gunicorn]
 pipeline =
+		 egg:nti.dataserver#ops_ping
 		 nti_cors
 		 nti_cors_options
 		 egg:Paste#gzip
 		 paste_error
-		 egg:nti.dataserver#ops_ping
 		 dataserver
 
 [server:main]
