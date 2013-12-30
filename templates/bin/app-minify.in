@@ -4,9 +4,8 @@
 export PATH=${senchacmd:location|shell-path}:$PATH
 
 cd ${environment:webapp_path|shell-path}
-# First, compass compile...except this fails with problems in animation.scss...
-# what can we do to be compatible with sencha's blessed version of compass?
-#../../parts/senchacmd/sencha compass compile
+# First, compass compile
+../../parts/senchacmd/sencha compass compile
 
 # Run the minify. Sadly it assumes that it is run
 # from the directory containing the source so we must go there
