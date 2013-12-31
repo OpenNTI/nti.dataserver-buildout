@@ -16,6 +16,10 @@ cd ${environment:webapp_path/src/main|shell-path}
 ${python|shell-path} ${environment:webapp_path|shell-path}/src/main/app-minify.py ${analytics-key} $* && cp index-minify.html index.html
 
 # Now the login app
-
+# First the templates
 cd ${environment:loginapp_path}
 make
+
+# Then the timestamps
+cd src/main
+${python|shell-path} ./deploy.py ${analytics-key}
