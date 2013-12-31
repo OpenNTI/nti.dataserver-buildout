@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Put sencha on the path
+# Put sencha and compass on the path
 export PATH=${deployment:bin-directory|shell-path}:${senchacmd:location|shell-path}:$PATH
+# Let compass know where its gems are, as the wrapper
+# script isn't smart enough to do that
+export GEM_HOME=${buildout:parts-directory|shell-path}/compass
 
 cd ${environment:webapp_path|shell-path}
 # First, compass compile
-../../parts/senchacmd/sencha compass compile
+compass compile
 
 # Run the minify. It's easiest to run it
 # from the directory containing the source
