@@ -25,7 +25,6 @@
 [DEFAULT]
 show_exceptions_in_wsgi_errors = ${debug}
 the_deploy_root = ${deploy_root|shell-path}
-flash_policy_server_port = ${flash-port}
 sync_changes = True
 
 [app:dataserver] #nti.appserver.standalone:configure_app

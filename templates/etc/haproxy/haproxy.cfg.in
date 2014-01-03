@@ -13,11 +13,6 @@ frontend httpredir ${haproxy_http_addr}:${haproxy_redirect_to_ssl_port}
 	timeout client 600
 	default_backend ssl_backend
 
-frontend flashsocketredirct ${haproxy_http_addr}:${haproxy_flashsocket_port}
-	mode tcp
-	timeout client 600
-	default_backend flash_backend
-
 backend ssl_backend
 	mode http
 	timeout server 30000
@@ -146,13 +141,3 @@ backend socket_backend
 	timeout server 86400000
 	timeout connect 86400000
 	${dataserver_servers}
-
-
-backend flash_backend
-	mode tcp
-	balance roundrobin
-	timeout queue 5000
-	timeout server 86400000
-	timeout connect 86400000
-	balance roundrobin
-	${flash_servers}
