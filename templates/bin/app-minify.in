@@ -18,7 +18,7 @@ ${python|shell-path} ${environment:webapp_path|shell-path}/src/main/app-minify.p
 # Now the login app
 # First the templates
 cd ${environment:loginapp_path}
-make
+make render
 
 # Then the timestamps
 cd src/main
