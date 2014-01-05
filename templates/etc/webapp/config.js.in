@@ -7,6 +7,8 @@ var $AppConfig = {
 	"enableLogging": ${enable_logging},
 
 	"enableSymbolicLinkingNav": true,
+	
+	"obscureUsernames": ${obscure_usernames}
 
 	"features": {
 		${features}
