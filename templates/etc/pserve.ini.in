@@ -66,6 +66,15 @@ statsd_uri = statsd://127.0.0.1:8125
 web_app_root = ${webapp_location}
 login_app_root = ${loginapp_location}
 
+###
+## Purchase email confirmations
+# For site policies that load the 'send additional purchase confirmation subscriber',
+# these addressess will get the emails.
+# A whitespace separated list
+###
+purchase_additional_confirmation_addresses = ${purchase_additional_confirmation_addresses}
+
+
 get sync_changes = sync_changes
 
 ## pyramid_mailer
