@@ -35,7 +35,14 @@ setuptools_egg="setuptools-$setuptools_version"
 if [ -f .installed.cfg ]; then
 	# NOTE: We are only handling versions that look exactly
 	# like x.y.z, where they are each exactly one digit
-	sed -i"" "s/setuptools-[1-9]\.[0-9]\.[0-9]-/$setuptools_egg-/" .installed.cfg
+	case `uname` in
+		Darwin)
+			sed -i "" "s/setuptools-[1-9]\.[0-9]\.[0-9]-/$setuptools_egg-/" .installed.cfg
+			;;
+		*)
+			sed -i"" "s/setuptools-[1-9]\.[0-9]\.[0-9]-/$setuptools_egg-/" .installed.cfg
+			;;
+	esac
 fi
 
 # If we bootstrapped to a different version, we cannot change it
