@@ -8,7 +8,8 @@ var $AppConfig = {
 
 	"enableSymbolicLinkingNav": true,
 	
-	"obscureUsernames": ${obscure_usernames}
+	"obscureUsernames": ${obscure_usernames},
+	"openExternalPDFsInNewWindow": ${external_pdf_new_window},
 
 	"features": {
 		${features}
