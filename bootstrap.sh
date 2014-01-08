@@ -33,14 +33,12 @@ setuptools_egg="setuptools-$setuptools_version"
 
 # Now match .installed.cfg with the desired version
 if [ -f .installed.cfg ]; then
-	# NOTE: We are only handling versions that look exactly
-	# like x.y.z, where they are each exactly one digit
 	case `uname` in
 		Darwin)
-			sed -i "" "s/setuptools-[1-9]\.[0-9]\.[0-9]-/$setuptools_egg-/" .installed.cfg
+			sed -E -i "" "s/setuptools-([0-9]\.?)+-/$setuptools_egg-/" .installed.cfg
 			;;
 		*)
-			sed -i"" "s/setuptools-[1-9]\.[0-9]\.[0-9]-/$setuptools_egg-/" .installed.cfg
+			sed -E -i""  "s/setuptools-([0-9]\.?)+-/$setuptools_egg-/" .installed.cfg
 			;;
 	esac
 fi
