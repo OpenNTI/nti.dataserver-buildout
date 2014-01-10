@@ -74,6 +74,9 @@
 
 		location ${loginapp_location} {
 			alias ${loginapp_path/src/main/WebApp/|shell-path}/;
+
+			expires +1h;
+			add_header Cache-Control proxy-revalidate;
 		}
 
 		location /NextThoughtWebApp/ { # JAM: BWC only? Can go?
