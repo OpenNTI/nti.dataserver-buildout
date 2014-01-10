@@ -7,7 +7,8 @@
 	keepalive_disable none;
 
 	gzip  on;
-	gzip_types text/css text/javascript application/xml application/x-javascript application/javascript text/xml application/vnd.nextthought.workspace+json;
+	gzip_static on;
+	gzip_types text/css text/javascript application/xml application/x-javascript application/javascript text/xml ;
 	gzip_comp_level 9;
 	gzip_proxied any;
 	gzip_vary on;
