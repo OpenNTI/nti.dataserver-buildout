@@ -96,7 +96,7 @@ frontend all
 
 	# If we are requesting a landing resource with no landing cookie
 	# and it isn't the special site send to login
-	redirect location /login/ code 302 if landing !landing_cookie !is_landing_site
+${login_redirect_enabled}	redirect location /login/ code 302 if landing !landing_cookie !is_landing_site
 
 	# If we are trying to get to the webapp and we know there is no
 	# way we can be authenticated dont waste time going to the app

@@ -16,7 +16,7 @@
 
 	#need to map the landing cookie.  Can we get this in the location somehow?
 	map $http_cookie $site_landing_name {
-		default '';
+		default ${default_landing_site_name};
 		~nti.landing_site_name=(?<mc>[^\;]+) $mc;
 	}
 
@@ -38,7 +38,8 @@
 		lingering_close on;
 
 		set_real_ip_from 192.168.0.0/24;
-		set_real_ip_from 10.50.0.50/24;
+		set_real_ip_from 10.50.0.0/24;
+		set_real_ip_from 10.50.8.0/24;
 		set_real_ip_from 127.0.0.1;
 		set_real_ip_from unix:;
 		real_ip_recursive on;
@@ -84,7 +85,9 @@
 			alias ${webapp_path/src/main/|shell-path}/;
 		}
 
-		#Rewrite landing passed on the landing site cookie.	 Haproxy shouldn't let us here without that cookie
+		# Rewrite landing passed on the landing site cookie.
+		# Haproxy shouldn't let us here without that cookie,
+		# except in environments that have only one landing site.
 		location /landing {
 			# Redirect to the default port (haproxy), not our local
 			# port, which isn't reachable.
