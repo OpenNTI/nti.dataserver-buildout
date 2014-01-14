@@ -1,6 +1,8 @@
 global
 	log			127.0.0.1 daemon warning
-	maxconn		4096 # Total Max Connections. This is dependent on ulimit
+	# let us take as many connections as possible; let backends
+	# do their own queuing
+	#maxconn		4096 # Total Max Connections. This is dependent on ulimit
 	nbproc		${haproxy_workers}
 
 	stats socket ${haproxy_stats_socket} mode 600 level admin
@@ -112,7 +114,7 @@ ${login_redirect_enabled}	redirect location /login/ code 302 if landing !landing
 
 
 backend www_backend
-	mode		http
+	mode	http
 	balance roundrobin
 	# We should already have x-forward-for from
 	# stunnel or the front-level haproxy.
@@ -128,14 +130,17 @@ backend www_backend
 	${nginx_servers}
 
 backend socket_backend
-	mode		http
-	balance roundrobin
+	mode	http
+	balance source
 	option forwardfor if-none # This sets X-Forwarded-For
 	# If we don't set this, then we lose X-Forwarded-For
+	# XXX Check that. Can we use keep alive?
 	option http-server-close
 
+	# NOTE: explicit httpchk is probably trumped by
+	# the observe option on the server line
 	# TODO: Convert httpchk into tcp-check for speed?
-	option httpchk GET /_ops/ping
+	# option httpchk GET /_ops/ping
 
 	timeout queue 5000
 	timeout server 86400000
