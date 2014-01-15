@@ -40,7 +40,7 @@ frontend all
 	# an ID so it can be tested for.
 	# TODO: In multi-tier environments, it might make sense and be
 	# more efficient to have this use the accept-proxy option?
-	bind ${haproxy_http_addr}:${haproxy_http_port} id ${haproxy_http_port}
+	bind ${haproxy_http_addr}:${haproxy_http_port} id ${haproxy_http_port} ${haproxy_http_accept_proxy}
 	# Listen on the stunnel socket for incoming SSL in proxy mode
 	# We give it a specific id so that we can match in an ACL
 	# (We can't match on ssl itself because that's already been handled)
