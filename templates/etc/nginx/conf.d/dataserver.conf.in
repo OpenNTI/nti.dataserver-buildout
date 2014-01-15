@@ -1,6 +1,6 @@
 	sendfile		on;
 	tcp_nopush		on;
-	directio		512;
+	directio		1m;
 	${aio}
 
 	keepalive_timeout  65;
