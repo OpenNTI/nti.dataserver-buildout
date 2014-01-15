@@ -2,6 +2,15 @@ cert = ${stunnel_cert_file}
 fips = no
 pid = ${deployment:run-directory/stunnel.pid}
 foreground = ${stunnel_foreground}
+
+socket = a:SO_LINGER=1:5
+socket = l:SO_LINGER=1:5
+socket = r:SO_LINGER=1:5
+socket = l:TCP_NODELAY=1
+socket = r:TCP_NODELAY=1
+socket = a:TCP_NODELAY=1
+
+
 [https]
 accept = ${stunnel_https_port}
 #verify = 0
