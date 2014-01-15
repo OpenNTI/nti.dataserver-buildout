@@ -144,7 +144,13 @@ backend socket_backend
 	# TODO: Convert httpchk into tcp-check for speed?
 	# option httpchk GET /_ops/ping
 
-	timeout queue 5000
-	timeout server 86400000
-	timeout connect 86400000
+
+	timeout queue 5s
+	timeout server 5m
+	timeout client 60s
+	timeout connect 60s
+	# Force websocket connections to move to a different
+	# worker every so ofter. This overrides client/server
+	# timeout
+	timeout tunnel 10m
 	${dataserver_servers}
