@@ -5,6 +5,7 @@ import multiprocessing
 true = True
 false = False
 
+proxy_protocol = True
 # Listen on all addresses to this port
 bind = ":${http-port}"
 # Calculate worker number automatically if not

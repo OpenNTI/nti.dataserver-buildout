@@ -134,10 +134,15 @@ backend www_backend
 backend socket_backend
 	mode	http
 	balance source
-	option forwardfor if-none # This sets X-Forwarded-For
+	# Recent versions of the server support the PROXY protocol,
+	# meaning that X-Forwarded-For is not needed. This lets us
+	# not need http-server-close or forwardfor; in theory
+	# it might let us use http-keep-alive, if there is any
+	# benefit.
+
+	#option forwardfor if-none # This sets X-Forwarded-For
 	# If we don't set this, then we lose X-Forwarded-For
-	# XXX Check that. Can we use keep alive?
-	option http-server-close
+	#option http-server-close
 
 	# NOTE: explicit httpchk is probably trumped by
 	# the observe option on the server line
