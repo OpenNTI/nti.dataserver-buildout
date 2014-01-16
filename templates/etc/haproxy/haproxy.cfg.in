@@ -126,9 +126,14 @@ backend www_backend
 	# not everything handles). Because we trust this
 	# environment we don't add another header.
 	option forwardfor if-none
-	option http-keep-alive # Fast static resource
-	timeout server 30000
-	timeout connect 4000
+	#option http-keep-alive # Fast static resource
+	# Because we mix and match static content requests with
+	# DS requests, true keep-alive might not be possible; the browser
+	# could send one request to each type of resource in the same
+	# TCP connection
+	option http-server-close
+	timeout server 30s
+	timeout connect 4s
 	${nginx_servers}
 
 backend socket_backend
@@ -139,16 +144,14 @@ backend socket_backend
 	# not need http-server-close or forwardfor; in theory
 	# it might let us use http-keep-alive, if there is any
 	# benefit.
+	# Unfortunately, because we mix and match static content requests with
+	# DS requests, true keep-alive might not be possible; the browser
+	# could send one request to each type of resource in the same
+	# TCP connection. So we need server-close.
+	option http-server-close
 
 	#option forwardfor if-none # This sets X-Forwarded-For
 	# If we don't set this, then we lose X-Forwarded-For
-	#option http-server-close
-
-	# NOTE: explicit httpchk is probably trumped by
-	# the observe option on the server line
-	# TODO: Convert httpchk into tcp-check for speed?
-	# option httpchk GET /_ops/ping
-
 
 	timeout queue 5s
 	timeout server 5m
