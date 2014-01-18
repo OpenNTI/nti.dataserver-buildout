@@ -5,7 +5,7 @@ var $AppConfig = {
 	"debugSocketVerbosely": false,
 
 	"enableLogging": ${enable_logging},
-
+	"enableLogCapture": true,
 	"enableSymbolicLinkingNav": true,
 	
 	"obscureUsernames": ${obscure_usernames},
