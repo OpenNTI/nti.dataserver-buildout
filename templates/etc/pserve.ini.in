@@ -141,7 +141,7 @@ config = ${deployment:etc-directory/gunicorn.conf.py}
 # Begin logging configuration
 
 [loggers]
-keys = root, dataserver, repoze, plastex, boto
+keys = root, dataserver, repoze, plastex, boto, zodb, zope, relstorage
 
 [handlers]
 keys = console
@@ -172,6 +172,31 @@ qualname = boto
 level = WARNING
 handlers =
 qualname = plasTeX
+
+# When this configuration is installed,
+# if there had already been calls to logging.getLogger() made
+# (such as by imports), then any existing logger
+# is disabled and doesn't inherit the root configuration.
+# The only exceptios is if there was a named section for them
+# in this config.
+# So it is critical to list such things here so they don't
+# get turned off
+
+[logger_zope]
+level = INFO
+handlers =
+qualname = zope
+
+[logger_zodb]
+level = DEBUG
+handlers =
+qualname = ZODB
+
+[logger_relstorage]
+level = DEBUG
+handlers =
+qualname = relstorage
+
 
 [handler_console]
 class = StreamHandler
