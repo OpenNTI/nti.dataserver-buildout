@@ -78,6 +78,7 @@ frontend all
 
 	# Block some common attack vectors and private info
 	acl is_blocked_name path_end .php .asp .jsp .exe .aspx
+	acl is_blocked_name path_end assessment_index.json resources.index
 	acl is_blocked_name path_dir .nti_acl indexdir
 	block if is_blocked_name
 
