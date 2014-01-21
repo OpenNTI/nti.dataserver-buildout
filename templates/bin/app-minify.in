@@ -16,7 +16,7 @@ cd ${environment:webapp_path/src/main|shell-path}
 # If the minify succeeds, copy the minified file to index.html,
 # but only if the file doesn't exist, or (if it does exist) it isn't
 # a symlink
-${python|shell-path} ${environment:webapp_path|shell-path}/src/main/app-minify.py ${analytics-key} $*
+${python|shell-path} ${environment:webapp_path|shell-path}/src/main/app-minify.py ${analytics-key} ${closure} $*
 if [ $? -eq 0 ]; then
 	if [ ! -e index.html ]; then
 		cp index-minify.html index.html
