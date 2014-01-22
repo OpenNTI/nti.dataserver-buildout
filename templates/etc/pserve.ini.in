@@ -154,7 +154,7 @@ level = INFO
 handlers = console
 
 [logger_dataserver]
-level = DEBUG
+level = ${dataserver_log_level}
 handlers =
 qualname = nti
 
