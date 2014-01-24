@@ -26,7 +26,8 @@ var $AppConfig = {
 	"disableProfiles": ${disable_profiles},
 	"Preferences":{
 		"webapp_kalturaPreferFlash": false
-	}
+	},
+	"kalturaUIID": "${kalturaUIID}"
 };
 
 if( ${enable_global_onerror} ){
