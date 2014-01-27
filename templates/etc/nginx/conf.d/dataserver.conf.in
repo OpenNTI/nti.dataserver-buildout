@@ -20,7 +20,6 @@
 		~nti.landing_site_name=(?<mc>[^\;]+) $mc;
 	}
 
-
 	open_file_cache max=1000; # inactive=600s;
 	open_file_cache_errors on;
 
@@ -79,6 +78,13 @@
 
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
+			# We get 404s here when there is not a valid /login/landing/the_site.com/ on disk
+			# So silently make that simply /login/.
+			# This is a hack; the right solution would be to use try_files
+			# in the /landing location to automatically detect the non-existence
+			# of the file. (You can't nest if statements or the -e/-d if tests
+			# could be useful.)
+			error_page 404 =200 /login/index.html;
 		}
 
 		location /NextThoughtWebApp/ { # JAM: BWC only? Can go?
@@ -89,16 +95,32 @@
 		# Haproxy shouldn't let us here without that cookie,
 		# except in environments that have only one landing site.
 		location /landing {
+			# Try files occurs within this context?
+			alias ${loginapp_path/src/main/WebApp/|shell-path}/landing;
+
 			# Redirect to the default port (haproxy), not our local
 			# port, which isn't reachable.
 			port_in_redirect off;
-			if ( $site_landing_name ){
+			if ( $site_landing_name ) {
 			   # If the browser sent a request without a trailing slash,
-			   # give it one so that relative resources resolve correctly.
+		   	   # give it one so that relative resources resolve correctly.
 			   rewrite ^/landing$ /landing/ permanent;
-			   # Everything else, rewrite beneath the landing site for the site.
+			   # Everything else, rewrite beneath the landing site for the site, if it
+			   # appears to exist. Otherwise, go to login (handled by
+			   # the hack in the /login location.)
 			   rewrite ^/landing/(.*)$ /login/landing/$site_landing_name/$1 last;
 			}
+		}
+
+		# A bunch of things to cooperate with the /login hack
+		location /landing/resources/ {
+			alias ${loginapp_path/src/main/WebApp/|shell-path}/resources/;
+		}
+		location /landing/js/ {
+			alias ${loginapp_path/src/main/WebApp/|shell-path}/js/;
+		}
+		location /landing/defaults.js {
+			rewrite ^/landing/defaults.js$ /login/defaults.js last;
 		}
 
 		# deny access to .htaccess files, if Apache's document root
