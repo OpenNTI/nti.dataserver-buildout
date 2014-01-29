@@ -76,6 +76,10 @@ frontend all
 	# already. List those here.
 	${haproxy_addl_ssl_acls}
 
+	# Define an ACL to block incoming IP addresses
+	acl is_blocked_ip src 0.0.0.0
+${haproxy_addl_blocked_ip_acls}
+
 	# Block some common attack vectors and private info
 	acl is_blocked_name path_end .php .asp .jsp .exe .aspx
 	acl is_blocked_name path_end assessment_index.json resources.index
@@ -108,12 +112,19 @@ ${login_redirect_enabled}	redirect location /login/ code 302 if landing !landing
 	redirect location /landing/site.html code 302 if !is_maybe_authed { path / }
 
 	#use_backend www_backend_up if is_down
+	use_backend ip_blocked_backend if is_blocked_ip
 	use_backend www_backend if is_host_cors
 	use_backend socket_backend if is_websocket
 	use_backend socket_backend if is_dyn
 	#send the special landing site to the dataserver
 	use_backend socket_backend if is_landing_site
 
+backend ip_blocked_backend
+	# This backend defines no servers,
+	# which means using it results in a 503 Service Unavailable.
+	# We use that to map that error to a canned response.
+	mode http
+	errorfile 503 ${deployment:etc-directory|shell-path}/haproxy/blocked.http
 
 
 backend www_backend
