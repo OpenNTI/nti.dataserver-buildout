@@ -23,7 +23,6 @@
 # in worker processes.
 
 [DEFAULT]
-show_exceptions_in_wsgi_errors = ${debug}
 the_deploy_root = ${deploy_root|shell-path}
 sync_changes = True
 
@@ -104,7 +103,12 @@ use = egg:linesman#profiler
 
 [filter:paste_error]
 use = egg:Paste#error_catcher
-debug = ${debug}
+# Do we return the traceback in the HTML page?
+# for environments outside of development, no, we don't
+# want to, it has sensitive data
+debug = ${debug_error_in_html}
+# Always put these in the wsgi error log (pserve-stderr...)
+show_exceptions_in_wsgi_errors = true
 error_email = ${email_error_to}
 smtp_server = ${environment:smtp_server}
 from_address = ${email_error_from}
