@@ -1,0 +1,9 @@
+${deployment:log-directory}/pserve-std*---supervisor-*.log {
+    daily
+    rotate 7
+    copytruncate
+    dateext
+    nocompress
+    notifempty
+    missingok
+}
