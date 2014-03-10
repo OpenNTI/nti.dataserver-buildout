@@ -1,5 +1,6 @@
 cert = ${stunnel_cert_file}
-fips = no
+# Fips no longer needed with 5.00
+# fips = no
 pid = ${deployment:run-directory/stunnel.pid}
 foreground = ${stunnel_foreground}
 
@@ -28,7 +29,7 @@ protocol = proxy
 sslVersion = all
 options = NO_SSLv2
 options = NO_SSLv3
-# As soon as firefox is on TLSv1.1 by default, we want to disable
+# As soon as Firefox is on TLSv1.1 by default (with Firefox 27, February 13, 2014), we want to disable
 # tlsv1. We could do that with this option, or with the sslVersion
 #options = NO_TLSv1
 # Choose a secure cipher list
