@@ -87,9 +87,16 @@
 			error_page 404 =200 /login/index.html;
 		}
 
-		location /NextThoughtWebApp/ { # JAM: BWC only? Can go?
+ 		# JAM: The locations beginning with /NextThoughtWebApp/ are for
+		# BWC (old bookmarks) only right now.
+		location /NextThoughtWebApp/ {
 			alias ${webapp_path/src/main/|shell-path}/;
 		}
+
+		location /NextThoughtWebApp/config.js {
+			alias ${webapp_config_file};
+		}
+
 
 		# Rewrite landing passed on the landing site cookie.
 		# Haproxy shouldn't let us here without that cookie,
