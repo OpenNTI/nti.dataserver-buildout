@@ -7,7 +7,7 @@ ${deployment:log-directory}/nginx-std*---supervisor-*.log {
     missingok
     sharedscripts
     postrotate
-        kill -USR2 `cat ${deployment:var-directory}/supervisord.pid`
+        kill -USR2 `cat ${deployment:run-directory}/supervisord.pid`
     endscript
 }
 
@@ -20,6 +20,6 @@ ${deployment:log-directory}/nginx/*.log {
     missingok
     sharedscripts
     postrotate
-        kill -USR1 `cat ${deployment:var-directory}/nginx.pid`
+        kill -USR1 `cat ${deployment:run-directory}/nginx.pid`
     endscript
 }

@@ -7,6 +7,6 @@ ${deployment:log-directory}/memcached-std*---supervisor-*.log {
     missingok
     sharedscripts
     postrotate
-        kill -USR2 `cat ${deployment:var-directory}/supervisord.pid`
+        kill -USR2 `cat ${deployment:run-directory}/supervisord.pid`
     endscript
 }
