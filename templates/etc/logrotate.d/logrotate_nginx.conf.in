@@ -1,19 +1,25 @@
 ${deployment:log-directory}/nginx-std*---supervisor-*.log {
     daily
     rotate 7
-    copytruncate
     dateext
     nocompress
     notifempty
     missingok
+    sharedscripts
+    postrotate
+        kill -USR2 `cat ${deployment:var-directory}/supervisord.pid`
+    endscript
 }
 
 ${deployment:log-directory}/nginx/*.log {
     daily
     rotate 7
-    copytruncate
     dateext
     nocompress
     notifempty
     missingok
+    sharedscripts
+    postrotate
+        kill -USR1 `cat ${deployment:var-directory}/nginx.pid`
+    endscript
 }
