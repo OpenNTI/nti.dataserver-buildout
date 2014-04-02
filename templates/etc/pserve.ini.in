@@ -39,10 +39,7 @@ main_dictionary_path = %(the_deploy_root)s/wiktionary/dict.db
 #site_zcml = /path/to/site.zcml
 #deploy_root = %(deploy_root)s
 sync_changes = %(sync_changes)s
-# Deprecated, handled with buildout
-devmode = ${use_devmode}
-# deprecated, handled with buildout
-zcml_features = forums
+
 secure_cookies = ${secure_cookies}
 cookie_secret = ${cookie_secret}
 facebook.app.id = 272442356159055
