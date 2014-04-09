@@ -55,15 +55,10 @@ frontend all
 	acl is_dyn path_beg /library
 	acl is_dyn path_beg /socket.io
 	acl is_dyn path_beg /dictionary
-	acl is_dyn path_beg /login/resources/css/site.css  #GH added to pass css to DS
-	acl is_dyn path_beg /login/resources/strings/site.js #GH added to pass	site strings to DS
-	acl is_dyn path_beg /resources/strings/site.js #CMU added to pass strings files to DS for redirection by site
-	acl is_dyn path_beg /resources/css/site.css
-
-	# Acls for the mess of a landing page
-	acl is_landing_site path_beg /landing/site.html #This needs to be proxyied to the ds
-	acl landing path_beg /landing #Is this a landing related request
-	acl landing_cookie hdr_sub(cookie) nti.landing_site_name #Do we have the cookies that tells us what site landing to user
+	acl is_dyn path_beg ${loginapp_location}resources/css/site.css  #GH added to pass css to DS
+	acl is_dyn path_beg ${loginapp_location}resources/strings/site.js #GH added to pass	site strings to DS
+	acl is_dyn path_beg ${webapp_location}resources/strings/site.js #CMU added to pass strings files to DS for redirection by site
+	acl is_dyn path_beg ${webapp_location}resources/css/site.css
 
 	# Acls for optimizing away having to wait for a several second
 	# webapp load if we know we are def. not authed
@@ -101,23 +96,16 @@ ${haproxy_addl_blocked_ip_acls}
 	#redirect location /down/down.html code 302 if { path_beg /NextThoughtWebApp or path_beg /login }  #THIS IS FOR THE DOWN PAGE ONLY- NOT WORKING YET
 	#redirect location /NextThoughtWebApp/index.html code 301 if { path / }
 	redirect location /tutorials/index.html code 301 if { path /tutorials }
-	#redirect location /login/index.html?return=%2FNextThoughtWebApp%2Findex.html&host=https%3A%2F%2Falpha.nextthought.com code 301 if { path / }
 
-	# If we are requesting a landing resource with no landing cookie
-	# and it isn't the special site send to login
-${login_redirect_enabled}	redirect location /login/ code 302 if landing !landing_cookie !is_landing_site
-
-	# If we are trying to get to the webapp and we know there is no
-	# way we can be authenticated dont waste time going to the app
-	redirect location /landing/site.html code 302 if !is_maybe_authed { path / }
+	# If we might be authenticated, then if we are coming in to the root,
+	# try to go to the app instead
+	redirect location ${webapp_location} code 302 if is_maybe_authed { path / }
 
 	#use_backend www_backend_up if is_down
 	use_backend ip_blocked_backend if is_blocked_ip
 	use_backend www_backend if is_host_cors
 	use_backend socket_backend if is_websocket
 	use_backend socket_backend if is_dyn
-	#send the special landing site to the dataserver
-	use_backend socket_backend if is_landing_site
 
 backend ip_blocked_backend
 	# This backend defines no servers,
