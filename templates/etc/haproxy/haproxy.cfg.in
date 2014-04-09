@@ -132,7 +132,12 @@ backend www_backend
 	# DS requests, true keep-alive might not be possible; the browser
 	# could send one request to each type of resource in the same
 	# TCP connection
-	option http-server-close
+	# NOTE: This seems to be fixed in 1.5-dev22
+	#option http-server-close
+	option prefer-last-server
+
+${haproxy_backend_port_rewrite}
+
 	timeout server 30s
 	timeout connect 4s
 	${nginx_servers}
@@ -149,8 +154,9 @@ backend socket_backend
 	# DS requests, true keep-alive might not be possible; the browser
 	# could send one request to each type of resource in the same
 	# TCP connection. So we need server-close.
-	option http-server-close
-
+	# NOTE: This seems to be fixed in 1.5-dev22
+	#option http-server-close
+	option prefer-last-server
 	#option forwardfor if-none # This sets X-Forwarded-For
 	# If we don't set this, then we lose X-Forwarded-For
 
