@@ -48,7 +48,21 @@
 			error_page 404 =503 /maintenance/index.html;
 		}
 
-		location / {
+		location = / {
+			# Redirect to the default port (haproxy), not our local
+			# port, which isn't reachable.
+			port_in_redirect off;
+
+			# haproxy is redirecting to ${webapp_location} if the root
+			# gets hit and we could be authenticated. This makes it hard
+			# to get back to the landing content, if any. So we rewrite
+			# (unauthenticated) hits of the root to be directly to
+			# /index.html (which we handle with the block below), letting
+			# the back button work as expected.
+			rewrite ^.*$ /index.html permanent;
+		}
+
+		location  / {
 			index  index.html index.htm;
 			root ${loginapp_path/src/main/WebApp|shell-path}/;
 			expires +1h;
@@ -137,7 +151,7 @@
 		# JAM: Likewise for /landing
 		location /landing {
 			# Send them to the root
-			rewrite ^/landing$ / redirect;
+			rewrite ^/landing$ /index.html redirect;
 			rewrite ^/landing/(.*)$ /$1 redirect;
 			# Redirect to the default port (haproxy), not our local
 			# port, which isn't reachable.

@@ -98,7 +98,8 @@ ${haproxy_addl_blocked_ip_acls}
 	redirect location /tutorials/index.html code 301 if { path /tutorials }
 
 	# If we might be authenticated, then if we are coming in to the root,
-	# try to go to the app instead
+	# try to go to the app instead. This helps preserve old bookmarks
+	# as well as streamlining the process.
 	redirect location ${webapp_location} code 302 if is_maybe_authed { path / }
 
 	#use_backend www_backend_up if is_down
