@@ -1,4 +1,4 @@
-${deployment:log-directory}/supervisord.log {
+${deployment:log-directory}/*supervisor*.log {
     daily
     rotate 7
     dateext
