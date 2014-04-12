@@ -42,6 +42,7 @@ sync_changes = %(sync_changes)s
 
 secure_cookies = ${secure_cookies}
 cookie_secret = ${cookie_secret}
+session_cookie_secret = ${session_cookie_secret}
 facebook.app.id = 272442356159055
 facebook.app.secret = 964997cea8939ffae988668f6c634f0c
 
