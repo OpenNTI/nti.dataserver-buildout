@@ -23,6 +23,12 @@
 	open_file_cache max=1000; # inactive=600s;
 	open_file_cache_errors on;
 
+	upstream dataserver {
+		server 127.0.0.1:${dataserver_http_port};
+
+		keepalive 16;
+	}
+
 	server {
 		listen ${nginx_http_port};
 		# For single machine or developers,
@@ -128,7 +134,9 @@
 		}
 
 		location = /_ops/identify {
-			proxy_pass http://127.0.0.1:${dataserver_http_port}/_ops/identify;
+			proxy_pass http://dataserver/_ops/identify;
+			proxy_set_header Connection "";
+			proxy_http_version 1.1;
 			proxy_pass_request_body off;
 			proxy_set_header Content-Length "";
 		}
