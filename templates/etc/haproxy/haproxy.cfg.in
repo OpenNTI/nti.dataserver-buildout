@@ -119,14 +119,9 @@ backend ip_blocked_backend
 backend www_backend
 	mode	http
 	balance roundrobin
-	# We should already have x-forward-for from
-	# stunnel or the front-level haproxy.
-	# If we try to set one again,
-	# that gets confusing and causes issues by
-	# duplicating header names (which is legal, but
-	# not everything handles). Because we trust this
-	# environment we don't add another header.
-	option forwardfor if-none
+	# We expect to be talking PROXY to nginx, so
+	# no need to mess with x-forworded-for.
+
 	#option http-keep-alive # Fast static resource
 	# Because we mix and match static content requests with
 	# DS requests, true keep-alive might not be possible; the browser
