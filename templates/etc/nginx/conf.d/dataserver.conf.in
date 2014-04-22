@@ -136,6 +136,10 @@
 			auth_request /_ops/identify;
 		}
 
+		location ~* ${global_content_location}(.*\.(png|jpg|jpeg|svg|gif)) {
+			alias ${global_content_directory/.|shell-path}/$1;
+		}
+
 		location = /_ops/identify {
 			proxy_pass http://dataserver/_ops/identify;
 			proxy_set_header Connection "";
