@@ -59,6 +59,9 @@ frontend all
 	acl is_dyn path_beg ${loginapp_location}resources/strings/site.js #GH added to pass	site strings to DS
 	acl is_dyn path_beg ${webapp_location}resources/strings/site.js #CMU added to pass strings files to DS for redirection by site
 	acl is_dyn path_beg ${webapp_location}resources/css/site.css
+	# The plain strings (non-site-specific) is also passed to the DS
+	# for language negotiation and a redirect
+	acl is_dyn path_beg ${webapp_location}resources/strings/strings.jss
 
 	# Acls for optimizing away having to wait for a several second
 	# webapp load if we know we are def. not authed
@@ -154,6 +157,7 @@ backend socket_backend
 	option prefer-last-server
 	#option forwardfor if-none # This sets X-Forwarded-For
 	# If we don't set this, then we lose X-Forwarded-For
+
 
 	timeout queue 5s
 	timeout server 5m
