@@ -61,7 +61,7 @@ frontend all
 	acl is_dyn path_beg ${webapp_location}resources/css/site.css
 	# The plain strings (non-site-specific) is also passed to the DS
 	# for language negotiation and a redirect
-	acl is_dyn path_beg ${webapp_location}resources/strings/strings.jss
+	acl is_dyn path_beg ${webapp_location}resources/strings/strings.js
 
 	# Acls for optimizing away having to wait for a several second
 	# webapp load if we know we are def. not authed
