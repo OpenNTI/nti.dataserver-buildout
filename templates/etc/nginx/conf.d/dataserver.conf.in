@@ -37,8 +37,7 @@
 
 
 	upstream dataserver {
-		# TODO: Convert this to a unix socket
-		server 127.0.0.1:${dataserver_http_port};
+		server unix:${gunicorn-conf:unix-socket|shell-path};
 
 		keepalive 16;
 	}

@@ -6,8 +6,8 @@ true = True
 false = False
 
 proxy_protocol = True
-# Listen on all addresses to this port
-bind = ":${http-port}"
+# Listen on all addresses to this port, and locally on this file
+bind = [":${http-port}", "unix:${unix-socket|shell-path}"]
 # Calculate worker number automatically if not
 # specified
 workers = "${workers}" or multiprocessing.cpu_count() * 2 + 1
