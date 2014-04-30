@@ -8,6 +8,7 @@ pid		   ${deployment:run-directory}/nginx.pid;
 
 events {
 	worker_connections	1024;
+	multi_accept on;
 }
 
 
@@ -19,7 +20,7 @@ http {
 					  '$status $body_bytes_sent "$http_referer" '
 					  '"$http_user_agent" "$http_x_forwarded_for"';
 
-	access_log	${deployment:log-directory/nginx/access.log}  main;
+	access_log	${deployment:log-directory/nginx/access.log}  main buffer=4k flush=1m;
 
 	include conf.d/*.conf;
 }
