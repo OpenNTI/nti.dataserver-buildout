@@ -164,7 +164,10 @@ backend socket_backend
 	timeout client 60s
 	timeout connect 60s
 	# Force websocket connections to move to a different
-	# worker every so ofter. This overrides client/server
-	# timeout
+	# worker every so often. This overrides client/server
+	# timeout...
+	# At least, that's the intent, but it turns out this
+	# is an IDLE timeout, so it's much too high to do any
+	# good. Should we reconsider? Is this even needed?
 	timeout tunnel 10m
 	${dataserver_servers}
