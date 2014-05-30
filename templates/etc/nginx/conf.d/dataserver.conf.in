@@ -154,6 +154,10 @@
 			}
 		}
 
+		location ${hosted_badge_images_location} {
+			alias ${hosted_badge_images_directory/.|shell-path}/;
+		}
+		
 		location = /_ops/identify {
 			proxy_pass http://dataserver/_ops/identify;
 			proxy_set_header Connection "";
