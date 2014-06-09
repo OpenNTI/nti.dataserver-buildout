@@ -5,6 +5,8 @@
 			xmlns:tdb="http://nextthought.com/ntp/tahrir">
 			
 	<include package="nti.badges.tahrir" file="meta.zcml" />
-	<tdb:registerTahrirDB dburi="${tahrir:driver}://${tahrir:user}:${tahrir:password}@${tahrir:host}/${tahrir:dbname}" />
+	<tdb:registerTahrirDB	dburi="${tahrir:driver}://${tahrir:user}:${tahrir:password}@${tahrir:host}/${tahrir:dbname}"
+							twophase="${tahrir:twophase}" 
+							autocommit="${tahrir:autocommit}" />
 
 </configure>
