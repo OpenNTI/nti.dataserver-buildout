@@ -5,9 +5,6 @@
 			xmlns:tdb="http://nextthought.com/ntp/tahrir">
 			
 	<include package="nti.badges.tahrir" file="meta.zcml" />
-	<tdb:registerTahrirDB dburi="${tahrir:driver}://${tahrir:user}:${tahrir:password}@${tahrir:host}/${tahrir:dbname}" 
-						  cache_session="${tahrir:cache_session}"
-						  use_scoped_session="${tahrir:use_scoped_session}"
-						  name="${tahrir:name}"/>
+	<tdb:registerTahrirDB dburi="${tahrir:driver}://${tahrir:user}:${tahrir:password}@${tahrir:host}/${tahrir:dbname}" />
 
 </configure>
