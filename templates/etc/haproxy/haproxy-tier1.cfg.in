@@ -1,0 +1,105 @@
+global
+    log         127.0.0.1 daemon warning 
+    maxconn     ${haproxy_maxconn} # Total Max Connections. This is dependent on ulimit
+
+    stats socket ${haproxy_stats_socket} mode 600 level admin
+    stats timeout 2m
+
+defaults
+    timeout queue 5s
+    timeout server 5m
+    timeout client 60s
+    timeout connect 60s
+    # Force websocket connections to move to a different
+    # worker every so ofter. This overrides client/server
+    # timeout
+    timeout tunnel 10m
+
+
+frontend all
+    mode http
+    log global
+    timeout client 86400000
+    option httplog
+    # Listen on the socket for incoming SSL in proxy mode
+    # We give it a specific id so that we can match in an ACL
+    # (We can't match on ssl itself because that's already been handled)
+    bind /var/run/ssl-frontend-STAR_nextthought_com.sock user root mode 600 id 42 accept-proxy
+    bind /var/run/ssl-frontend-janux_ou_edu.sock user root mode 600 id 43 accept-proxy
+
+${haproxy_environment_map}
+
+	# Our stunnel socket is always SSL
+	acl is_ssl so_id 42
+	# Sometimes in some environments we need additional rules about
+	# SSL; for example, it may have been handled by a front-end proxy
+	# already. List those here.
+	${haproxy_addl_ssl_acls}
+
+    # Let gunicorn/nginx know if we are dealing with an incoming HTTPS request
+    # (This is a default 'secure-header' in gunicorns conf)
+    reqidel ^X-FORWARDED-PROTOCOL:.*
+    reqadd X-FORWARDED-PROTOCOL:\ ssl if is_ssl
+
+    use_backend app_backend0 if is_backend0
+    use_backend app_backend1 if is_backend1
+    use_backend app_backend2 if is_backend2
+    use_backend app_backend3 if is_backend3
+    use_backend app_backend4 if is_backend4
+    use_backend app_backend5 if is_backend5
+    use_backend app_backend6 if is_backend6
+
+# Old Prod
+backend app_backend0
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+${haproxy_app_backend0}
+
+# MATHCOUNTS
+backend app_backend1
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+${haproxy_app_backend1}
+
+# Alpha
+backend app_backend2
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+${haproxy_app_backend2}
+
+# Janux
+backend app_backend3
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+${haproxy_app_backend3}
+
+# OU-Test
+backend app_backend4
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+${haproxy_app_backend4}
+
+backend app_backend5
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+${haproxy_app_backend5}
+
+backend app_backend6
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+${haproxy_app_backend6}
+
