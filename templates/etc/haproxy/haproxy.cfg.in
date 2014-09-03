@@ -98,7 +98,6 @@ frontend all
 	# force site policy to janux for development so we don't have to edit /etc/hosts
 	# reqidel ^ORIGIN:.*
 	# reqadd ORIGIN:\ http://janux.ou.edu
-	# reqadd ORIGIN:\ http://alibra-alpha.nextthought.com
 
 	# Go to the app by default
 	# redirect location /down/down.html code 302 if { path_beg /NextThoughtWebApp or path_beg /login }  #THIS IS FOR THE DOWN PAGE ONLY- NOT WORKING YET
