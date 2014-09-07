@@ -128,7 +128,7 @@ parts =
 23) Janux HAProxy change
 	edit file in ~/Projects/nti.dataserver-buildout/etc/haproxy/haproxy.cfg
 	search for the line where the string "reqadd X-FORWARDED-PROTOCOL:\ ssl if is_ssl" occurs
-	add after it the following
+	add/uncomment after it the following
 	
 	reqidel ^ORIGIN:.*
 	reqadd ORIGIN:\ http://janux.ou.edu
