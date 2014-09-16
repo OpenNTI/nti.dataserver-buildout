@@ -31,12 +31,14 @@ frontend all
     # Our stunnel socket is always SSL
     ${haproxy_ssl_acls}
 
+    ${haproxy_extra_config}
+
     # Let gunicorn/nginx know if we are dealing with an incoming HTTPS request
     # (This is a default 'secure-header' in gunicorns conf)
     reqidel ^X-FORWARDED-PROTOCOL:.*
     reqadd X-FORWARDED-PROTOCOL:\ ssl if is_ssl
 
-    ${haproxy_extra_config}
+    ${haproxy_extra_redirects}
 
     use_backend app_backend0 if is_backend0
     use_backend app_backend1 if is_backend1
