@@ -1,7 +1,7 @@
 cert = ${stunnel_cert_file}
 # Fips no longer needed with 5.00
 # fips = no
-pid = ${deployment:run-directory/stunnel.pid}
+pid = ${stunnel_pid_file}
 foreground = ${stunnel_foreground}
 
 socket = a:SO_LINGER=1:5
@@ -13,7 +13,7 @@ socket = a:TCP_NODELAY=1
 
 
 [https]
-accept = ${stunnel_https_port}
+accept = ${stunnel_https_address}:${stunnel_https_port}
 #verify = 0
 #connect = 80
 connect = ${stunnel_socket}
