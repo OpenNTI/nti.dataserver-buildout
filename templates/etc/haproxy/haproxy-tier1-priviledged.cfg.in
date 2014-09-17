@@ -1,8 +1,8 @@
 global
     log         127.0.0.1 local2 warning 
-    maxconn     60000 # Total Max Connections. This is dependent on ulimit
+    maxconn     ${haproxy_maxconn} # Total Max Connections. This is dependent on ulimit
 
-    stats socket /var/run/haproxy-stats.sock mode 600 level admin
+    stats socket ${haproxy_priviledged_stats_socket} mode 600 level admin
     stats timeout 2m
 
 defaults
@@ -14,6 +14,7 @@ defaults
     # worker every so ofter. This overrides client/server
     # timeout
     timeout tunnel 10m
+    errorfile 408 /dev/null
 
 frontend httpredir ${haproxy_http_addr}:${haproxy_redirect_to_ssl_port}
     mode http
