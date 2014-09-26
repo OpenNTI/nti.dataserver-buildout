@@ -47,6 +47,7 @@ frontend all
     use_backend app_backend4 if is_backend4
     use_backend app_backend5 if is_backend5
     use_backend app_backend6 if is_backend6
+    use_backend app_backend6 if is_backend7
 
 # Old Prod
 backend app_backend0
@@ -88,6 +89,7 @@ backend app_backend4
     option http-server-close
     ${haproxy_app_backend4}
 
+# Content Dev
 backend app_backend5
     mode http
     balance source
@@ -95,10 +97,19 @@ backend app_backend5
     option http-server-close
     ${haproxy_app_backend5}
 
+# Wiley
 backend app_backend6
     mode http
     balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_app_backend6}
+
+# CCMF
+backend app_backend7
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+    ${haproxy_app_backend7}
 
