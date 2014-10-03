@@ -6,7 +6,7 @@
 
 	<include package="nti.analytics.database" file="meta.zcml" />
 	<adb:registerAnalyticsDB
-				dburi="${analytics:driver}://${analytics:user}:${analytics:password}@${analytics:host}/${analytics:dbname}"
+				dburi="${analytics:driver}://${analytics:user}:${analytics:password}@${analytics:host}/${analytics:dbname}?charset=utf8"
 				twophase="${analytics:twophase}"
 				autocommit="${analytics:autocommit}" />
 
