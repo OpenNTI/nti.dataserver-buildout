@@ -48,6 +48,7 @@ frontend all
     use_backend app_backend5 if is_backend5
     use_backend app_backend6 if is_backend6
     use_backend app_backend6 if is_backend7
+    use_backend app_backend8 if is_backend8
 
 # Old Prod
 backend app_backend0
@@ -112,4 +113,12 @@ backend app_backend7
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_app_backend7}
+
+# Performance Testing
+backend app_backend8
+    mode http
+    balance source
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+    ${haproxy_app_backend8}
 
