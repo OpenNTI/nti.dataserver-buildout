@@ -151,7 +151,6 @@ parts =
 [Content Generation (Optional)] 
 
 Install the following ports:
-	- jsmin
 	- libpng
 	- freetype
 	- pngcrush
@@ -193,6 +192,7 @@ Install the following ports:
 	- ImageMagick
 	- openexr
 	- liblqr
+	- jsmin (optional)
 	- xpdf (optional)
 	- gtk2 (optional)
 	- asymptote (optional)
