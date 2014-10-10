@@ -178,8 +178,7 @@ backend socket_backend
 backend node_backend
 	mode http
 	option prefer-last-server
-	# server nodeserver 127.0.0.1:9000 layer7 weight 1
 	timeout server 30s
 	timeout connect 4s
 	# reqrep ^(.*\ )/mobile(/?.*) \1\2
-	server nodejs 127.0.0.1:9000
+	${nodejs_servers}
