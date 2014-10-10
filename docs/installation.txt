@@ -192,6 +192,7 @@ Install the following ports:
 	- ImageMagick
 	- openexr
 	- liblqr
+	- npm
 	- jsmin (optional)
 	- xpdf (optional)
 	- gtk2 (optional)
