@@ -1,0 +1,13 @@
+{
+	"development": {
+		"server": "http://localhost:${dataserver-http-port}/dataserver2/",
+		"port": ${http-port},
+		"basepath": "/mobile/"
+	},
+
+	"production": {
+		"server": "http://localhost:${dataserver-http-port}/dataserver2/",
+		"port": ${http-port},
+		"basepath": "/mobile/"
+	}
+}
