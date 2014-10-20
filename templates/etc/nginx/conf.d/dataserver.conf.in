@@ -207,4 +207,13 @@
 			deny  all;
 		}
 
+		# shutdown .svn and .git, apperantly 
+		location ~ /\.svn/ {
+			deny all;
+		}
+
+		location ~/\.git/ {
+			deny all;
+		}
+
 	}
