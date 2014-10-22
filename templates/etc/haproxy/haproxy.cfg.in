@@ -45,6 +45,9 @@ frontend all
 	bind ${stunnel_socket} ${haproxy_stunnel_socket_user} mode 600 id 42 accept-proxy
 	default_backend www_backend
 
+	
+reqidel ^ORIGIN:.*
+reqadd ORIGIN:\ https://ou-alpha.nextthought.com
 	acl is_mobile path_beg /mobile
 	
 	acl is_websocket hdr(Upgrade) -i WebSocket
@@ -62,6 +65,13 @@ frontend all
 	# The plain strings (non-site-specific) is also passed to the DS
 	# for language negotiation and a redirect
 	acl is_dyn path_beg ${webapp_location}resources/strings/strings.js
+
+	#unlike site css above for the mobile app we pass
+	#site requests to nginx where we try file the appropriate places
+	#that may contain this data.  This is the approach we took with
+	#landing and it gets load off the server.  We probably want to do
+	#this for the rest of the site.css files also - CMU
+	acl is_mobile_site_css path_beg /mobile/resources/css/sites/current/site.css
 
 	# Acls for optimizing away having to wait for a several second
 	# webapp load if we know we are def. not authed
@@ -111,7 +121,7 @@ frontend all
 
 	#use_backend www_backend_up if is_down
 	use_backend ip_blocked_backend if is_blocked_ip
-	use_backend node_backend if is_mobile
+	use_backend node_backend if is_mobile !is_mobile_site_css
 	use_backend www_backend if is_host_cors
 	use_backend socket_backend if is_websocket
 	use_backend socket_backend if is_dyn

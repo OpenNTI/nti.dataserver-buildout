@@ -114,6 +114,15 @@
 					  @login;
 		}
 
+		location = /mobile/resources/css/sites/current/site.css {
+			root ${mobileweb_path}/dist/client/resources/css/sites/;
+			try_files   /$host/site.css
+					/$server_name/site.css
+				    	/$host/site.css
+					/$server_name/site.css
+					@error;
+		}
+
 		location = /maintenance/index.html {
 			expires 30s;
 		}
@@ -127,6 +136,10 @@
 
 		location @login {
 			rewrite ^.*$ /login/ redirect;
+		}
+
+		location @error {
+			return 404;
 		}
 
 		location /dataserver {
