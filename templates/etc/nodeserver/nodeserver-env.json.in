@@ -9,6 +9,7 @@
 	"production": {
 		"server": "http://localhost:${dataserver-http-port}/dataserver2/",
 		"port": ${http-port},
-		"basepath": "/mobile/"
+		"basepath": "/mobile/",
+		"user-agreement": "${user-agreement-url}"
 	}
 }
