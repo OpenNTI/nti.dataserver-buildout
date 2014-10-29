@@ -1,15 +1,25 @@
 {
 	"development": {
+		"mode": "development",
 		"server": "http://localhost:${dataserver-http-port}/dataserver2/",
 		"port": ${http-port},
 		"basepath": "/mobile/",
-		"user-agreement": "${user-agreement-url}"
+		"user-agreement": "${user-agreement-url}",
+		"analytics-key": "${analytics-key}",
+		"appName": "${app-name}",
+		"appId": "${app-id}",
+		"appVersion": "${app-version}"
 	},
 
 	"production": {
+		"mode": "production",
 		"server": "http://localhost:${dataserver-http-port}/dataserver2/",
 		"port": ${http-port},
 		"basepath": "/mobile/",
-		"user-agreement": "${user-agreement-url}"
+		"user-agreement": "${user-agreement-url}",
+		"analytics-key": "${analytics-key}",
+		"appName": "${app-name}",
+		"appId": "${app-id}",
+		"appVersion": "${app-version}"
 	}
 }
