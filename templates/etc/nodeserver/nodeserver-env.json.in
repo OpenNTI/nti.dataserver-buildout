@@ -5,7 +5,7 @@
 		"port": ${http-port},
 		"basepath": "/mobile/",
 		"user-agreement": "${user-agreement-url}",
-		"analytics-key": "${analytics-key}",
+		"analyticsKey": "${analytics-key}",
 		"appName": "${app-name}",
 		"appId": "${app-id}",
 		"appVersion": "${app-version}"
@@ -17,7 +17,7 @@
 		"port": ${http-port},
 		"basepath": "/mobile/",
 		"user-agreement": "${user-agreement-url}",
-		"analytics-key": "${analytics-key}",
+		"analyticsKey": "${analytics-key}",
 		"appName": "${app-name}",
 		"appId": "${app-id}",
 		"appVersion": "${app-version}"
