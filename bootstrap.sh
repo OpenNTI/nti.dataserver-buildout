@@ -30,6 +30,8 @@ $VIRTUAL_ENV/bin/python `dirname $0`/bootstrap.py
 setuptools_version=`grep -o "setuptools = .*" versions.cfg | grep -o "[0-9]\.[0-9].*"`
 setuptools_egg="setuptools-$setuptools_version"
 
+zc_buildout_version=`grep -o "zc.buildout = .*" versions.cfg | grep -o "[0-9]\.[0-9].*"`
+zc_buildout_egg="zc.buildout-$zc_buildout_version"
 
 # Now match .installed.cfg with the desired version
 if [ -f .installed.cfg ]; then
@@ -39,6 +41,15 @@ if [ -f .installed.cfg ]; then
 			;;
 		*)
 			sed -E -i""  "s/setuptools-([0-9]\.?)+-/$setuptools_egg-/" .installed.cfg
+			;;
+	esac
+	
+	case `uname` in
+		Darwin)
+			sed -E -i "" "s/zc.buildout-([0-9]\.?)+-/$zc_buildout_egg-/" .installed.cfg
+			;;
+		*)
+			sed -E -i""  "s/zc.buildout-([0-9]\.?)+-/$zc_buildout_egg-/" .installed.cfg
 			;;
 	esac
 fi
@@ -55,4 +66,14 @@ if [ "$buildout_egg" != "$setuptools_egg" ]; then
 	buildout_egg=`grep -o setuptools-.*- bin/buildout`
 	WARNING="Warning"
 	echo -e "$RED$WARNING: setuptools bootstrapped ($buildout_egg) is different than versions.cfg ($setuptools_egg); expect rebuilds.$COLOR_NONE"
+fi
+
+buildout_egg=`grep -o $zc_buildout_egg bin/buildout`
+if [ "$buildout_egg" != "$zc_buildout_egg" ]; then
+	RED="\033[0;31m"
+	COLOR_NONE="\e[0m"
+
+	buildout_egg=`grep -o zc.buildout-.*- bin/buildout`
+	WARNING="Warning"
+	echo -e "$RED$WARNING: zc.buildout bootstrapped ($buildout_egg) is different than versions.cfg ($zc_buildout_egg); expect rebuilds.$COLOR_NONE"
 fi
