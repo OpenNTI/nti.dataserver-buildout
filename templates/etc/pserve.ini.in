@@ -36,8 +36,8 @@ main_dictionary_path = %(the_deploy_root)s/wiktionary/dict.db
 # The site_zcml setting, if defined, is a path to a ZCML file
 # loaded after the standard config is loaded
 # Deprecated, handled with buildout
-#site_zcml = /path/to/site.zcml
-#deploy_root = %(deploy_root)s
+# site_zcml = /path/to/site.zcml
+# deploy_root = %(deploy_root)s
 sync_changes = %(sync_changes)s
 
 secure_cookies = ${secure_cookies}
@@ -55,7 +55,7 @@ facebook.app.secret = 964997cea8939ffae988668f6c634f0c
 # choose an IP address to avoid ambiguity
 statsd_uri = statsd://127.0.0.1:8125
 
-#pyramid.reload_templates = true
+# pyramid.reload_templates = true
 
 # Application route prefixes
 # XXX: TODO: work on this, there's too much
@@ -71,6 +71,13 @@ login_app_root = ${loginapp_location}
 ###
 purchase_additional_confirmation_addresses = ${purchase_additional_confirmation_addresses}
 
+###
+# Concurrent enrollment email addresses
+# For site policies that load the 'send additional enrollment confirmation subscriber',
+# these addressess will get the emails.
+# A whitespace separated list
+###
+concurrent_enrollment_addresses = ${concurrent_enrollment_addresses}
 
 get sync_changes = sync_changes
 
@@ -106,7 +113,6 @@ smtp_username = ${environment:smtp_username}
 smtp_password = ${environment:smtp_passwd}
 smtp_use_tls = ${environment:smtp_use_tls}
 error_subject_prefix = ${email_error_subject_prefix}
-
 
 # CORS needs to be outermost so that even 401 errors ond
 # exceptions have the chance to get their responses wrapped
@@ -191,7 +197,6 @@ qualname = ZODB
 level = DEBUG
 handlers =
 qualname = relstorage
-
 
 [handler_console]
 class = StreamHandler
