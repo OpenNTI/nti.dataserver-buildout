@@ -123,6 +123,10 @@
 					@error;
 		}
 
+		location /widgets {
+			root ${mobileweb_path}/dist;
+		}
+
 		location = /maintenance/index.html {
 			expires 30s;
 		}
