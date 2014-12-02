@@ -15,6 +15,7 @@
 	sudo port install graphviz-devel	
 	sudo port install wget
 	sudo port install jslint
+	sudo port install bash
 	
 6) edit [bash] profile located in your home directory (e.g. ~/.profile) and add to the PATH variable
 	/opt/local/bin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
