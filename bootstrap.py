@@ -75,6 +75,8 @@ except ImportError:
     from urllib2 import urlopen
 
 ez = {}
+#exec(urlopen('https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py'
+#            ).read(), ez)
 with open("ez_setup.py", "r") as fp:
     exec(fp.read(), ez)
 if not options.allow_site_packages:
