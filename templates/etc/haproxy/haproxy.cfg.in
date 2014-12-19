@@ -130,20 +130,13 @@ backend ip_blocked_backend
 	mode http
 	errorfile 503 ${deployment:etc-directory|shell-path}/haproxy/blocked.http
 
-userlist UsersForHistoryLanding
-  user ouhistorytest insecure-password ouhistorypass1027
-
 backend www_backend
 	mode	http
 	balance roundrobin
 	# We expect to be talking PROXY to nginx, so
 	# no need to mess with x-forworded-for.
 
-	acl AuthOk http_auth(UsersForHistoryLanding)
-	acl is_history_landing hdr_beg(host) ou-alpha-history
-  	http-request auth realm History if !AuthOk is_history_landing !{ path_beg /hosted_badge_images } !{ path_beg /loginsuccess } !{ path_beg /content/ } !{ path_beg /app/ } !{ path_beg /login/ }
-
-	#option http-keep-alive # Fast static resource
+	# option http-keep-alive # Fast static resource
 	# Because we mix and match static content requests with
 	# DS requests, true keep-alive might not be possible; the browser
 	# could send one request to each type of resource in the same
