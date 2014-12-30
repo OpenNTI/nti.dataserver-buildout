@@ -27,7 +27,7 @@ $VIRTUAL_ENV/bin/python `dirname $0`/bootstrap.py
 # the .installed.cfg to match.
 
 # First, extract the desired version:
-setuptools_version=`grep -o "setuptools = .*" versions.cfg | grep -o "[0-9]\.[0-9].*"`
+setuptools_version=`grep -o "setuptools = .*" versions.cfg | grep -o "[0-9][0-9]\.[0-9].*"`
 setuptools_egg="setuptools-$setuptools_version"
 
 zc_buildout_version=`grep -o "zc.buildout = .*" versions.cfg | grep -o "[0-9]\.[0-9].*"`
