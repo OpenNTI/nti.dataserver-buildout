@@ -54,7 +54,7 @@ def _compress_backup(backup_dir, archive_path):
     return archive
 
 def _upload_backup(archive, prefix=''):
-    cmd = [ 
+    cmd = [
         '${deployment:bin-directory}/s3put',
         '--access_key', '${boto:aws_access_key_id}',
         '--secret_key', '${boto:aws_secret_access_key}',
