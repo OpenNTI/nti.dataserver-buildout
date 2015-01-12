@@ -1,7 +1,7 @@
 {
     "environments": {
         "alpha": {
-            "defaults-file": "${deployment:etc-directory}/my2-backup.cnf",
+            "defaults-file": "${deployment:etc-directory}/mysql/my2-backup.cnf",
             "servers": [
                 {
                     "address": "${backupvars:aux1-address}",
@@ -10,7 +10,7 @@
             ]
         },
         "janux": {
-            "defaults-file": "${deployment:etc-directory}/my3-backup.cnf",
+            "defaults-file": "${deployment:etc-directory}/mysql/my3-backup.cnf",
             "servers": [
                 {
                     "address": "${backupvars:db1-address}",
@@ -23,7 +23,7 @@
             ]
         },
         "okstate": {
-            "defaults-file": "${deployment:etc-directory}/my9-backup.cnf",
+            "defaults-file": "${deployment:etc-directory}/mysql/my9-backup.cnf",
             "servers": [
                 {
                     "address": "${backupvars:db3-address}",
@@ -36,7 +36,7 @@
             ]
         },
         "outest": {
-            "defaults-file": "${deployment:etc-directory}/my4-backup.cnf",
+            "defaults-file": "${deployment:etc-directory}/mysql/my4-backup.cnf",
             "servers": [
                 {
                     "address": "${backupvars:aux1-address}",
