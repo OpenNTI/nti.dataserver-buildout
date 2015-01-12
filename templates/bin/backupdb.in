@@ -130,7 +130,7 @@ def main():
         archive = _compress_backup(base_path, archive_path)
 
         # Upload the backup
-        _upload_backup(archive, prefix=os.path.dirname(archive))
+        _upload_backup(archive, prefix=os.path.dirname('${backupvars:db_backup_dir}'))
     finally:
         if os.path.exists(base_path):
             shutil.rmtree(base_path)
