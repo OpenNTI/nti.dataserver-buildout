@@ -1,5 +1,8 @@
 #!${deployment:bin-directory}/python
 
+import argparse
+import codecs
+import json
 import os
 import shutil
 import tarfile
@@ -34,7 +37,7 @@ def _upload_logs( archive, prefix='' ):
     ]
     check_call( cmd )
 
-def _archive_logs(log_dir, archive_dir):
+def _archive_logs(log_dir, archive_dir, date):
     if not os.path.exists(archive_dir):
         os.makedirs(archive_dir)
 
@@ -51,10 +54,10 @@ def _backup_logs(data):
     _get_logs(data['username'], data['server'], data['log_dir'])
 
     # Build the log archive and compress it
-    archive = _archive_logs(data['log_dir'], data['archive_dir'])
+    archive = _archive_logs(data['log_dir'], data['archive_dir'], data['date'])
 
     # Upload the backup
-    _upload_logs(archive, prefix=tmp_dir)
+    _upload_logs(archive, prefix=data['s3_prefix'])
 
 def _parse_args():
     arg_parser = argparse.ArgumentParser( description="NTI Log Backup Utility" )
@@ -101,10 +104,12 @@ def main():
                 os.makedirs(log_dir)
 
             data = {
+                'date': date.
                 'server': server,
                 'username': environment['username'],
                 'log_dir': os.path.join(log_dir, hour),
-                'archive_dir': os.path.join(tmp_dir,u'logs',environment_name, server)
+                'archive_dir': os.path.join(tmp_dir,u'logs',environment_name, server),
+                's3_prefix': tmp_dir
             }
         sets.append(data)
 
