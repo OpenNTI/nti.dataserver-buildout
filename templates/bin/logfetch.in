@@ -104,7 +104,7 @@ def main():
                 os.makedirs(log_dir)
 
             data = {
-                'date': date.
+                'date': date,
                 'server': server,
                 'username': environment['username'],
                 'log_dir': os.path.join(log_dir, hour),
