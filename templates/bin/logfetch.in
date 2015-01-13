@@ -54,7 +54,7 @@ def _backup_logs(data):
     _get_logs(data['username'], data['server'], data['log_dir'])
 
     # Build the log archive and compress it
-    archive = _archive_logs(data['log_dir'], data['archive_dir'], data['date'])
+    archive = _archive_logs(os.path.dirname(data['log_dir']), data['archive_dir'], data['date'])
 
     # Upload the backup
     _upload_logs(archive, prefix=data['s3_prefix'])
@@ -111,7 +111,7 @@ def main():
                 'archive_dir': os.path.join(tmp_dir,u'logs',environment_name, server),
                 's3_prefix': tmp_dir
             }
-        sets.append(data)
+            sets.append(data)
 
         # Take the backup for all the server logs in the environment at as close to the same time as possible
         process_pool = Pool(processes=len(sets))
