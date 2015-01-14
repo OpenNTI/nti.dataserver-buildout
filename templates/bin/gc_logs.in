@@ -21,7 +21,7 @@ def _find_gc_candidates( backup_path ):
 
 def main():
 	# Find GC candidates
-	candidates = _find_gc_candidates(${backupvars:log_backup_dir})
+	candidates = _find_gc_candidates('${backupvars:log_backup_dir}')
 	# delete candidates
 	for candidate in candidates:
 		print('Removing %s' % candidate)
