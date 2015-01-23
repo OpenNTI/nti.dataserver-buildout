@@ -1,0 +1,45 @@
+{
+    "defaults-file": "${backupvars:verify_defaults_file}",
+    "environments": {
+        "alpha": {
+            "servers": [
+                {
+                    "filename": "Users-Users_1-Sessions-Tahrir-Analytics.sql",
+                    "socket": "/var/run/mysqld/2.sock"
+                }
+            ]
+        },
+        "janux": {
+            "servers": [
+                {
+                    "filename": "Users-Users_2.sql",
+                    "socket": "/var/run/mysqld/3-1.sock"
+                },
+                {
+                    "filename": "Users_1-Tahrir-Analytics.sql",
+                    "socket": "/var/run/mysqld/3-2.sock"
+                }
+            ]
+        },
+        "okstate": {
+            "servers": [
+                {
+                    "filename": "Users.sql",
+                    "socket": "/var/run/mysqld/9-1.sock"
+                },
+                {
+                    "filename": "Analytics-Tahrir.sql",
+                    "socket": "/var/run/mysqld/9-2.sock"
+                }
+            ]
+        },
+        "outest": {
+            "servers": [
+                {
+                    "filename": "Users-Users_1_Test-Users_2_Test-Tahrir-Analytics.sql",
+                    "socket": "/var/run/mysqld/4.sock"
+                }
+            ]
+        }
+    }
+}
