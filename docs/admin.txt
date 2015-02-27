@@ -8,46 +8,50 @@ nti.app.assesment
 
 /dataserver2/@@RemoveMatchedSavePoints - (POST,GET) Remove savepoint for already submitted assignment(s) for all courses
 
-/dataserver2/@@UnmatchedSavePoints - (GET) Report all savepoints w/o a submission of either all courses or one course 
+/dataserver2/@@UnmatchedSavePoints - (GET) Report all savepoints w/o a submission of either all courses or one course
 	params:
-		 ntiid: Course/Catalog Entry NTIID 
+		 ntiid: Course/Catalog Entry NTIID
 
-/dataserver2/@@UnregisterAssessmentItems - (POST,GET) Unregister all assessment items of a content pacakge 
+/dataserver2/@@UnregisterAssessmentItems - (POST,GET) Unregister all assessment items of a content pacakge
 	params:
 		 ntiid: Content package NTIID
 
 /dataserver2/@@RegisterAssessmentItems - (POST,GET) Register all assessment items of a content pacakge
 	params:
 		 ntiid: Content package NTIID
-		 
-/dataserver2/CourseAdmin/CourseSubmissionReport - (GET) Return a report of all submission of a course 
-	params:  
-		ntiid: Course/Catalog Entry NTIID 
+
+/dataserver2/CourseAdmin/CourseSubmissionReport - (GET) Return a report of all submission of a course
+	params:
+		ntiid: Course/Catalog Entry NTIID
 		username/usernames: Comma delimited user names
-		assignmentId/assignment: Assignment NTIID 
+		assignmentId/assignment: Assignment NTIID
 		questionId/question: Question NTIID
 
 /dataserver2/CourseAdmin/CourseAssignments - (GET) Return a assignments of a course
-	params:  
+	params:
 		ntiid: Course/Catalog Entry NTIID
-		
+
 /dataserver2/CourseAdmin/CourseAssessmentItems - (GET) Return a assessment items of a course
-	params:  
+	params:
 		ntiid: Course/Catalog Entry NTIID
-		
+
 /dataserver2/CourseAdmin/MoveUserAssignments
 /dataserver2/CourseAdmin/MoveUserAssignmentsView - (POST, GET) Move assignments from one course to another
-	params:  
+	params:
 		source: Course/Catalog Entry NTIID
 		target: Course/Catalog Entry NTIID
 		username/usernames: Comma delimited user names (optional)
-		
+
+/dataserver2/CourseAdmin/CourseAssessmentsTakenCounts - (GET) Return a CSV of the number of self assessments counts for each user, by self-assessment.
+	params:
+		ntiid: Course/Catalog Entry NTIID
+
 nti.app.hypatia
 
 /dataserver2/hypatia/reindex_content (POST) Reindex all content of a set of users
-	params:  
+	params:
 		username/usernames: Comma delimited user names
-		
+
 /dataserver2/hypatia/process_queue (POST) Force index of all queued objects
 
 /dataserver2/hypatia/empty_queue (POST) Empty all queued objects
@@ -63,7 +67,7 @@ nti.app.metadata
 /dataserver2/metadata/mime_types (GET) Return the mime types of all cataloged objects
 
 /dataserver2/metadata/reindex (POST) Reindex all objects of a set of users (params username/usernames, system)
-	params:  
+	params:
 		username/usernames: Comma delimited user names
 		system: Boolean to include system user objects (optional)
 
@@ -81,19 +85,19 @@ nti.app.products.badges
 	params:
 		username/email: Username or email
 		badge: Badge name
-		
+
 /dataserver2/BadgeAdmin/revoke (POST) revoke a badge
 	params:
 		username/email: Username or email
 		badge: Badge name
-		
+
 /dataserver2/BadgeAdmin/sync_db (POST) sync_db badge db with the local hosted_badge_images
 	params:
 		directory: hosted_badge_images directory (optional)
 		update: Udate badge information (boolean optional)
 		verify: Verify badge (boolean optional)
 		secret: JSON web signature secret (optional)
-		
+
 /dataserver2/BadgeAdmin/bulk_import (POST) Import badges from a tab delimited source file
 	params:
 		source: source file
@@ -122,20 +126,20 @@ nti.app.products.courseware
 /dataserver2/CourseAdmin/UserCourseEnrollments (GET) Return all enrollments of a user
 	params:
 		username: Username
-		
+
 /dataserver2/CourseAdmin/CourseEnrollmentMigrator (POST, GET) Migrates the enrollments from one course to antother
 	params:
 		source: Catalog entry ntiid
 		target: Catalog entry ntiid
 
 /dataserver2/CourseAdmin/CourseRoles (GET) Report all roles of all courses
-	
+
 /dataserver2/CourseAdmin/CourseEnrollments (GET) Report all course enrollments
 	params:
 		ntiid: Course/Catalog entry ntiid
 
 /dataserver2/CourseAdmin/LegacyCourseTopicCreator (POST) create topics for a course
-	
+
 /dataserver2/CourseAdmin/LegacyCourseEnrollmentMigrator (POST) Migrates the enrollments from legacy courses
 
 /dataserver2/CourseAdmin/AllEnrollments.csv (GET) Provides a downloadable table of all the enrollments present in the system
@@ -146,21 +150,21 @@ nti.app.products.courseware
 nti.app.products.courseware_badges
 
 /dataserver2/BadgeAdmin/CourseBadgeCache (GET) Return the Course badge cache
-	
+
 /dataserver2/BadgeAdmin/ResetCourseBadgeCache (POST) Clear the Course badge cache
 
 /dataserver2/BadgeAdmin/RebuildCourseBadgeCache (POST) Reset and Rebuild the Course badge cache
 
 /dataserver2/BadgeAdmin/UserCourseBadges (GET) Return the badges for the courses a user in enrolled in
 	params:
-		username: username 
+		username: username
 
 nti.app.products.courseware_ims
 
 /dataserver2/IMS/nti_enrollment (POST) Enroll users through an IMS feed
 	params:
 		ims: IMS source file (e.g. OU/OKState)
-	
+
 /dataserver2/IMS/nti_create_users (POST) Create users from an IMS feed
 	params:
 		ims: IMS source file (e.g. OU/OKState)
@@ -174,7 +178,7 @@ nti.app.products.courseware_store
 /dataserver2/IMS/nti_enrollment (POST) Enroll users through an IMS feed
 	params:
 		ims: IMS source file (e.g. OU/OKState)
-	
+
 /dataserver2/IMS/nti_create_users (POST) Create users from an IMS feed
 	params:
 		ims: IMS source file (e.g. OU/OKState)
@@ -192,14 +196,14 @@ nti.app.products.courseware_reports
 		CSV of email addresses:
 	headers:
 		NTcourse: Course name
-		
+
 /dataserver2/@@InstructorParticipation (GET) Iterates the catalog and produces instructor participation stats for each instructor in each course
 	params:
 		start_time: Start time
 		usernames: space delimted usernames
-		
+
 nti.app.products.gradebook
-		
+
 /dataserver2/CourseAdmin/CourseGrades (GET) Return the course grades
 	params:
 		ntiid: Course/Catalog NTIID
@@ -210,28 +214,28 @@ nti.app.products.gradebook
 		ntiid: Course/Catalog NTIID
 
 nti.app.products.ou
-		
+
 /dataserver2/janux/ou_set_user_attributes (POST) Set the OU LDAP attributes for users
 	params:
 		username/usernames: Comma delimted usernames (Optional)
 
 /dataserver2/janux/UsersInterestedInCredit.csv (GET) Return a table with users interested in credit
-	
+
 /dataserver2/janux/AllowVendorUpdates.csv (GET) Return a table with users that allow vendor updates (Purchasea and FiveMinute)
 
 /dataserver2/janux/nti_enrollment (POST) Enroll users through an IMS feed
 	params:
-		ims: IMS source file 
-	
+		ims: IMS source file
+
 /dataserver2/janux/nti_create_users (POST) Create users from an IMS feed
 	params:
-		ims: IMS source file 
+		ims: IMS source file
 
 /dataserver2/janux/nti_courses (GET) Return IMS capable courses
 	params:
 		all: Boolean to return all courses (Optional)
 
-/dataserver2/janux/fmaep_users_status (GET) Return a table with the status of fmaep user status 
+/dataserver2/janux/fmaep_users_status (GET) Return a table with the status of fmaep user status
 	params:
 		username/usernames: Comma delimted usernames (Optional)
 
@@ -251,7 +255,7 @@ nti.app.products.ou
 		state: fmaep State - extra state called Reseted to reset all fmaep data
 		pidm: PIDM (Optional)
 		tempmatchid: tempmatchid (Optional)
-		
+
 /dataserver2/janux/fmaep_admission_inquiry (POST) Query/ Upadate the admision of a user
 	params:
 		username: username
@@ -265,7 +269,7 @@ nti.app.store
 		username/usernames: Comma delimted usernames (Optional)
 		failed: Boolean to return only failed purchase (Optional)
 		succeeded: Boolean to return successful purchase (Optional)
-		
+
 /dataserver2/janux/get_users_gift_history (GET) Return a report gift purchase history
 	params:
 		username/usernames: Comma delimted usernames (Optional)
@@ -281,14 +285,14 @@ nti.app.store
 /dataserver2/janux/delete_purchase_history (POST) delete a user's purchase history
 	params:
 		username: Username
-		
+
 /dataserver2/janux/generate_purchase_invoice (POST) Generate a purchase invoice (send email)
 	params:
 		purchase: Purchase NTIID or transaction code
 
 /dataserver2/janux/create_invitation_purchase (POST) Create and invitation purchase
 	params:
-		purchasable: Purchasable NTIID 
+		purchasable: Purchasable NTIID
 		quantity: Quantity (Number of tokens)
 		expiration: Expiration time (Optional)
 
@@ -302,7 +306,7 @@ nti.dataserver
 /dataserver2/@@intid_resolver/{intid} (GET) Resolves an intid
 /dataserver2/@@unregister_missing_objects (POST) Unregister from the intid utility all missing / broken objects
 
-/dataserver2/@@GetUserBlacklist (GET) Return the blacklisted usernames 
+/dataserver2/@@GetUserBlacklist (GET) Return the blacklisted usernames
 /dataserver2/@@RemoveFromUserBlacklist (POST) Remove a user from the blacklist
 	params:
 		username: Username
@@ -310,15 +314,15 @@ nti.dataserver
 /dataserver2/@@RemoveUserBrokenObjects (POST) Remove a user broken objects
 	params:
 		username: Username
-		
-/dataserver2/@@RemoveUser (POST) delete a user 
+
+/dataserver2/@@RemoveUser (POST) delete a user
 	params:
 		username: Username
 		containers: (Optional) Go through the users containers (Default True)
 		stream: (Optional) Go through the user's stream containers (Default False)
 		shared: (Optional) Go through the user's shared containers (Default False)
 		dynamic: (Optional) Go through the user's dynamic friends containers (Default False)
-		
+
 /dataserver2/@@export_user_objects (GET) Export all [registered] user objects
 	params:
 		username/usernames: Comma delimted usernames (Optional)
@@ -328,7 +332,7 @@ nti.dataserver
 	params:
 		username: Username (Optional)
 		mime_types/mimeTypes Comma delimted mime types (Optional)
-		
+
 /dataserver2/@@object_resolver/{ntiid} (GET) Resolves an ntiid
 
 /dataserver2/@@export_users (GET) Export a set of users
@@ -350,11 +354,11 @@ nti.dataserver
 /dataserver2/@@user_email_verified (GET) Report a table with users that have their emails verified
 	params:
 		coppa: Coppa only users (Optional)
-		
+
 /dataserver2/@@user_profile_info (GET) Report a table with user profile info
 	params:
 		coppa: Coppa only users (Optional)
-	
+
 /dataserver2/@@inactive_accounts (GET) Report a table with inactive user accounts
 	params:
 		coppa: Coppa only users (Optional)
