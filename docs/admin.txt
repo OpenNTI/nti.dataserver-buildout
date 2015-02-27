@@ -35,6 +35,7 @@ nti.app.assesment
 	params:  
 		ntiid: Course/Catalog Entry NTIID
 		
+/dataserver2/CourseAdmin/MoveUserAssignments
 /dataserver2/CourseAdmin/MoveUserAssignmentsView - (POST, GET) Move assignments from one course to another
 	params:  
 		source: Course/Catalog Entry NTIID
@@ -306,9 +307,17 @@ nti.dataserver
 	params:
 		username: Username
 
+/dataserver2/@@RemoveUserBrokenObjects (POST) Remove a user broken objects
+	params:
+		username: Username
+		
 /dataserver2/@@RemoveUser (POST) delete a user 
 	params:
 		username: Username
+		containers: (Optional) Go through the users containers (Default True)
+		stream: (Optional) Go through the user's stream containers (Default False)
+		shared: (Optional) Go through the user's shared containers (Default False)
+		dynamic: (Optional) Go through the user's dynamic friends containers (Default False)
 		
 /dataserver2/@@export_user_objects (GET) Export all [registered] user objects
 	params:
