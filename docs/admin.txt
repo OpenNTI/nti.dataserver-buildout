@@ -367,3 +367,11 @@ nti.dataserver
 	params:
 		username: Username
 		{profile_field}:{profile_value}
+
+/dataserver2/@@reset_initial_tos_page (POST) Reset initial TOS page link
+	params:
+		username: Username
+
+/dataserver2/@@reset_welcome_page (POST) Reset welcome page link
+	params:
+		username: Username
