@@ -4,6 +4,13 @@ nti.app.analytics
 /dataserver2/analytics/queue_info (GET) Return information about the queued objects
 /dataserver2/analytics/user_research_stats (POST) Return information about the user research status
 
+/dataserver2/@@CourseAssessmentsTakenCounts
+/dataserver2/analytics/CourseAssessmentsTakenCounts
+/dataserver2/CourseAdmin/CourseAssessmentsTakenCounts 
+	(GET) For a course, return a CSV with the self assessment counts for each user, by assessment.
+		params:
+			ntiid: Course/Catalog entry NTIID
+
 nti.app.assesment
 
 /dataserver2/@@RemoveMatchedSavePoints - (POST,GET) Remove savepoint for already submitted assignment(s) for all courses
@@ -41,10 +48,6 @@ nti.app.assesment
 		source: Course/Catalog Entry NTIID
 		target: Course/Catalog Entry NTIID
 		username/usernames: Comma delimited user names (optional)
-
-/dataserver2/CourseAdmin/CourseAssessmentsTakenCounts - (GET) Return a CSV of the number of self assessments counts for each user, by self-assessment.
-	params:
-		ntiid: Course/Catalog Entry NTIID
 
 nti.app.hypatia
 
