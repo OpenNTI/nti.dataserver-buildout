@@ -1,7 +1,7 @@
 {
 	"development": {
 		"mode": "development",
-		"server": "http://localhost:${dataserver-http-port}/dataserver2/",
+		"server": "http://${dataserver-ip}:${dataserver-port}/dataserver2/",
 		"port": ${http-port},
 		"basepath": "/mobile/",
 		"user-agreement": "${user-agreement-url}",
@@ -13,7 +13,7 @@
 
 	"production": {
 		"mode": "production",
-		"server": "http://localhost:${dataserver-http-port}/dataserver2/",
+		"server": "http://${dataserver-ip}:${dataserver-port}/dataserver2/",
 		"port": ${http-port},
 		"basepath": "/mobile/",
 		"user-agreement": "${user-agreement-url}",
