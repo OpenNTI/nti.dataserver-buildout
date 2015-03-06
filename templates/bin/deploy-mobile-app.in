@@ -5,8 +5,8 @@ rm -rf node_modules/
 ${deployment:bin-directory}/npm install
 ${deployment:bin-directory}/bower install
 
-env_file = "src/server/config/env.json"
-if [ -e "$env_file" ]
+env_file=src/server/config/env.json
+if [ ! -e "$env_file" ]
 then
 	ln -s ${deployment:etc-directory}/nodeserver/nodeserver-env.json "$env_file"
 fi
