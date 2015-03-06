@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd ${deployment:root-directory}/sources/nextthought-webapp-mobile
+pushd ${deployment:root-directory}/sources/nti.web.mobile
 rm -rf node_modules/
 ${deployment:bin-directory}/npm install
 ${deployment:bin-directory}/bower install
