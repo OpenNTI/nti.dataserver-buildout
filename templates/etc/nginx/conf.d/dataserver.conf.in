@@ -45,13 +45,13 @@
 	server {
 		charset utf-8;
 
-		# Accepting plain http requests here is
-		# convenient for development...
-		listen ${nginx_http_port};
-		# But we actually expect most traffic to come to
-		# us through HAProxy, which can more effeciently
-		# talk to us using the PROXY protocol.
-		listen 127.0.0.1:${nginx_proxy_port} proxy_protocol;
+		# All non-debug traffic should come from HAProxy in the PROXY protocol.
+		# This is more efficient than communicating over HTTP.
+		listen ${nginx_ip}:${nginx_proxy_port} proxy_protocol;
+
+		# However for development and debugging there may be a need to bind
+		# to additional ports and use other protocols than PROXY.
+		${nginx_extra_binds}
 
 		root   ${global_content_directory|shell-path};
 		server_name	 ${global_host_name};
