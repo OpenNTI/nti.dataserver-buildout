@@ -36,8 +36,10 @@ frontend all
 	timeout client 86400000
 	# Listen for HTTP connections on this port. Give it
 	# an ID so it can be tested for.
-	# TODO: In multi-tier environments, it might make sense and be
-	# more efficient to have this use the accept-proxy option?
+
+	# In multi-tier environments, not only is it more efficient to
+	# have this use the accept-proxy option, but it is required to get proper
+	# IP address logs with gunicorn >= 19.x
 	bind ${haproxy_http_addr}:${haproxy_http_port} id ${haproxy_http_port} ${haproxy_http_accept_proxy}
 	# Listen on the stunnel socket for incoming SSL in proxy mode
 	# We give it a specific id so that we can match in an ACL
@@ -46,7 +48,7 @@ frontend all
 	default_backend www_backend
 
 	acl is_mobile path_beg /mobile
-	
+
 	acl is_websocket hdr(Upgrade) -i WebSocket
 	acl is_websocket hdr_beg(Host) -i ws
 
@@ -153,11 +155,12 @@ backend www_backend
 backend socket_backend
 	mode	http
 	balance source
-	# Recent versions of the server support the PROXY protocol,
-	# meaning that X-Forwarded-For is not needed. This lets us
-	# not need http-server-close or forwardfor; in theory
-	# it might let us use http-keep-alive, if there is any
-	# benefit.
+	# Recent versions of the server support (and require) the PROXY
+	# protocol, meaning that X-Forwarded-For is not needed (or even
+	# supported anymore). This lets us not need http-server-close or
+	# forwardfor; in theory it might let us use http-keep-alive, if
+	# there is any benefit.
+
 	# Unfortunately, because we mix and match static content requests with
 	# DS requests, true keep-alive might not be possible; the browser
 	# could send one request to each type of resource in the same
