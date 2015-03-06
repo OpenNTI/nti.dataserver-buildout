@@ -69,6 +69,12 @@ nti.app.metadata
 
 /dataserver2/metadata/mime_types (GET) Return the mime types of all cataloged objects
 
+/dataserver2/metadata/get_metadata_objects (GET) Return the meta data objects using predicates
+	params:
+		username: user name
+		accept/mimeTypes: Comma delimited mime types
+		system: Boolean to include system user objects (optional)
+		
 /dataserver2/metadata/reindex (POST) Reindex all objects of a set of users (params username/usernames, system)
 	params:
 		username/usernames: Comma delimited user names
