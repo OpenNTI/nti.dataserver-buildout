@@ -1,9 +1,20 @@
 global
-    log         127.0.0.1 daemon warning 
-    maxconn     ${haproxy_maxconn} # Total Max Connections. This is dependent on ulimit
+    log 127.0.0.1 local2 info
+    # Total Max Connections. This is dependent on ulimit
+    maxconn ${haproxy_maxconn}
 
-    stats socket ${haproxy_stats_socket} mode 600 level admin
+    stats socket ${haproxy_stats_socket} mode 600 level admin process 1
     stats timeout 2m
+
+    # SSL Tuning
+    tune.ssl.default-dh-param 2048
+    tune.ssl.cachesize 20000
+    ssl-default-bind-ciphers ${haproxy_ciphers}
+    ssl-default-bind-options no-sslv3 no-tls-tickets
+
+    # Set to use 4 processes. Process 1 is for processing normal traffic. 
+    # Processes 2-4 are for SSL operations.
+    nbproc 4
 
 defaults
     timeout queue 5s
@@ -16,109 +27,131 @@ defaults
     timeout tunnel 10m
     errorfile 408 /dev/null
 
-frontend all
+listen httpredir ${haproxy_http_addr}:${haproxy_redirect_to_ssl_port}
     mode http
-    log global
-    timeout client 86400000
-    option httplog
-    # Listen on the socket for incoming SSL in proxy mode
-    # We give it a specific id so that we can match in an ACL
-    # (We can't match on ssl itself because that's already been handled)
-    ${haproxy_listen_ports}
+#    log global
+#    option httplog
 
-    ${haproxy_hostname_backend_map}
+    timeout client 600
+    timeout server 30000
+    timeout connect 4000
 
-    # Our stunnel socket is always SSL
-    ${haproxy_ssl_acls}
+    # Simply send a 302 redirect to the same Host and path and query
+    # the client sent in the first place, but with the
+    # https protocol. The client will usually do a GET of
+    # the new Location.
+    # NOTE: If the Host contained a port, even the default of
+    # 80, it would be preserved, so we first rewrite the Host
+    # to remove any port
+    reqirep ^Host:\ (.*):[0-9]* Host:\ \1
+    redirect scheme https
 
-    ${haproxy_extra_config}
+listen ssl-term
+    mode http
+    bind-process 2,3,4
+    ${haproxy_ssl_binds}
 
     # Let gunicorn/nginx know if we are dealing with an incoming HTTPS request
     # (This is a default 'secure-header' in gunicorns conf)
     reqidel ^X-FORWARDED-PROTOCOL:.*
-    reqadd X-FORWARDED-PROTOCOL:\ ssl if is_ssl
+    reqadd X-FORWARDED-PROTOCOL:\ ssl if { ssl_fc }
+
+    server http unix@${haproxy_ssl_socket} send-proxy
+
+
+frontend all
+    mode http
+    bind-process 1
+    log global
+    timeout client 86400000
+    option httplog
+    # Listen on the socket for incoming SSL in proxy mode
+    bind ${haproxy_ssl_socket} user ${ssl_socket_owner} mode 600 id 42 accept-proxy
+
+    ${haproxy_hostname_backend_map}
+
+    ${haproxy_extra_config}
 
     ${haproxy_extra_redirects}
 
-    use_backend app_backend0 if is_backend0
-    use_backend app_backend1 if is_backend1
-    use_backend app_backend2 if is_backend2
-    use_backend app_backend3 if is_backend3
-    use_backend app_backend4 if is_backend4
-    use_backend app_backend5 if is_backend5
-    use_backend app_backend6 if is_backend6
-    use_backend app_backend6 if is_backend7
-    use_backend app_backend8 if is_backend8
+    use_backend tier2_backend0 if is_backend0
+    use_backend tier2_backend1 if is_backend1
+    use_backend tier2_backend2 if is_backend2
+    use_backend tier2_backend3 if is_backend3
+    use_backend tier2_backend4 if is_backend4
+    use_backend tier2_backend5 if is_backend5
+    use_backend tier2_backend6 if is_backend6
+    use_backend tier2_backend6 if is_backend7
+    use_backend tier2_backend8 if is_backend8
+    use_backend tier2_backend9 if is_backend9
 
 # Old Prod
-backend app_backend0
+backend tier2_backend0
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend0}
+    ${haproxy_tier2_backend0}
 
 # MATHCOUNTS
-backend app_backend1
+backend tier2_backend1
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend1}
+    ${haproxy_tier2_backend1}
 
 # Alpha
-backend app_backend2
+backend tier2_backend2
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend2}
+    ${haproxy_tier2_backend2}
 
 # Janux
-backend app_backend3
+backend tier2_backend3
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend3}
+    ${haproxy_tier2_backend3}
 
 # OU-Test
-backend app_backend4
+backend tier2_backend4
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend4}
+    ${haproxy_tier2_backend4}
 
 # Content Dev
-backend app_backend5
+backend tier2_backend5
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend5}
+    ${haproxy_tier2_backend5}
 
 # Wiley
-backend app_backend6
+backend tier2_backend6
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend6}
+    ${haproxy_tier2_backend6}
 
 # CCMF
-backend app_backend7
+backend tier2_backend7
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend7}
+    ${haproxy_tier2_backend7}
 
 # Performance Testing
-backend app_backend8
+backend tier2_backend8
     mode http
-    balance source
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
-    ${haproxy_app_backend8}
+    ${haproxy_tier2_backend8}
+
+# OKState
+backend tier2_backend9
+    mode http
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+    ${haproxy_tier2_backend9}
 
