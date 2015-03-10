@@ -1,50 +1,79 @@
 global
-	log			127.0.0.1 daemon warning
+	log 127.0.0.1 daemon warning
 	# let us take as many connections as possible; let backends
 	# do their own queuing. We need to specify a value here or
 	# we get haproxy default of 2000. Trying to use too many
 	# for the system ulimit results in a warning but startup proceeds.
-	maxconn		16384 # Total Max Connections. This is dependent on ulimit
-	nbproc		${haproxy_workers}
+	# Total Max Connections. This is dependent on ulimit. On OS X with a 
+	# ulimit of 32767, the maxconn possible is 16366.
+	maxconn 16366
 
-	stats socket ${haproxy_stats_socket} mode 600 level admin
+	stats socket ${haproxy_stats_socket} mode 600 level admin process 1
 	stats timeout 2m
 
-frontend httpredir ${haproxy_http_addr}:${haproxy_redirect_to_ssl_port}
-	mode http
-	log global
-	timeout client 600
-	default_backend ssl_backend
+	# SSL Tuning
+	tune.ssl.default-dh-param 2048
+	tune.ssl.cachesize 20000
+	ssl-default-bind-ciphers ${ciphers}
+	ssl-default-bind-options no-sslv3 no-tls-tickets
 
-backend ssl_backend
+	# Set to use 2 processes. Process 1 is for processing normal traffic. 
+	# Processes 2 are for SSL operations.
+	nbproc 2
+
+defaults
+	timeout queue 5s
+	timeout server 5m
+	timeout client 60s
+	timeout connect 60s
+	# Force websocket connections to move to a different
+	# worker every so often. This overrides client/server
+	# timeout...
+	# At least, that's the intent, but it turns out this
+	# is an IDLE timeout, so it's much too high to do any
+	# good. Should we reconsider? Is this even needed?
+	timeout tunnel 10m
+	errorfile 408 /dev/null
+
+listen ssl-term
 	mode http
-	timeout server 30000
-	timeout connect 4000
-	# Simply send a 302 redirect to the same Host and path and query
-	# the client sent in the first place, but with the
-	# https protocol. The client will usually do a GET of
-	# the new Location.
-	# NOTE: If the Host contained a port, even the default of
-	# 80, it would be preserved, so we first rewrite the Host
-	# to remove any port
-	reqirep ^Host:\ (.*):[0-9]* Host:\ \1
-	redirect scheme https
+	bind-process 2
+	${ssl_binds}
+
+	# Let gunicorn/nginx know if we are dealing with an incoming HTTPS request
+	# (This is a default 'secure-header' in gunicorns conf)
+	# If we fail do do this, the server cannot correctly generate
+	# absolute URLs, and that includes the wss:// URLs used for
+	# websockets (and Safari 6 at least, has a problem if the server
+	# returns a ws:// URL over SSL; Chrome doesn't care)
+	reqidel ^X-FORWARDED-PROTOCOL:.*
+	reqadd X-FORWARDED-PROTOCOL:\ ssl if { ssl_fc }
+
+	server http unix@${ssl_socket} send-proxy
 
 frontend all
 	mode http
+	bind-process 1
 	log global
 	timeout client 86400000
 	# Listen for HTTP connections on this port. Give it
 	# an ID so it can be tested for.
 
+	# Port for traffic from one backend to another using the proxy protocol
+	# As of 3/4/15 only the nodeserver makes use of this
 	# In multi-tier environments, not only is it more efficient to
 	# have this use the accept-proxy option, but it is required to get proper
 	# IP address logs with gunicorn >= 19.x
-	bind ${haproxy_http_addr}:${haproxy_http_port} id ${haproxy_http_port} ${haproxy_http_accept_proxy}
-	# Listen on the stunnel socket for incoming SSL in proxy mode
+	bind ${haproxy_addr}:${haproxy_proxy_port} id ${haproxy_proxy_port} accept-proxy
+
+	# Port for admin and dev connections over HTTP
+	bind ${haproxy_addr}:${haproxy_http_port} id ${haproxy_http_port}
+
+	# Listen on the socket for incoming SSL in proxy mode
 	# We give it a specific id so that we can match in an ACL
 	# (We can't match on ssl itself because that's already been handled)
-	bind ${stunnel_socket} ${haproxy_stunnel_socket_user} mode 600 id 42 accept-proxy
+	bind unix@${ssl_socket} user ${ssl_socket_owner} mode 600 id 42 accept-proxy
+
 	default_backend www_backend
 
 	acl is_mobile path_beg /mobile
@@ -91,18 +120,9 @@ frontend all
 	acl is_blocked_name path_end .php .asp .jsp .exe .aspx
 	acl is_blocked_name path_end assessment_index.json resources.index
 	acl is_blocked_name path_dir .nti_acl indexdir
-	block if is_blocked_name
+	http-request deny if is_blocked_name
 
 	acl is_host_cors url_sub ?h=
-
-	# Let gunicorn/nginx know if we are dealing with an incoming HTTPS
-	# request (This is a default 'secure-header' in gunicorns conf).
-	# If we fail do do this, the server cannot correctly generate
-	# absolute URLs, and that includes the wss:// URLs used for
-	# websockets (and Safari 6 at least, has a problem if the server
-	# returns a ws:// URL over SSL; Chrome doesn't care)
-	reqidel ^X-FORWARDED-PROTOCOL:.*
-	reqadd X-FORWARDED-PROTOCOL:\ ssl if is_ssl
 
 	# force site policy to janux for development so we don't have to edit /etc/hosts
 	# reqidel ^ORIGIN:.*
@@ -171,17 +191,6 @@ backend socket_backend
 	# option forwardfor if-none # This sets X-Forwarded-For
 	# If we don't set this, then we lose X-Forwarded-For
 
-	timeout queue 5s
-	timeout server 5m
-	timeout client 60s
-	timeout connect 60s
-	# Force websocket connections to move to a different
-	# worker every so often. This overrides client/server
-	# timeout...
-	# At least, that's the intent, but it turns out this
-	# is an IDLE timeout, so it's much too high to do any
-	# good. Should we reconsider? Is this even needed?
-	timeout tunnel 10m
 	${dataserver_servers}
 
 backend node_backend
