@@ -140,6 +140,8 @@ backend data_backend
     # option forwardfor if-none # This sets X-Forwarded-For
     # If we don't set this, then we lose X-Forwarded-For
 
+    option httpchk GET /_ops/ping HTTP/1.1
+
     ${dataservers}
 
 backend node_backend
@@ -147,5 +149,4 @@ backend node_backend
     option prefer-last-server
     timeout server 30s
     timeout connect 4s
-    # reqrep ^(.*\ )/mobile(/?.*) \1\2
     ${node_servers}
