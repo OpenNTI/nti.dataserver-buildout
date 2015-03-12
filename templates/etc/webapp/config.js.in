@@ -27,7 +27,13 @@ var $AppConfig = {
 	"Preferences":{
 		"webapp_kalturaPreferFlash": false
 	},
-	"kalturaUIID": "${kalturaUIID}"
+	"kalturaUIID": "${kalturaUIID}",
+	"activity_timeouts": {
+		"inactive_timeout": ${activity_inactive_timeout},
+		"inactive_warn": ${activity_inactive_warn},
+		"blur_timeout": ${activity_blur_timeout},
+		"blur_warn": ${activity_blur_warn}	
+	}
 };
 
 if( ${enable_global_onerror} ){
