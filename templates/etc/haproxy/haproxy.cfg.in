@@ -127,6 +127,8 @@ frontend all
 
 	acl is_host_cors url_sub ?h=
 
+	reqrep ^([^\ :]*)\ .*/robots.txt\ ([^\ ]*) \1\ /robots-dev.txt\ \2 if robots
+
 	# force site policy to janux for development so we don't have to edit /etc/hosts
 	# reqidel ^ORIGIN:.*
 	# reqadd ORIGIN:\ http://janux.ou.edu
