@@ -85,6 +85,15 @@ frontend all
     use_backend tier2_backend8 if is_backend8
     use_backend tier2_backend9 if is_backend9
 
+backend s3_backend
+    mode http
+    balance roundrobin
+
+    reqrep  ^Host:\ .*  Host:\ s3.amazonaws.com
+    reqirep  ^([^\ ]*)\ /(.*) \1\ /nextthought-support-pages/\2
+
+    server s3 s3.amazonaws.com:443 ssl verify none
+
 # Old Prod
 backend tier2_backend0
     mode http
