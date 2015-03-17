@@ -76,6 +76,9 @@ frontend all
 
 	default_backend www_backend
 
+	acl robots url_sub -i robots.txt robots-dev.txt
+	acl google_verification url_sub -i google
+
 	acl is_mobile path_beg /mobile
 
 	acl is_websocket hdr(Upgrade) -i WebSocket
@@ -139,11 +142,22 @@ frontend all
 	redirect location ${webapp_location} code 302 if is_maybe_authed { path / }
 
 	# use_backend www_backend_up if is_down
+	use_backend s3_backend if robots
+	use_backend s3_backend if google_verification
 	use_backend ip_blocked_backend if is_blocked_ip
 	use_backend node_backend if is_mobile !is_mobile_site_css
 	use_backend www_backend if is_host_cors
 	use_backend socket_backend if is_websocket
 	use_backend socket_backend if is_dyn
+
+backend s3_backend
+	mode http
+	balance roundrobin
+
+	reqrep  ^Host:\ .*  Host:\ s3.amazonaws.com
+	reqirep  ^([^\ ]*)\ /(.*) \1\ /nextthought-support-pages/\2
+
+	server s3 s3.amazonaws.com:443 ssl verify none
 
 backend ip_blocked_backend
 	# This backend defines no servers,
