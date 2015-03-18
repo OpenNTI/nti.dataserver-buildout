@@ -77,7 +77,7 @@ frontend all
 	default_backend www_backend
 
 	acl robots url_sub -i robots.txt robots-dev.txt
-	acl google_verification url_sub -i google
+	acl google_verification url_beg /google
 
 	acl is_mobile path_beg /mobile
 
