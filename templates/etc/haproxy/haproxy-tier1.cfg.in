@@ -81,7 +81,7 @@ frontend all
     use_backend tier2_backend4 if is_backend4
     use_backend tier2_backend5 if is_backend5
     use_backend tier2_backend6 if is_backend6
-    use_backend tier2_backend6 if is_backend7
+    use_backend tier2_backend7 if is_backend7
     use_backend tier2_backend8 if is_backend8
     use_backend tier2_backend9 if is_backend9
 
