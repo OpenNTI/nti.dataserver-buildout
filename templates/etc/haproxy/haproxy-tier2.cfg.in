@@ -17,6 +17,8 @@ defaults
     timeout tunnel 10m
     errorfile 408 /dev/null
 
+${haproxy_userlists}
+
 frontend all
     mode http
     log global
