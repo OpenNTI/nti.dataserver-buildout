@@ -17,6 +17,8 @@ global
     nbproc 4
 
 defaults
+    maxconn ${haproxy_global_maxconn}
+
     timeout queue 5s
     timeout server 5m
     timeout client 60s
@@ -29,6 +31,7 @@ defaults
 
 listen httpredir ${haproxy_http_addr}:${haproxy_redirect_to_ssl_port}
     mode http
+    maxconn ${httpredir_maxconn}
 #    log global
 #    option httplog
 
