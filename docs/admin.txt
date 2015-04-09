@@ -324,6 +324,11 @@ nti.dataserver
 	params:
 		username: Username
 
+/dataserver2/@@GetEmailVerificationToken (GET) Get email verification token and signature
+	params:
+		username: Username
+		email: (Optional) email address
+		
 /dataserver2/@@ForceUserEmailVerification (POST) Force email verification of a user
 	params:
 		username: Username
