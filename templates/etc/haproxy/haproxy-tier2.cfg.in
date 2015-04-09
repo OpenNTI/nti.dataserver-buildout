@@ -3,7 +3,7 @@ global
     # Total Max Connections. This is dependent on ulimit
     maxconn ${haproxy_maxconn}
 
-    stats socket ${haproxy_stats_socket} mode 600 level admin
+    stats socket ${stats_socket} user ${stats_socket_owner} mode 600 level admin
     stats timeout 2m
 
 defaults
@@ -70,10 +70,6 @@ frontend all
     # webapp load if we know we are def. not authed
     acl is_maybe_authed hdr_sub(cookie) nti.auth_tkt # Do we have an auth.tkt? if not we are def. not authed
 
-    # Define an ACL to block incoming IP addresses
-    acl is_blocked_ip src 0.0.0.0
-    ${haproxy_addl_blocked_ip_acls}
-
     # Block some common attack vectors and private info
     acl is_blocked_name path_end .php .asp .jsp .exe .aspx
     acl is_blocked_name path_end assessment_index.json resources.index
@@ -99,7 +95,6 @@ frontend all
     # use_backend www_backend_up if is_down
     use_backend s3_backend if robots
     use_backend s3_backend if google_verification
-    use_backend ip_blocked_backend if is_blocked_ip
     use_backend node_backend if is_mobile !is_mobile_site_css
     use_backend static_backend if is_host_cors
     use_backend data_backend if is_websocket
@@ -113,13 +108,6 @@ backend s3_backend
     reqirep  ^([^\ ]*)\ /(.*) \1\ /nextthought-support-pages/\2
 
     server s3 s3.amazonaws.com:443 ssl verify none
-
-backend ip_blocked_backend
-    # This backend defines no servers,
-    # which means using it results in a 503 Service Unavailable.
-    # We use that to map that error to a canned response.
-    mode http
-    errorfile 503 ${deployment:etc-directory|shell-path}/haproxy/blocked.http
 
 backend static_backend
     mode http
