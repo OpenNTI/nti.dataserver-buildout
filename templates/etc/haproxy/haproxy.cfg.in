@@ -22,6 +22,8 @@ global
 	nbproc 2
 
 defaults
+	maxconn 16366
+
 	timeout queue 5s
 	timeout server 5m
 	timeout client 60s
