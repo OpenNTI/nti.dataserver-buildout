@@ -315,26 +315,33 @@ nti.dataserver
 /dataserver2/@@intid_resolver/{intid} (GET) Resolves an intid
 /dataserver2/@@unregister_missing_objects (POST) Unregister from the intid utility all missing / broken objects
 
-/dataserver2/@@GetUserBlacklist (GET) Return the blacklisted usernames
-/dataserver2/@@RemoveFromUserBlacklist (POST) Remove a user from the blacklist
+/dataserver2/@@GetUserBlacklist
+/dataserver2/@@get_user_black_list (GET) Return the blacklisted usernames
+
+/dataserver2/@@RemoveFromUserBlacklist
+/dataserver2/@@remove_from_user_black_list (POST) Remove a user from the blacklist
 	params:
 		username: Username
 
-/dataserver2/@@RemoveUserBrokenObjects (POST) Remove a user broken objects
+/dataserver2/@@RemoveUserBrokenObjects
+/dataserver2/@@remove_user_broken_objects (POST) Remove a user broken objects
 	params:
 		username: Username
 
-/dataserver2/@@GetEmailVerificationToken (GET) Get email verification token and signature
+/dataserver2/@@GetEmailVerificationToken
+/dataserver2/@@get_email_verification_token (GET) Get email verification token and signature
+	params:
+		username: Username
+		email: (Optional) email address
+
+/dataserver2/@@ForceUserEmailVerification	
+/dataserver2/@@force_user_email_verification (POST) Force email verification of a user
 	params:
 		username: Username
 		email: (Optional) email address
 		
-/dataserver2/@@ForceUserEmailVerification (POST) Force email verification of a user
-	params:
-		username: Username
-		email: (Optional) email address
-		
-/dataserver2/@@RemoveUser (POST) delete a user
+/dataserver2/@@RemoveUser
+/dataserver2/@@remove_user (POST) delete a user
 	params:
 		username: Username
 		containers: (Optional) Go through the users containers (Default True)
