@@ -129,7 +129,11 @@ frontend all
 
 	acl is_host_cors url_sub ?h=
 
+	# Make sure we use the dev robots file in dev environments
 	reqrep ^([^\ :]*)\ .*/robots.txt\ ([^\ ]*) \1\ /robots-dev.txt\ \2 if robots
+
+	# Bandaid so that the default favicon works in dev environments
+	reqrep ^([^\ :]*)\ .*/favicon\.ico\ ([^\ ]*) \1\ /app/resources/images/favicon.ico\ \2
 
 	# force site policy to janux for development so we don't have to edit /etc/hosts
 	# reqidel ^ORIGIN:.*
