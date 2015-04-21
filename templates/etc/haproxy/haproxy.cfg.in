@@ -129,6 +129,10 @@ frontend all
 
 	acl is_host_cors url_sub ?h=
 
+	${haproxy_extra_config}
+
+	${haproxy_extra_redirects}
+
 	# Make sure we use the dev robots file in dev environments
 	reqrep ^([^\ :]*)\ .*/robots.txt\ ([^\ ]*) \1\ /robots-dev.txt\ \2 if robots
 
