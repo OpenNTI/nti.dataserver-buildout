@@ -11,7 +11,7 @@ bind = [":${http-port}", "unix:${unix-socket|shell-path}"]
 # Calculate worker number automatically if not
 # specified
 workers = "${workers}" or multiprocessing.cpu_count() * 2 + 1
-worker_class =  "nti.appserver.gunicorn.GeventApplicationWorker"
+worker_class =  "nti.appserver.nti_gunicorn.GeventApplicationWorker"
 accesslog = "-"
 timeout = ${timeout}
 preload_app = ${preload_app}
