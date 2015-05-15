@@ -10,6 +10,6 @@ then
     mkdir -p $LOG_DEST
 fi
 
-FIRST_LOG=`echo 'SHOW BINARY LOGS' | mysql --defaults-file=$DEFAULTS_FILE --host $DB_HOST  | awk 'NR==2 {print $1}'`
+FIRST_LOG=`echo 'SHOW BINARY LOGS' | ${deployment:root-directory}/parts/mysql/bin/mysql --defaults-file=$DEFAULTS_FILE --host $DB_HOST  | awk 'NR==2 {print $1}'`
 
-${deployment:root-directory}/parts/mysql/bin/mysqlbinlog --defaults-file=$DEFAULTS_FILE --read-from-remote-server --host $DB_HOST --raw --stop-never --result-file=$LOG_DEST  $FIRST_LOG
+${deployment:root-directory}/parts/mysql/bin/mysqlbinlog --defaults-file=$DEFAULTS_FILE --read-from-remote-server --host $DB_HOST --raw --stop-never --stop-never-slave-server-id=${backupvars:slave_id} --result-file=$LOG_DEST  $FIRST_LOG
