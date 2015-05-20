@@ -17,7 +17,7 @@ from tempfile import mkdtemp
 def _backup_database(config):
     outfilename = os.path.join(config['base_path'],config['server']['filename']+u'.sql')
     cmd = [
-        '${deployment:root-directory}/parts/mysql/bin/mysqldump',
+        '${backupvars:mysqldir}/bin/mysqldump',
         '--defaults-file=%s' % config['defaults-file'],
         '--host', config['server']['address'],
         '--single-transaction',
