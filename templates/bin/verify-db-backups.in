@@ -116,7 +116,7 @@ def main():
     if environment is None:
         print('No definition for the %s environment found in %s' % (environment_name, config_file))
 
-    backup_name = u'db-backup-%s-%s.tar.bz2' % (environment_name,date)
+    backup_name = u'db-backup-%s-%s.tar.xz' % (environment_name,date)
     backup_uri = u's3://%s/db/%s/%s' % (s3_bucket, environment_name, backup_name)
 
     _verify_backup( backup_uri, backup_name, environment['servers'], defaults_file )
