@@ -6,7 +6,7 @@ nti.app.analytics
 
 /dataserver2/@@CourseAssessmentsTakenCounts
 /dataserver2/analytics/CourseAssessmentsTakenCounts
-/dataserver2/CourseAdmin/CourseAssessmentsTakenCounts 
+/dataserver2/CourseAdmin/CourseAssessmentsTakenCounts
 	(GET) For a course, return a CSV with the self assessment counts for each user, by assessment.
 		params:
 			ntiid: Course/Catalog entry NTIID
@@ -65,6 +65,18 @@ nti.app.hypatia
 
 /dataserver2/hypatia/unindex_missing (POST) Unindex all broken or missing objects
 
+nti.app.learning_network
+
+/dataserver2/users/<username>/LearningNetworkStats (GET) Returns learning network stats for the given user.
+	params:
+		timestamp: Seconds since epoch; stats for context since this time (optional)
+		course: Course/Catalog Entry NTIID (optional)
+
+/dataserver2/<course_url>/LearningNetworkStats (GET) Returns learning network stats for users in the given course.
+	params:
+		timestamp: Seconds since epoch; stats for context since this time (optional)
+		username: Username to return course stats for (optional)
+
 nti.app.metadata
 
 /dataserver2/metadata/mime_types (GET) Return the mime types of all cataloged objects
@@ -74,7 +86,7 @@ nti.app.metadata
 		username: user name
 		accept/mimeTypes: Comma delimited mime types
 		system: Boolean to include system user objects (optional)
-		
+
 /dataserver2/metadata/reindex (POST) Reindex all objects of a set of users (params username/usernames, system)
 	params:
 		username/usernames: Comma delimited user names
@@ -334,12 +346,12 @@ nti.dataserver
 		username: Username
 		email: (Optional) email address
 
-/dataserver2/@@ForceUserEmailVerification	
+/dataserver2/@@ForceUserEmailVerification
 /dataserver2/@@force_user_email_verification (POST) Force email verification of a user
 	params:
 		username: Username
 		email: (Optional) email address
-		
+
 /dataserver2/@@RemoveUser
 /dataserver2/@@remove_user (POST) delete a user
 	params:
