@@ -284,14 +284,14 @@ nti.app.products.ou
 
 nti.app.store
 
-/dataserver2/janux/get_users_purchase_history (GET) Return a report purchase history for a purchasable
+/dataserver2/store/get_users_purchase_history (GET) Return a report purchase history for a purchasable
 	params:
 		purchasable: Purchasable NTIID
 		username/usernames: Comma delimted usernames (Optional)
 		failed: Boolean to return only failed purchase (Optional)
 		succeeded: Boolean to return successful purchase (Optional)
 
-/dataserver2/janux/get_users_gift_history (GET) Return a report gift purchase history
+/dataserver2/store/get_users_gift_history (GET) Return a report gift purchase history
 	params:
 		username/usernames: Comma delimted usernames (Optional)
 		failed: Boolean to return only failed purchase (Optional)
@@ -299,19 +299,19 @@ nti.app.store
 		starTime:  Start time (Optional)
 		endTime: End time (Optional)
 
-/dataserver2/janux/delete_purchase_attempt (POST) delete a purchase attempt
+/dataserver2/store/delete_purchase_attempt (POST) delete a purchase attempt
 	params:
 		purchase: Purchase NTIID
 
-/dataserver2/janux/delete_purchase_history (POST) delete a user's purchase history
+/dataserver2/store/delete_purchase_history (POST) delete a user's purchase history
 	params:
 		username: Username
 
-/dataserver2/janux/generate_purchase_invoice (POST) Generate a purchase invoice (send email)
+/dataserver2/store/generate_purchase_invoice (POST) Generate a purchase invoice (send email)
 	params:
 		purchase: Purchase NTIID or transaction code
 
-/dataserver2/janux/create_invitation_purchase (POST) Create and invitation purchase
+/dataserver2/store/create_invitation_purchase (POST) Create and invitation purchase
 	params:
 		purchasable: Purchasable NTIID
 		quantity: Quantity (Number of tokens)
