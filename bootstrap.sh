@@ -33,6 +33,9 @@ setuptools_egg="setuptools-$setuptools_version"
 zc_buildout_version=`grep -o "zc.buildout = .*" versions.cfg | grep -o "[0-9]\.[0-9].*"`
 zc_buildout_egg="zc.buildout-$zc_buildout_version"
 
+collective_recipe_cmd_version=`grep -o "collective.recipe.cmd = .*" versions.cfg | grep -o "[0-9]\.[0-9].*"`
+collective_recipe_cmd_egg="collective.recipe.cmd-$collective_recipe_cmd_version"
+
 # Now match .installed.cfg with the desired version
 if [ -f .installed.cfg ]; then
 	case `uname` in
@@ -50,6 +53,15 @@ if [ -f .installed.cfg ]; then
 			;;
 		*)
 			sed -E -i""  "s/zc.buildout-([0-9]\.?)+-/$zc_buildout_egg-/" .installed.cfg
+			;;
+	esac
+	
+	case `uname` in
+		Darwin)
+			sed -E -i "" "s/collective.recipe.cmd-([0-9]\.?)+-/$collective_recipe_cmd_egg-/" .installed.cfg
+			;;
+		*)
+			sed -E -i""  "s/collective.recipe.cmd-([0-9]\.?)+-/$collective_recipe_cmd_egg-/" .installed.cfg
 			;;
 	esac
 fi
