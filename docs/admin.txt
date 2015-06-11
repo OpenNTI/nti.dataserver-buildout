@@ -413,3 +413,7 @@ nti.dataserver
 /dataserver2/@@reset_welcome_page (POST) Reset welcome page link
 	params:
 		username: Username
+
+/dataserver2/@@create.community (POST) Creates a community
+	params:
+		username: Username
