@@ -20,6 +20,7 @@ def _backup_database(config):
         '${backupvars:mysqldir}/bin/mysqldump',
         '--defaults-file=%s' % config['defaults-file'],
         '--host', config['server']['address'],
+        '--port', config['server']['port'],
         '--single-transaction',
         '--add-drop-database',
         '--all-databases',

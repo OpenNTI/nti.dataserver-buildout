@@ -39,6 +39,12 @@
                 "ds4-ou.internal.nextthought.com"
             ],
             "username": "ntiuser-prod"
+        },
+        "showcase": {
+            "servers": [
+                "ds4-ou.internal.nextthought.com"
+            ],
+            "username": "ntiuser-showcase"
         }
     }
 }
