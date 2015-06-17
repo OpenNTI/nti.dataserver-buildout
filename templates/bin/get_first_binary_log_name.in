@@ -1,0 +1,7 @@
+#!/bin/sh
+
+DEFAULTS_FILE=$1
+DB_HOST=$2
+DB_PORT=$3
+
+echo 'SHOW BINARY LOGS' | ${deployment:root-directory}/parts/mysql/bin/mysql --defaults-file=$DEFAULTS_FILE --host $DB_HOST --port $DB_PORT  | awk 'NR==2 {print $1}'
