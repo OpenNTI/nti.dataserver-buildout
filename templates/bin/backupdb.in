@@ -39,11 +39,11 @@ def _backup_database(config):
 def _compress_backup(backup_dir, archive_path):
     old_dir = os.getcwd()
     dirname, basename = os.path.split(backup_dir)
-    archive = os.path.join(archive_path, basename+u'.tar.bz2')
+    archive = os.path.join(archive_path, basename+u'.tar.xz')
 
     cmd = [
         'tar',
-        '-jcvf', archive,
+        '-Jcvf', archive,
         basename
     ]
 
