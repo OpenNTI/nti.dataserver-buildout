@@ -27,7 +27,7 @@
             ],
             "username": "ntiuser-okstate"
         },
-        "ou-test": {
+        "outest": {
             "servers": [
                 "aux1-ou.internal.nextthought.com"
             ],
