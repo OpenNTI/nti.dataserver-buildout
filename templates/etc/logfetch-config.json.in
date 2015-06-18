@@ -42,6 +42,7 @@
         },
         "showcase": {
             "servers": [
+                "db4-ou.internal.nextthought.com",
                 "ds4-ou.internal.nextthought.com"
             ],
             "username": "ntiuser-showcase"
