@@ -159,6 +159,8 @@
 			add_header X-NTI-WebApp true;
 		}
 
+${nginx_extra_server_config}
+
 		location ${webapp_location}config.js {
 			alias ${webapp_config_file};
 		}
