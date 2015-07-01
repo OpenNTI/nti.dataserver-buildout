@@ -25,6 +25,21 @@
                 }
             ]
         },
+        "mc": {
+            "defaults-file": "${deployment:etc-directory}/mysql/my-client.cnf",
+            "servers": [
+                {
+                    "address": "${backupvars:db3-address}",
+                    "port": "${backupvars:mathcounts_db_port}",
+                    "filename": "Users"
+                },
+                {
+                    "address": "${backupvars:db4-address}",
+                    "port": "${backupvars:mathcounts_db_port}",
+                    "filename": "Analytics-Tahrir"
+                }
+            ]
+        },
         "okstate": {
             "defaults-file": "${deployment:etc-directory}/mysql/my-client.cnf",
             "servers": [
@@ -47,6 +62,21 @@
                     "address": "${backupvars:aux1-address}",
                     "port": "${backupvars:outest_db_port}",
                     "filename": "Users-Users_1_Test-Users_2_Test-Tahrir-Analytics"
+                }
+            ]
+        },
+        "prod": {
+            "defaults-file": "${deployment:etc-directory}/mysql/my-client.cnf",
+            "servers": [
+                {
+                    "address": "${backupvars:db3-address}",
+                    "port": "${backupvars:prod_db_port}",
+                    "filename": "Users"
+                },
+                {
+                    "address": "${backupvars:db4-address}",
+                    "port": "${backupvars:prod_db_port}",
+                    "filename": "Analytics-Tahrir"
                 }
             ]
         },
