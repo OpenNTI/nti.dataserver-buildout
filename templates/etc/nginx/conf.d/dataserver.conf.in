@@ -30,6 +30,12 @@
 		~nti.landing_site_name=(?<mc>[^\;]+) $mc;
 	}
 
+	#need to map the value of $http_x_forwarded_protocol so we know if the connection was secure or not
+	map $http_x_forwarded_protocol $uri_scheme {
+		default http;
+		ssl https;
+	}
+
 
 	open_file_cache max=${nginx_max_open_files} inactive=20s;
 	open_file_cache_valid 30s;
@@ -88,11 +94,11 @@
 		location = / {
 			# haproxy is redirecting to ${webapp_location} if the root
 			# gets hit and we could be authenticated. This makes it hard
-			# to get back to the landing content, if any. So we rewrite
+			# to get back to the landing content, if any. So we redirect
 			# (unauthenticated) hits of the root to be directly to
 			# /index.html (which we handle with the block below), letting
 			# the back button work as expected.
-			rewrite ^.*$ /index.html permanent;
+			return 302 $uri_scheme://$host/index.html;
 		}
 
 		location  / {
