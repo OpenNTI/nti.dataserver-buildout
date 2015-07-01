@@ -31,12 +31,12 @@
                 {
                     "address": "${backupvars:db3-address}",
                     "port": "${backupvars:mathcounts_db_port}",
-                    "filename": "Users"
+                    "filename": "Users-Users_2-Users_4"
                 },
                 {
                     "address": "${backupvars:db4-address}",
                     "port": "${backupvars:mathcounts_db_port}",
-                    "filename": "Analytics-Tahrir"
+                    "filename": "Users_1-Users_3"
                 }
             ]
         },
@@ -71,12 +71,12 @@
                 {
                     "address": "${backupvars:db3-address}",
                     "port": "${backupvars:prod_db_port}",
-                    "filename": "Users"
+                    "filename": "Analytics"
                 },
                 {
                     "address": "${backupvars:db4-address}",
                     "port": "${backupvars:prod_db_port}",
-                    "filename": "Analytics-Tahrir"
+                    "filename": "Users"
                 }
             ]
         },
