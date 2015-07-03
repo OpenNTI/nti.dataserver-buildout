@@ -370,7 +370,6 @@ def _parse_args():
     # positional arguments are ignored
     return options
 
-
 def _download_args(options):
 	"""Return args for download_setuptools function from cmdline args."""
 	return dict(
