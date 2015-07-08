@@ -417,3 +417,8 @@ nti.dataserver
 /dataserver2/@@create.community (POST) Creates a community
 	params:
 		username: Username
+		
+/dataserver2/@@list.communities (GET) List communities
+	params:
+		usernames: Comma delimited usernames (Optional)
+		term: Search term (Optional)
