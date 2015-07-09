@@ -277,10 +277,14 @@ nti.app.products.ou
 		pidm: PIDM (Optional)
 		tempmatchid: tempmatchid (Optional)
 
-/dataserver2/janux/fmaep_admission_inquiry (POST) Query/ Upadate the admision of a user
+/dataserver2/janux/fmaep_admission_inquiry (POST) Query / Update the admision of a user
 	params:
 		username: username
 		tempmatchid: tempmatchid (Optional)
+
+/dataserver2/janux/fmaep_adjust_payment_enrollment (POST) Adjust enrollment for any pending fmaep purchases
+	params:
+		usernames: Comma delimited list of usernames (Optional)
 
 nti.app.store
 
