@@ -150,7 +150,7 @@ backend tier2_backend5
     option http-server-close
     ${haproxy_tier2_backend5}
 
-# Wiley
+# Connect
 backend tier2_backend6
     mode http
     option forwardfor # This sets X-Forwarded-For
