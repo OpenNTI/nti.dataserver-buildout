@@ -365,6 +365,12 @@ nti.dataserver
 		shared: (Optional) Go through the user's shared containers (Default False)
 		dynamic: (Optional) Go through the user's dynamic friends containers (Default False)
 
+/dataserver2/@@GetUserGhostContainers
+/dataserver2/@@get_user_ghost_containers (GET) Return ghost containers for a set of users
+	params:
+		usernames: (Optional) Comma delimited username list
+		search: (Optional) Username search term
+
 /dataserver2/@@export_user_objects (GET) Export all [registered] user objects
 	params:
 		username/usernames: Comma delimted usernames (Optional)
