@@ -81,6 +81,7 @@ frontend all
 
     ${haproxy_extra_redirects}
 
+    use_backend ip_blocked_backend if is_blocked_ip
     use_backend tier2_backend0 if is_backend0
     use_backend tier2_backend1 if is_backend1
     use_backend tier2_backend2 if is_backend2
