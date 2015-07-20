@@ -72,6 +72,7 @@ frontend all
     bind ${haproxy_ssl_socket} user ${ssl_socket_owner} mode 600 id 42 accept-proxy
 
     ${haproxy_hostname_backend_map}
+    acl is_splunk hdr_dom(host) -i splunk
 
     # Define an ACL to block incoming IP addresses
     acl is_blocked_ip src 0.0.0.0
@@ -82,6 +83,7 @@ frontend all
     ${haproxy_extra_redirects}
 
     use_backend ip_blocked_backend if is_blocked_ip
+    use_backend splunk_backend if is_splunk
     use_backend tier2_backend0 if is_backend0
     use_backend tier2_backend1 if is_backend1
     use_backend tier2_backend2 if is_backend2
@@ -108,6 +110,13 @@ backend s3_backend
     reqirep  ^([^\ ]*)\ /(.*) \1\ /nextthought-support-pages/\2
 
     server s3 s3.amazonaws.com:443 ssl verify none
+
+# Splunk
+backend splunk_backend
+    mode http
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+    ${haproxy_splunk_backend}
 
 # Old Prod
 backend tier2_backend0
