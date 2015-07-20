@@ -1,46 +1,8 @@
-	sendfile		on;
-	tcp_nopush		on;
-	tcp_nodelay 	on; # on is default
-	directio		1m;
-	${aio}
-
-	keepalive_timeout  30 30;
-	keepalive_disable none;
-
-
-	client_body_buffer_size 1m;
-	client_body_timeout 15;
-	client_header_timeout 15;
-	send_timeout 15;
-	reset_timedout_connection on;
-
-	gzip  on;
-	gzip_static on;
-	gzip_types application/json text/plain text/css text/javascript application/xml application/x-javascript application/javascript text/xml ;
-	gzip_comp_level 9;
-	gzip_min_length 1100;
-	gzip_proxied any;
-	gzip_vary on;
-	gzip_http_version 1.0;
-
-
 	#need to map the landing cookie.  Can we get this in the location somehow?
 	map $http_cookie $site_landing_name {
 		default ${default_landing_site_name};
 		~nti.landing_site_name=(?<mc>[^\;]+) $mc;
 	}
-
-	#need to map the value of $http_x_forwarded_protocol so we know if the connection was secure or not
-	map $http_x_forwarded_protocol $uri_scheme {
-		default http;
-		ssl https;
-	}
-
-
-	open_file_cache max=${nginx_max_open_files} inactive=20s;
-	open_file_cache_valid 30s;
-	open_file_cache_errors on;
-
 
 	upstream dataserver {
 		server unix:${gunicorn-conf:unix-socket|shell-path};
