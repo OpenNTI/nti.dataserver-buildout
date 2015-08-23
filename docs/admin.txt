@@ -159,6 +159,13 @@ nti.app.products.courseware
 	params:
 		ntiid: Course/Catalog entry ntiid
 
+/dataserver2/++path++to++course/discussions (GET) Return the autocreate course discussion definitions
+/dataserver2/++path++to++catalog++entry++/discussions (GET) Return the autocreate course discussion definitions
+
+/dataserver2/CourseAdmin/DropCourseDiscussions (POST, GET) Remove all autocreated course discussions 
+	params:
+		ntiid: Space delimieted course/catalog entry ntiid
+
 /dataserver2/CourseAdmin/LegacyCourseTopicCreator (POST) create topics for a course
 
 /dataserver2/CourseAdmin/LegacyCourseEnrollmentMigrator (POST) Migrates the enrollments from legacy courses
