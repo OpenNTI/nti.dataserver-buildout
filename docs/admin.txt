@@ -289,6 +289,8 @@ nti.app.products.ou
 		username: username
 		tempmatchid: tempmatchid (Optional)
 
+/dataserver2/janux/fmaep_pending_enrollment_users (GET) Return a csv with all the users that need adjustment enrollment for pending fmaep purchases
+
 /dataserver2/janux/fmaep_adjust_payment_enrollment (GET, POST) Adjust enrollment for any pending fmaep purchases
 	params:
 		usernames: Comma delimited list of usernames (Optional)
