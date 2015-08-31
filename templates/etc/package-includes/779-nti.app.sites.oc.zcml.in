@@ -8,7 +8,7 @@
 
 	<include package="z3c.baseregistry" file="meta.zcml" />
 
-	<registerIn registry="nti.app.sites.okchristian.OC">
+	<registerIn registry="nti.app.sites.okchristian.sites.OC">
 		<adb:registerAnalyticsDB
 				dburi="${analytics-oc:driver}://${analytics-oc:user}:${analytics-oc:password}@${analytics-oc:host}/${analytics-oc:dbname}?charset=utf8"
 				twophase="${analytics-oc:twophase}"
