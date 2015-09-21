@@ -60,7 +60,7 @@
 		}
 
 		location = /favicon.ico {
-			alias ${sitepackage_location}/assets/dist/loginapp/favicon.ico;
+			alias ${sitepackage_location}/dist/shared/favicon.ico;
 		}
 
 		location = /mobile/resources/css/sites/current/site.css {
@@ -116,11 +116,11 @@
 		}
 
 		location ${nginx-conf:webapp_location}resources/css/site.css {
-			alias ${sitepackage_location}/assets/dist/webapp/site.css;
+			alias ${sitepackage_location}/dist/webapp/site.css;
 		}
 
 		location ${nginx-conf:webapp_location}resources/strings/strings.js {
-			alias ${sitepackage_location}/assets/dist/webapp/strings.js;
+			alias ${sitepackage_location}/dist/webapp/strings.js;
 		}
 
 		location ${nginx-conf:global_content_location} {
@@ -154,11 +154,15 @@
 		}
 
 		location = ${nginx-conf:loginapp_location}resources/css/site.css {
-			alias ${sitepackage_location}/assets/dist/loginapp/site.css;
+			alias ${sitepackage_location}/dist/loginapp/site.css;
 		}
 
-		location = ${nginx-conf:loginapp_location}resources/strings/strings.js {
-			alias ${sitepackage_location}/assets/dist/loginapp/strings.js;
+		location = ${nginx-conf:loginapp_location}resources/strings/site.js {
+			alias ${sitepackage_location}/dist/loginapp/strings.js;
+		}
+
+		location = ${nginx-conf:loginapp_location}resources/favicon.ico {
+			alias ${sitepackage_location}/dist/shared/favicon.ico;
 		}
 
 		location /landing {
