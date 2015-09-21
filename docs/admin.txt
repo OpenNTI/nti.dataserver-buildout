@@ -42,8 +42,7 @@ nti.app.assesment
 	params:
 		ntiid: Course/Catalog Entry NTIID
 
-/dataserver2/CourseAdmin/MoveUserAssignments
-/dataserver2/CourseAdmin/MoveUserAssignmentsView - (POST, GET) Move assignments from one course to another
+/dataserver2/CourseAdmin/MoveUserAssignments - (POST, GET) Move assignments from one course to another
 	params:
 		source: Course/Catalog Entry NTIID
 		target: Course/Catalog Entry NTIID
