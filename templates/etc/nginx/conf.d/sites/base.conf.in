@@ -9,7 +9,7 @@
 		# to additional ports and use other protocols than PROXY.
 		${nginx-conf:nginx_extra_binds}
 
-		root   ${landingpage_path|shell-path};
+		root   ${landingpage_path/dist|shell-path};
 		server_name	 ${global_host_name};
 		# Don't use our defined server name if we do a redirect;
 		# instead use the value the client supplies in the
