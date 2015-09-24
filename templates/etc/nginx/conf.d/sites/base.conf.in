@@ -119,7 +119,7 @@
 			alias ${sitepackage_location}/dist/webapp/site.css;
 		}
 
-		location ${nginx-conf:webapp_location}resources/strings/strings.js {
+		location ${nginx-conf:webapp_location}resources/strings/site.js {
 			alias ${sitepackage_location}/dist/webapp/strings.js;
 		}
 
