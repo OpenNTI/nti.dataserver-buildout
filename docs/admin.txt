@@ -152,6 +152,13 @@ nti.app.products.courseware
 		source: Catalog entry ntiid
 		target: Catalog entry ntiid
 
+/dataserver2/CourseAdmin/CourseSectionEnrollmentMigrator (POST, GET) Migrates the enrollments from one course to its subsections
+	params:
+		ntiid: Catalog entry ntiid
+		scope: Escope to migrate (Optional defaults to Public)
+		seats: Max seat count in a section (Optional defaults to 25)
+		sections: Array / [space delimited string] of section names (Optional)
+
 /dataserver2/CourseAdmin/CourseRoles (GET) Report all roles of all courses
 
 /dataserver2/CourseAdmin/CourseEnrollments (GET) Report all course enrollments
