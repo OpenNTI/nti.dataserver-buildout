@@ -9,7 +9,7 @@
 		# to additional ports and use other protocols than PROXY.
 		${nginx-conf:nginx_extra_binds}
 
-		root   ${landingpage_path/dist|shell-path};
+		root   ${landingpage_path|shell-path};
 		server_name	 ${global_host_name};
 		# Don't use our defined server name if we do a redirect;
 		# instead use the value the client supplies in the
@@ -53,7 +53,7 @@
 
 		location  / {
 			index  index.html index.htm;
-			root ${landingpage_path/dist|shell-path}/;
+			root ${landingpage_path|shell-path}/;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
 			try_files $uri @login;
