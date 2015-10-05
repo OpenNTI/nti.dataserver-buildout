@@ -132,7 +132,8 @@ nti.app.products.courseware
 	params:
 		ntiid: Course/Catalog entry NTIID
 		username: Username
-		scope: Scope name (optional Public default)
+		scope: Scope name (optional default to Public)
+		interaction: Allow [security] interaction (optional default to False)
 
 /dataserver2/CourseAdmin/UserCourseDrop (POST) Drop a user from a course
 	params:
