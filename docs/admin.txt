@@ -48,6 +48,14 @@ nti.app.assesment
 		target: Course/Catalog Entry NTIID
 		username/usernames: Comma delimited user names (optional)
 
+/dataserver2/@@ResetInquiry - (POST) Remove survey/poll submissions
+	params:
+		 ntiid: Survey/Poll NTIID
+		 course: Course/Catalog Entry NTIID
+		 username: User name (Optional)
+
+/dataserver2/Objects/{Inquiry NTIID}/Submissions - (GET) Return all survey/poll submissions
+
 nti.app.hypatia
 
 /dataserver2/hypatia/reindex_content (POST) Reindex all content of a set of users
