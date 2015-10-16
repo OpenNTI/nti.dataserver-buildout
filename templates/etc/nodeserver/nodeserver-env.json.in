@@ -8,7 +8,29 @@
 		"analyticsKey": "${analytics-key}",
 		"appName": "${app-name}",
 		"appId": "${app-id}",
-		"appVersion": "${app-version}"
+		"appVersion": "${app-version}",
+		"external-libraries": {
+			"mathquill": {
+				"requires": ["jquery"],
+				"url": "${mathquill-url}",
+				"definesSymbol": "jQuery.fn.mathquill",
+				"stylesheets": ["${mathquill-stylesheet}"]
+			},
+			"jquery": {
+				"url": "${jquery-url}",
+				"definesSymbol": "jQuery.noConflict",
+				"invokeDefinedSymbol": true
+			},
+			"jquery.payment": {
+				"requires": ["jquery", "stripe"],
+				"url": "${jquery.payment-url}",
+				"definesSymbol": "jQuery.payment"
+			},
+			"stripe": {
+				"url": "${stripe-url}",
+				"definesSymbol": "Stripe"
+			}
+		}
 	},
 
 	"production": {
