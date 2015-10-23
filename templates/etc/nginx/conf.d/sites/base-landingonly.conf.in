@@ -41,16 +41,6 @@
 			error_page 404 =503 /maintenance/index.html;
 		}
 
-		location = / {
-			# haproxy is redirecting to ${nginx-conf:webapp_location} if the root
-			# gets hit and we could be authenticated. This makes it hard
-			# to get back to the landing content, if any. So we redirect
-			# (unauthenticated) hits of the root to be directly to
-			# /index.html (which we handle with the block below), letting
-			# the back button work as expected.
-			return 302 $uri_scheme://$host/index.html;
-		}
-
 		location  / {
 			index  index.html index.htm;
 			root ${landingpage_path|shell-path}/;
