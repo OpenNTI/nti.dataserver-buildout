@@ -5,7 +5,7 @@
 	}
 
 	upstream dataserver {
-		server unix:${gunicorn-conf:unix-socket|shell-path};
+		server ${nginx_dataserver_port};
 
 		keepalive 16;
 	}
