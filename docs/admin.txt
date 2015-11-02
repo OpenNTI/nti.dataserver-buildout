@@ -356,7 +356,7 @@ nti.dataserver
 /dataserver2/@@intid_resolver/{intid} (GET) Resolves an intid
 /dataserver2/@@unregister_missing_objects (POST) Unregister from the intid utility all missing / broken objects
 
-/dataserver2/Objects/{ObjectId}/@@RemoveTransactionHistory (POST) Remove trasanction history and [sync] unlock
+/dataserver2/Objects/{ObjectId}/@@RemoveTransactionHistory (GET, POST) Remove trasanction history and [sync] unlock
 /dataserver2/@@UserTransactionHistory (GET)
 	params:
 		username: Username command delimited list (Optional)
