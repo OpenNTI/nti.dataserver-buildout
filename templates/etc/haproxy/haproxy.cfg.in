@@ -91,10 +91,6 @@ frontend all
 	acl is_dyn path_beg /library
 	acl is_dyn path_beg /socket.io
 	acl is_dyn path_beg /dictionary
-	acl is_dyn path_beg ${loginapp_location}resources/css/site.css  #GH added to pass css to DS
-	acl is_dyn path_beg ${loginapp_location}resources/strings/site.js #GH added to pass	site strings to DS
-	acl is_dyn path_beg ${webapp_location}resources/strings/site.js #CMU added to pass strings files to DS for redirection by site
-	acl is_dyn path_beg ${webapp_location}resources/css/site.css
 	# The plain strings (non-site-specific) is also passed to the DS
 	# for language negotiation and a redirect
 	acl is_dyn path_beg ${webapp_location}resources/strings/strings.js
