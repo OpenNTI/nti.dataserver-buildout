@@ -136,6 +136,8 @@ nti.app.products.badges
 
 nti.app.products.courseware
 
+/dataserver2/CourseAdmin/AllCatalogEntries (GET) Return all catalog entries
+		
 /dataserver2/CourseAdmin/UserCourseEnroll (POST) Enroll a user in a course
 	params:
 		ntiid: Course/Catalog entry NTIID
