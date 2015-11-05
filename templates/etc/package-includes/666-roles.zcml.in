@@ -16,6 +16,15 @@
 	<grant	permission="nti.actions.contentlibrary.sync_library"
 			role="nti.roles.contentlibrary.admin"/>
 
+	<!-- Content editing -->
+	<permission id="nti.actions.contentedit" title="Edit content"/>
+
+	<role 	id="role:nti.content.editor" title="Content editors"
+			description="..."/>
+
+	<grant	permission="nti.actions.contentedit"
+			role="role:nti.content.editor"/>
+
 	<!--
 	Principals *COULD* be defined here too, but for maintenance reasons it's
 	probably best to define them in the environment files.
