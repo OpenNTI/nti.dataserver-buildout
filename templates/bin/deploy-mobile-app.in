@@ -12,4 +12,5 @@ then
 fi
 
 ${deployment:bin-directory}/grunt build --environment ${nodeserver-env:environment}
+${deployment:bin-directory}/grunt build:widgets --environment ${nodeserver-env:environment}
 popd
