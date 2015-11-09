@@ -341,11 +341,23 @@ nti.app.store
 	params:
 		purchase: Purchase NTIID or transaction code
 
-/dataserver2/store/create_invitation_purchase (POST) Create and invitation purchase
+/dataserver2/store/create_invitation_purchase (POST) Create an invitation purchase
 	params:
 		purchasable: Purchasable NTIID
 		quantity: Quantity (Number of tokens)
 		expiration: Expiration time (Optional)
+
+/dataserver2/store/purchasables (POST) Creates purchasable (body is the purchasable object)
+
+/dataserver2/store/purchasables/{purchasable_id} (PUT) Upates a purchasable (body is the purchasable object)
+
+/dataserver2/store/purchasables/{purchasable_id} (DELETE) Deletes a purchasable
+
+/dataserver2/store/purchasables/{purchasable_id}/disable (POST) Disable a purchasable (Public flag set to false)
+
+/dataserver2/store/purchasables/{purchasable_id}/enable (POST) Enable a purchasable (Public flag set to true)
+
+/dataserver2/store/purchasables/collection (GET) Return all purchasables
 
 nti.dataserver
 
