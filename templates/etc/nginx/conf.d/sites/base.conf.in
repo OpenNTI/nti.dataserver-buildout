@@ -56,7 +56,7 @@
 			root ${landingpage_path|shell-path}/;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
-			try_files $uri @login;
+			try_files $uri $uri/ @login;
 		}
 
 		location = /favicon.ico {
