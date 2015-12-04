@@ -116,7 +116,11 @@
 		}
 
 		location ${nginx-conf:webapp_location}resources/css/site.css {
-			alias ${sitepackage_location}/dist/webapp/site.css;
+			return 301 $uri_scheme://$host${nginx-conf:webapp_location}resources/css/site/site.css;
+		}
+
+		location ${nginx-conf:webapp_location}resources/css/site/ {
+			alias ${sitepackage_location}/dist/webapp/;
 		}
 
 		location ${nginx-conf:webapp_location}resources/strings/site.js {
@@ -154,7 +158,11 @@
 		}
 
 		location = ${nginx-conf:loginapp_location}resources/css/site.css {
-			alias ${sitepackage_location}/dist/loginapp/site.css;
+			return 301 $uri_scheme://$host${nginx-conf:loginapp_location}resources/css/site/site.css;
+		}
+
+		location ${nginx-conf:loginapp_location}resources/css/site/ {
+			alias ${sitepackage_location}/dist/loginapp/;
 		}
 
 		location = ${nginx-conf:loginapp_location}resources/strings/site.js {
