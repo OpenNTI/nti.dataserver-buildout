@@ -64,12 +64,7 @@
 		}
 
 		location = /mobile/resources/css/sites/current/site.css {
-			root ${nginx-conf:mobileweb_path}/dist/client/resources/css/sites/;
-			try_files   /$host/site.css
-					/$server_name/site.css
-					/$host/site.css
-					/$server_name/site.css
-					@error;
+			alias ${sitepackage_location}/dist/mobileapp/site.css;
 		}
 
 		location /widgets {
