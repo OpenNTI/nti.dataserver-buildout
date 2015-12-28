@@ -84,6 +84,8 @@ frontend all
     ${haproxy_extra_redirects}
 
     use_backend ip_blocked_backend if is_blocked_ip
+    use_backend jira_backend if is_jira
+    use_backend npm_backend if is_npm
     use_backend splunk_backend if is_splunk
     use_backend static_hosting_backend if is_static_hosting
     use_backend tier2_backend0 if is_backend0
@@ -112,6 +114,20 @@ backend s3_backend
     reqirep  ^([^\ ]*)\ /(.*) \1\ /nextthought-support-pages/\2
 
     server s3 s3.amazonaws.com:443 ssl verify none
+
+# Jira
+backend jira_backend
+    mode http
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+    ${haproxy_jira_backend}
+
+# NPM
+backend npm_backend
+    mode http
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+    ${haproxy_npm_backend}
 
 # Splunk
 backend splunk_backend
