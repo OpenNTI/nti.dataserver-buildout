@@ -29,6 +29,9 @@
 	<grant	permission="nti.actions.contentedit"
 			role="nti.roles.contentlibrary.admin"/>
 
+	<grant	permission="nti.actions.update"
+			role="nti.roles.contentlibrary.admin"/>
+
 	<!--
 	Principals *COULD* be defined here too, but for maintenance reasons it's
 	probably best to define them in the environment files.
