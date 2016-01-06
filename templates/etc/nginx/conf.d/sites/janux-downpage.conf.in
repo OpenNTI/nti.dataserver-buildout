@@ -67,6 +67,10 @@
 			return 404;
 		}
 
+		location /widgets/gifting/ {
+			return 302 $uri_scheme://$host/maintenance/index.html;
+		}
+
 		location /dataserver2 {
 			return 302 $uri_scheme://$host/maintenance/index.html;
 		}
