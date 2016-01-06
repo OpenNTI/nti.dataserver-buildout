@@ -29,11 +29,13 @@ defaults
     timeout tunnel 10m
     errorfile 408 /dev/null
 
-listen httpredir ${haproxy_http_addr}:${haproxy_redirect_to_ssl_port}
+listen httpredir
     mode http
     maxconn ${httpredir_maxconn}
 #    log global
 #    option httplog
+
+    bind ${haproxy_http_addr}:${haproxy_redirect_to_ssl_port}
 
     timeout client 600
     timeout server 30000
