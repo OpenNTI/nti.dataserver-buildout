@@ -150,6 +150,6 @@ backend data_backend
 backend node_backend
     mode http
     option prefer-last-server
-    timeout server 30s
+    timeout server 5m
     timeout connect 4s
     ${node_servers}
