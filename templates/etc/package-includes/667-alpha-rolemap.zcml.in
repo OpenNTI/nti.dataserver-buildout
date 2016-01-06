@@ -7,6 +7,9 @@
 	It must match the username of a User in the database
 	to have any effect.
 	-->
+	<sp:principal id="ashley.stewart" login="ashley.stewart" title="Ashley Stewart"/>
+	<sp:grant principal="ashley.stewart" role="nti.roles.contentlibrary.admin"/>
+
 	<sp:principal id="brandon.bonk" login="brandon.bonk" title="Brandon Bonk"/>
 	<sp:grant principal="brandon.bonk" role="nti.roles.contentlibrary.admin"/>
 
