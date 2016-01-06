@@ -19,4 +19,7 @@
 	<sp:principal id="brianna.gaither" login="brianna.gaither" title="Brianna Gaither"/>
 	<sp:grant principal="brianna.gaither" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="SZEditor" login="SZEditor" title="Stacy Zemke"/>
+	<sp:grant principal="SZEditor" role="nti.roles.contentlibrary.admin"/>
+
 </configure>
