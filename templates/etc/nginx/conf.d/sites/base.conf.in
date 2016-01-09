@@ -122,6 +122,10 @@
 			alias ${sitepackage_location}/dist/webapp/strings.js;
 		}
 
+		location = ${nginx-conf:webapp_location}resources/images/favicon.ico {
+			alias ${sitepackage_location}/dist/shared/favicon.ico;
+		}
+
 		location ${nginx-conf:global_content_location} {
 			alias ${nginx-conf:global_content_directory/.|shell-path}/;
 			auth_request /_ops/identify;
