@@ -11,7 +11,7 @@ nti.app.analytics
 		params:
 			ntiid: Course/Catalog entry NTIID
 
-nti.app.assesment
+nti.app.assessment
 
 /dataserver2/@@RemoveMatchedSavePoints - (POST,GET) Remove savepoint for already submitted assignment(s) for all courses
 
@@ -55,6 +55,12 @@ nti.app.assesment
 		 username: User name (Optional)
 
 /dataserver2/Objects/{Inquiry NTIID}/Submissions - (GET) Return all survey/poll submissions
+
+nti.app.contenttypes.presentation
+
+/dataserver2/OutlineObjectCourseResolver - (GET) Get all courses for the given outline object ntiid.
+	params:
+		 ntiid: outline object NTIID
 
 nti.app.hypatia
 
@@ -137,7 +143,7 @@ nti.app.products.badges
 nti.app.products.courseware
 
 /dataserver2/CourseAdmin/AllCatalogEntries (GET) Return all catalog entries
-		
+
 /dataserver2/CourseAdmin/UserCourseEnroll (POST) Enroll a user in a course
 	params:
 		ntiid: Course/Catalog entry NTIID
@@ -179,7 +185,7 @@ nti.app.products.courseware
 /dataserver2/++path++to++course/discussions (GET) Return the autocreate course discussion definitions
 /dataserver2/++path++to++catalog++entry++/discussions (GET) Return the autocreate course discussion definitions
 
-/dataserver2/CourseAdmin/DropCourseDiscussions (POST, GET) Remove all autocreated course discussions 
+/dataserver2/CourseAdmin/DropCourseDiscussions (POST, GET) Remove all autocreated course discussions
 	params:
 		ntiid: Space delimieted course/catalog entry ntiid
 
@@ -377,7 +383,7 @@ nti.dataserver
 		term: Username term search (Optional)
 		startTime: Start time (Optional)
 		endTIme: End time (Optional)
-	
+
 
 /dataserver2/@@GetUserBlacklist
 /dataserver2/@@get_user_black_list (GET) Return the blacklisted usernames
