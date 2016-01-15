@@ -1,7 +1,7 @@
 <configure	xmlns="http://namespaces.zope.org/zope"
 			xmlns:sp="http://nextthought.com/ntp/securitypolicy">
 
-	<!-- Assign principals to roles in the Alpha and Test environment -->
+	<!-- Assign principals to roles in the Production environment -->
 	<!--
 	For principals, note that only 'id' actually matters.
 	It must match the username of a User in the database
@@ -10,16 +10,12 @@
 	<sp:principal id="ashley.stewart" login="ashley.stewart" title="Ashley Stewart"/>
 	<sp:grant principal="ashley.stewart" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
-	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
-
 	<sp:principal id="nic.stockdale" login="nic.stockdale" title="Nic Stockdale"/>
 	<sp:grant principal="nic.stockdale" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="brianna.gaither" login="brianna.gaither" title="Brianna Gaither"/>
 	<sp:grant principal="brianna.gaither" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="SZEditor" login="SZEditor" title="Stacy Zemke"/>
-	<sp:grant principal="SZEditor" role="nti.roles.contentlibrary.admin"/>
-
+	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
+	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
 </configure>
