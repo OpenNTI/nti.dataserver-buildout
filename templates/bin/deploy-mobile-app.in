@@ -3,7 +3,7 @@
 pushd ${deployment:root-directory}/sources/nti.web.mobile
 rm -rf node_modules/
 ${deployment:bin-directory}/npm install
-${deployment:bin-directory}/bower install
+${deployment:bin-directory}/npm update
 
 env_file=src/server/config/env.json
 if [ ! -e "$env_file" ]
@@ -11,6 +11,5 @@ then
 	ln -s ${deployment:etc-directory}/nodeserver/nodeserver-env.json "$env_file"
 fi
 
-${deployment:bin-directory}/grunt build --environment ${nodeserver-env:environment}
-${deployment:bin-directory}/grunt build:widgets --environment ${nodeserver-env:environment}
+NODE_ENV=development PATH=node_modules/.bin:$PATH make
 popd
