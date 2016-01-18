@@ -372,6 +372,8 @@ nti.dataserver
 
 /dataserver2/@@SyncAllLibraries (POST, GET)
 /dataserver2/@@RemoveSyncLock (POST, GET)
+/dataserver2/@@IsSyncInProgress (GET)
+/dataserver2/@@LastSyncTime (GET)
 
 /dataserver2/@@IntIdResolver/{intid} (GET) Resolves an intid
 /dataserver2/@@UnregisterMissingObjects (POST) Unregister from the intid utility all missing / broken objects
