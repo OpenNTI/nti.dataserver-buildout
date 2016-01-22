@@ -79,6 +79,9 @@ purchase_additional_confirmation_addresses = ${purchase_additional_confirmation_
 ###
 concurrent_enrollment_addresses = ${concurrent_enrollment_addresses}
 
+# Flag to send emails to non-NT addresses
+email_externally = ${email_externally}
+
 get sync_changes = sync_changes
 
 ## pyramid_mailer
