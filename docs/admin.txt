@@ -226,17 +226,11 @@ nti.app.products.courseware_ims
 
 nti.app.products.courseware_store
 
-/dataserver2/IMS/nti_enrollment (POST) Enroll users through an IMS feed
-	params:
-		ims: IMS source file (e.g. OU/OKState)
-
-/dataserver2/IMS/nti_create_users (POST) Create users from an IMS feed
-	params:
-		ims: IMS source file (e.g. OU/OKState)
-
 /dataserver2/@@VendorUpdatesPurchasedCourse (GET) Return the users who have selected to recieve vendor updates
 	params:
 		ntiid: Course/Catalog entry NTIID
+
+/dataserver2/@@SyncPurchasableCourseChoiceBundles (GET, POST) Sync all purchasable course choice bundles
 
 nti.app.products.courseware_reports
 
