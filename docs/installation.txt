@@ -153,7 +153,7 @@ parts =
 
 ==================
 
-[Content Generation (Optional)]
+[Content Generation]
 
 Install the following ports:
 	- libpng
@@ -198,11 +198,16 @@ Install the following ports:
 	- openexr
 	- liblqr
 	- npm
-	- jsmin (optional)
-	- xpdf (optional)
-	- gtk2 (optional)
-	- asymptote (optional)
-	- enchant (optional)
+	
+[dataserver (Optional)]
+	- xpdf
+	- gtk2
+	- redis
+	- jsmin
+	- asymptote
+	- enchant
+	- mysql56
+	- mysql56-server
 
 Install/download
 - phantomjs >= 1.9 < 2.0
