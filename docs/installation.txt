@@ -6,8 +6,6 @@
 	sudo port install python27
 	sudo port install py27-setuptools
 	sudo port install py27-yaml
-	sudo port install py27-certifi
-	sudo port install spidermonkey +fileobject
 	sudo port install libxml
 	sudo port install libxml2
 	sudo port install nasm
@@ -15,11 +13,12 @@
 	sudo port install cyrus-sasl2
 	sudo port install graphviz-devel
 	sudo port install wget
-	sudo port install jslint
+	sudo port install openjpeg
 
 	(Optional)
 
 	sudo port install bash
+	sudo port install coreutils
 
 6) edit [bash] profile located in your home directory (e.g. ~/.profile) and add to the PATH variable
 	/opt/local/bin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin
