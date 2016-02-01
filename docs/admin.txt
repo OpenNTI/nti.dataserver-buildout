@@ -185,6 +185,10 @@ nti.app.products.courseware
 /dataserver2/++path++to++course/discussions (GET) Return the autocreate course discussion definitions
 /dataserver2/++path++to++catalog++entry++/discussions (GET) Return the autocreate course discussion definitions
 
+/dataserver2/CourseAdmin/SyncCourseDiscussions (POST, GET) Sync all autocreated course discussions
+	params:
+		ntiid: Space delimieted course/catalog entry ntiid
+
 /dataserver2/CourseAdmin/DropCourseDiscussions (POST, GET) Remove all autocreated course discussions
 	params:
 		ntiid: Space delimieted course/catalog entry ntiid
