@@ -178,6 +178,8 @@
 			rewrite ^/landing/(.*)$ /$1 redirect;
 		}
 
+${extra_config}
+
 		# deny access to .htaccess files, if Apache's document root
 		# concurs with nginx's one
 		#
