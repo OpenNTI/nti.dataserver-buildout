@@ -10,8 +10,8 @@ defaults
     maxconn ${haproxy_maxconn}
 
     timeout queue 5s
-    timeout server 5m
-    timeout client 60s
+    timeout server 15m
+    timeout client 15m
     timeout connect 60s
     # Force websocket connections to move to a different
     # worker every so ofter. This overrides client/server
@@ -120,7 +120,7 @@ backend static_backend
     # option http-server-close
     option prefer-last-server
 
-    timeout server 30s
+    timeout server 15m
     timeout connect 4s
     ${static_servers}
 
@@ -150,6 +150,6 @@ backend data_backend
 backend node_backend
     mode http
     option prefer-last-server
-    timeout server 5m
+    timeout server 15m
     timeout connect 4s
     ${node_servers}

@@ -25,8 +25,8 @@ defaults
 	maxconn 16366
 
 	timeout queue 5s
-	timeout server 5m
-	timeout client 60s
+	timeout server 15m
+	timeout client 15m
 	timeout connect 60s
 	# Force websocket connections to move to a different
 	# worker every so often. This overrides client/server
@@ -34,7 +34,7 @@ defaults
 	# At least, that's the intent, but it turns out this
 	# is an IDLE timeout, so it's much too high to do any
 	# good. Should we reconsider? Is this even needed?
-	timeout tunnel 10m
+	timeout tunnel 15m
 	errorfile 408 /dev/null
 
 listen ssl-term
@@ -190,7 +190,7 @@ backend www_backend
 
 	${haproxy_backend_port_rewrite}
 
-	timeout server 30s
+	timeout server 15m
 	timeout connect 4s
 	${nginx_servers}
 
@@ -218,7 +218,7 @@ backend socket_backend
 backend node_backend
 	mode http
 	option prefer-last-server
-	timeout server 30s
+	timeout server 15m
 	timeout connect 4s
 	# reqrep ^(.*\ )/mobile(/?.*) \1\2
 	${nodejs_servers}

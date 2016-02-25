@@ -20,13 +20,13 @@ defaults
     maxconn ${haproxy_global_maxconn}
 
     timeout queue 5s
-    timeout server 5m
-    timeout client 60s
+    timeout server 15m
+    timeout client 15m
     timeout connect 60s
     # Force websocket connections to move to a different
     # worker every so ofter. This overrides client/server
     # timeout
-    timeout tunnel 10m
+    timeout tunnel 15m
     errorfile 408 /dev/null
 
 listen httpredir
