@@ -121,7 +121,7 @@
 		}
 
 		location ${webapp_location} {
-			alias ${webapp_path/src/main/|shell-path}/;
+			alias ${webapp_path/dist/client/|shell-path}/;
 			# a header so that we can do a head request and try to
 			# bust the cached redirect... see login app.
 			add_header X-NTI-WebApp true;
@@ -131,15 +131,15 @@
 ${nginx_extra_server_config}
 
 		location ${webapp_location}js/ {
-			alias ${webapp_path/src/main/|shell-path}/js/;
+			alias ${webapp_path/dist/client/|shell-path}/js/;
 		}
 
 		location ${webapp_location}resources/ {
-			alias ${webapp_path/src/main/|shell-path}/resources/;
+			alias ${webapp_path/dist/client/|shell-path}/resources/;
 		}
 
 		location ${webapp_location}content/ {
-			alias ${webapp_path/src/main/|shell-path}/content/;
+			alias ${webapp_path/dist/client/|shell-path}/content/;
 		}
 
 		location ${webapp_location}config.js {
@@ -168,7 +168,7 @@ ${nginx_extra_server_config}
 
 
 		location ${global_content_location}welcome/ {
-			alias ${webapp_path/src/main/content/welcome/|shell-path}/;
+			alias ${webapp_path/dist/client/content/welcome/|shell-path}/;
 		}
 
 		location /purchasables/ { # JAM: Not sure what this is
@@ -186,7 +186,7 @@ ${nginx_extra_server_config}
  		# JAM: The locations beginning with /NextThoughtWebApp/ are for
 		# BWC (old bookmarks) only right now.
 		location /NextThoughtWebApp/ {
-			alias ${webapp_path/src/main/|shell-path}/;
+			alias ${webapp_path/dist/client/|shell-path}/;
 		}
 
 		location /NextThoughtWebApp/config.js {

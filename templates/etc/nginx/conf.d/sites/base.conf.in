@@ -87,7 +87,7 @@
 		}
 
 		location ${nginx-conf:webapp_location} {
-			alias ${nginx-conf:webapp_path/src/main/|shell-path}/;
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/;
 			# a header so that we can do a head request and try to
 			# bust the cached redirect... see login app.
 			add_header X-NTI-WebApp true;
@@ -95,15 +95,15 @@
 		}
 
 		location ${nginx-conf:webapp_location}js/ {
-			alias ${nginx-conf:webapp_path/src/main/|shell-path}/js/;
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/js/;
 		}
 
 		location ${nginx-conf:webapp_location}resources/ {
-			alias ${nginx-conf:webapp_path/src/main/|shell-path}/resources/;
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/resources/;
 		}
 
 		location ${nginx-conf:webapp_location}content/ {
-			alias ${nginx-conf:webapp_path/src/main/|shell-path}/content/;
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/content/;
 		}
 
 		location ${nginx-conf:webapp_location}config.js {
@@ -147,7 +147,7 @@
 		}
 
 		location ${nginx-conf:global_content_location}welcome/ {
-			alias ${nginx-conf:webapp_path/src/main/content/welcome/|shell-path}/;
+			alias ${nginx-conf:webapp_path/dist/client/content/welcome/|shell-path}/;
 		}
 
 		location ${nginx-conf:loginapp_location} {
