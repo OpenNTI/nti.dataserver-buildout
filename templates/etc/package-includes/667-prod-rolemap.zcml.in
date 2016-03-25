@@ -18,4 +18,10 @@
 
 	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
 	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
+
+	<sp:principal id="meleah.meadows" login="meleah.meadows" title="Meleah Meadows"/>
+	<sp:grant principal="meleah.meadows" role="nti.roles.contentlibrary.admin"/>
+
+	<sp:principal id="stacy.zemke" login="stacy.zemke" title="Stacy Zemke"/>
+	<sp:grant principal="stacy.zemke" role="nti.roles.contentlibrary.admin"/>
 </configure>
