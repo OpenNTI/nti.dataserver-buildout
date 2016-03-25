@@ -25,11 +25,11 @@
 	<sp:principal id="stacy.zemke" login="stacy.zemke" title="Stacy Zemke"/>
 	<sp:grant principal="stacy.zemke" role="nti.roles.contentlibrary.admin"/>
 
-	<!—- Can this go away? —->
+	<!-- Can this go away -->
 	<sp:principal id="SZEditor" login="SZEditor" title="Stacy Zemke"/>
 	<sp:grant principal="SZEditor" role="nti.roles.contentlibrary.admin"/>
 
-	<!—- For Testing —->
+	<!-- For testing -->
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
 	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
 
