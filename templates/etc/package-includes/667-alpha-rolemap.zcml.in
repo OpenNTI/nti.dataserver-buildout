@@ -18,11 +18,25 @@
 
 	<sp:principal id="brianna.gaither" login="brianna.gaither" title="Brianna Gaither"/>
 	<sp:grant principal="brianna.gaither" role="nti.roles.contentlibrary.admin"/>
-	
+
+	<sp:principal id="meleah.meadows" login="meleah.meadows" title="Meleah Meadows"/>
+	<sp:grant principal="meleah.meadows" role="nti.roles.contentlibrary.admin"/>
+
+	<sp:principal id="stacy.zemke" login="stacy.zemke" title="Stacy Zemke"/>
+	<sp:grant principal="stacy.zemke" role="nti.roles.contentlibrary.admin"/>
+
+	<!—- Can this go away? —->
+	<sp:principal id="SZEditor" login="SZEditor" title="Stacy Zemke"/>
+	<sp:grant principal="SZEditor" role="nti.roles.contentlibrary.admin"/>
+
+	<!—- For Testing —->
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
 	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="SZEditor" login="SZEditor" title="Stacy Zemke"/>
-	<sp:grant principal="SZEditor" role="nti.roles.contentlibrary.admin"/>
+	<sp:principal id="global.admin.alpha" login="global.admin.alpha" title="Global Admin Alpha"/>
+	<sp:grant principal="global.admin.alpha" role="nti.roles.contentlibrary.admin"/>
+
+	<sp:principal id="global.admin.alpha1" login="global.admin.alpha1" title="Global Admin Alpha 1"/>
+	<sp:grant principal="global.admin.alpha1" role="nti.roles.contentlibrary.admin"/>
 
 </configure>
