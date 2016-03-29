@@ -7,8 +7,6 @@ export PATH=node_modules/.bin:${deployment:bin-directory|shell-path}:$PATH
 export GEM_HOME=${buildout:parts-directory|shell-path}/compass
 
 pushd ${environment:webapp_path|shell-path}
-# First, compass compile
-compass compile
 
 rm -rf node_modules/
 ${deployment:bin-directory}/npm install
