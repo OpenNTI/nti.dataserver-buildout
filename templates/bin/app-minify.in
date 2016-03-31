@@ -2,9 +2,6 @@
 
 # Put local npm-bin and compass on the path
 export PATH=node_modules/.bin:${deployment:bin-directory|shell-path}:$PATH
-# Let compass know where its gems are, as the wrapper
-# script isn't smart enough to do that
-export GEM_HOME=${buildout:parts-directory|shell-path}/compass
 
 pushd ${environment:webapp_path|shell-path}
 
