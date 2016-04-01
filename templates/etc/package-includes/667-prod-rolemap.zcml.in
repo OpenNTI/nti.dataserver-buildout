@@ -9,6 +9,9 @@
 	-->
 	<sp:principal id="ashley.stewart" login="ashley.stewart" title="Ashley Stewart"/>
 	<sp:grant principal="ashley.stewart" role="nti.roles.contentlibrary.admin"/>
+	
+	<sp:principal id="Ashley.stewart" login="Ashley.stewart" title="Ashley Stewart"/>
+	<sp:grant principal="Ashley.stewart" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="nic.stockdale" login="nic.stockdale" title="Nic Stockdale"/>
 	<sp:grant principal="nic.stockdale" role="nti.roles.contentlibrary.admin"/>
