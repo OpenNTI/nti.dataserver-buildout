@@ -1,0 +1,51 @@
+global
+    log 127.0.0.1 local2 info
+    # Total Max Connections. This is dependent on ulimit
+    maxconn ${haproxy_maxconn}
+
+    stats socket ${stats_socket} user ${stats_socket_owner} mode 600 level admin
+    stats timeout 2m
+
+defaults
+    maxconn ${haproxy_maxconn}
+
+    timeout queue 5s
+    timeout server 30s
+    timeout client 30s
+    timeout connect 10s
+    errorfile 408 /dev/null
+
+frontend all
+    mode http
+    log global
+    option httplog
+
+    # Socket for Tier 1 <-> Tier 2 communication
+    bind unix@${haproxy_socket} user ${haproxy_socket_user} mode 600 id 42 accept-proxy
+
+    default_backend blocked_backend
+
+    acl is_whitelist_host src 108.61.156.146
+    acl is_whitelist_host src 156.110.43.3
+
+    acl is_whitelist_path path_beg /job/nti.ios.analytics/
+    acl is_whitelist_path path_beg /job/nti.ios.whiteboard/
+    acl is_whitelist_path path_beg /job/nti.ios.userdatamodel/
+    acl is_whitelist_path path_beg /queue/item/
+
+    use_backend jenkins_backend if is_whitelist_host is_whitelist_path
+
+backend blocked_backend
+    # This backend defines no servers,
+    # which means using it results in a 503 Service Unavailable.
+    # We use that to map that error to a canned response.
+    mode http
+    errorfile 403 ${deployment:etc-directory|shell-path}/haproxy/blocked.http
+
+backend ci_backend
+    mode http
+    option forwardfor # This sets X-Forwarded-For
+    option http-server-close
+
+    ${ci_servers}
+
