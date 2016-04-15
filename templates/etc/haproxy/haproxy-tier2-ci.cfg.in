@@ -33,7 +33,7 @@ frontend all
     acl is_whitelist_path path_beg /job/nti.ios.userdatamodel/
     acl is_whitelist_path path_beg /queue/item/
 
-    use_backend jenkins_backend if is_whitelist_host is_whitelist_path
+    use_backend ci_backend if is_whitelist_host is_whitelist_path
 
 backend blocked_backend
     # This backend defines no servers,
