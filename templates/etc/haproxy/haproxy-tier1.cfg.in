@@ -54,6 +54,8 @@ listen httpredir
 listen ssl-term
     mode http
     bind-process 2,3,4
+    log global
+    option httplog
     ${haproxy_ssl_binds}
 
     # Let gunicorn/nginx know if we are dealing with an incoming HTTPS request
