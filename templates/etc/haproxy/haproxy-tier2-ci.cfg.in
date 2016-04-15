@@ -23,7 +23,7 @@ frontend all
     # Socket for Tier 1 <-> Tier 2 communication
     bind unix@${haproxy_socket} user ${haproxy_socket_user} mode 600 id 42 accept-proxy
 
-    default_backend blocked_backend
+    default_backend ci_backend
 
     acl is_whitelist_host src 108.61.156.146
     acl is_whitelist_host src 156.110.43.3
@@ -33,14 +33,7 @@ frontend all
     acl is_whitelist_path path_beg /job/nti.ios.userdatamodel/
     acl is_whitelist_path path_beg /queue/item/
 
-    use_backend ci_backend if is_whitelist_host is_whitelist_path
-
-backend blocked_backend
-    # This backend defines no servers,
-    # which means using it results in a 503 Service Unavailable.
-    # We use that to map that error to a canned response.
-    mode http
-    errorfile 403 ${deployment:etc-directory|shell-path}/haproxy/blocked.http
+    http-request deny if !is_whitelist_host or !is_whitelist_path
 
 backend ci_backend
     mode http
