@@ -79,6 +79,12 @@ purchase_additional_confirmation_addresses = ${purchase_additional_confirmation_
 ###
 concurrent_enrollment_addresses = ${concurrent_enrollment_addresses}
 
+###
+# I2 BCC enrollment addresses
+# A whitespace separated list
+###
+i2_enrollment_addresses = ${i2_enrollment_addresses}
+
 # Flag to send emails to non-NT addresses
 email_externally = ${email_externally}
 
