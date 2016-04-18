@@ -182,6 +182,18 @@ nti.app.products.courseware
 	params:
 		ntiid: Course/Catalog entry ntiid
 
+/dataserver2/CourseAdmin/ExportCourse (POST) Export a course
+	params:
+		ntiid: Catalog entry ntiid
+
+/dataserver2/CourseAdmin/ImportCourse (POST) Import/Create a course
+	params:
+		ntiid: Catalog entry ntiid (Optional)
+		admin: administrative level (Optional)
+		key: Course key (Optional)
+		path: Archive path (Optional)
+		input: Multi-part zip input source (Optional)
+
 /dataserver2/++path++to++course/discussions (GET) Return the autocreate course discussion definitions
 /dataserver2/++path++to++catalog++entry++/discussions (GET) Return the autocreate course discussion definitions
 
