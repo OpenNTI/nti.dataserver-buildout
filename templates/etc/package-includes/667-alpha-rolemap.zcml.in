@@ -10,6 +10,9 @@
 	<sp:principal id="ashley.stewart" login="ashley.stewart" title="Ashley Stewart"/>
 	<sp:grant principal="ashley.stewart" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="ega.panjei" login="ega.panjei" title="Ega Panjei"/>
+	<sp:grant principal="ega.panjei" role="nti.roles.contentlibrary.admin"/>
+
 	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
 	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
 
