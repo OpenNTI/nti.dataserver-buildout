@@ -64,7 +64,11 @@
 		}
 
 		location = /mobile/resources/css/sites/current/site.css {
-			alias ${sitepackage_location}/dist/mobileapp/site.css;
+			return 301 $uri_scheme://$host/site-assets/mobileapp/site.css;
+		}
+
+		location /site-assets/ {
+			alias ${sitepackage_location}/dist/;
 		}
 
 		location /widgets {
@@ -111,7 +115,7 @@
 		}
 
 		location ${nginx-conf:webapp_location}resources/css/site.css {
-			return 301 $uri_scheme://$host${nginx-conf:webapp_location}resources/css/site/site.css;
+			return 301 $uri_scheme://$host/site-assets/webapp/site.css;
 		}
 
 		location ${nginx-conf:webapp_location}resources/css/site/ {
@@ -123,11 +127,11 @@
 		}
 
 		location ${nginx-conf:webapp_location}resources/strings/site.js {
-			alias ${sitepackage_location}/dist/webapp/strings.js;
+			return 301 $uri_scheme://$host/site-assets/webapp/strings.js;
 		}
 
 		location = ${nginx-conf:webapp_location}resources/images/favicon.ico {
-			alias ${sitepackage_location}/dist/shared/favicon.ico;
+			return 301 $uri_scheme://$host/favicon.ico;
 		}
 
 		location ${nginx-conf:global_content_location} {
@@ -161,7 +165,7 @@
 		}
 
 		location = ${nginx-conf:loginapp_location}resources/css/site.css {
-			return 301 $uri_scheme://$host${nginx-conf:loginapp_location}resources/css/site/site.css;
+			return 301 $uri_scheme://$host/site-assets/loginapp/site.css;
 		}
 
 		location ${nginx-conf:loginapp_location}resources/css/site/ {
@@ -169,11 +173,11 @@
 		}
 
 		location = ${nginx-conf:loginapp_location}resources/strings/site.js {
-			alias ${sitepackage_location}/dist/loginapp/strings.js;
+			return 301 $uri_scheme://$host/site-assets/loginapp/strings.js;
 		}
 
 		location = ${nginx-conf:loginapp_location}resources/favicon.ico {
-			alias ${sitepackage_location}/dist/shared/favicon.ico;
+			return 301 $uri_scheme://$host/favicon.ico;
 		}
 
 		location /landing {
