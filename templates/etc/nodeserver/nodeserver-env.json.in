@@ -53,13 +53,7 @@
 		"mode": "production",
 		"server": "http://${dataserver-ip}:${dataserver-port}/dataserver2/",
 		"port": ${http-port},
-		"user-agreement": "${user-agreement-url}",
-
-		"apps": [
-			{
-
-			}
-		]
+		"user-agreement": "${user-agreement-url}"
 	},
 
 
