@@ -7,7 +7,7 @@
 
 		"apps": [
 			{
-				"package": "../../sources/nti.web.mobile",
+				"package": "../../../sources/nti.web.mobile",
 				"basepath": "/mobile/",
 
 				"analyticsKey": "${analytics-key}",
