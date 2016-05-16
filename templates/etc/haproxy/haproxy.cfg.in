@@ -222,3 +222,11 @@ backend node_backend
 	timeout connect 4s
 	# reqrep ^(.*\ )/mobile(/?.*) \1\2
 	${nodejs_servers}
+
+backend widget_dev_backend
+	mode http
+	option prefer-last-server
+	timeout server 15m
+	timeout connect 4s
+	reqrep ^(.*\ )/widget(/?.*) \1\2
+	server nodejs 127.0.0.1:8000 observe layer7 weight 1
