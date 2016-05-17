@@ -60,7 +60,7 @@ frontend all
     # that may contain this data.  This is the approach we took with
     # landing and it gets load off the server.  We probably want to do
     # this for the rest of the site.css files also - CMU
-    acl is_mobile_site_css path_beg /mobile/resources/css/sites/current/site.css
+    acl is_mobile_site_css path_beg /mobile/resources/css/sites/
 
     # Acls for optimizing away having to wait for a several second
     # webapp load if we know we are def. not authed

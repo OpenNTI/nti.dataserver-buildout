@@ -27,13 +27,20 @@ frontend all
 
     acl is_whitelist_host src 108.61.156.146
     acl is_whitelist_host src 156.110.43.3
+    acl in_whitelist_host src 66.210.82.130/24 # NCED static IP
+    acl in_whitelist_host src 156.110.241.0/24 # Datacenter public IPs
+    acl in_whitelist_host src 10.50.0.0/16 # Internal IPs
+    acl in_whitelist_host src 127.0.0.0/8 # Localhost
+    acl in_whitelist_host src 72.200.207.160/32 # Julie
+    acl in_whitelist_host src 98.162.214.29/32 # Kaley
+    acl in_whitelist_host src 68.97.80.153/32 # Kaley 2
+    acl in_whitelist_host src 162.242.30.207/32 # Mary
+    acl in_whitelist_host src 162.242.30.201/32 # Mary 2
+    acl in_whitelist_host src 72.200.203.181/32 # Jonathan
+    acl in_whitelist_host src 68.97.124.91/32 # Josh Z
+    acl in_whitelist_host src 72.198.26.201/32 # Carlos
 
-    acl is_whitelist_path path_beg /job/nti.ios.analytics/
-    acl is_whitelist_path path_beg /job/nti.ios.whiteboard/
-    acl is_whitelist_path path_beg /job/nti.ios.userdatamodel/
-    acl is_whitelist_path path_beg /queue/item/
-
-    http-request deny if !is_whitelist_host or !is_whitelist_path
+    http-request deny if !is_whitelist_host
 
 backend ci_backend
     mode http
