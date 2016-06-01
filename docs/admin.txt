@@ -381,6 +381,8 @@ nti.dataserver
 /dataserver2/@@bounced_email_admin POST, GET)
 
 /dataserver2/@@SyncAllLibraries (POST, GET)
+	params:
+		allowRemoval: Boolean on whether to allow the force removal of courses (defautls to false)
 /dataserver2/@@RemoveSyncLock (POST, GET)
 /dataserver2/@@IsSyncInProgress (GET)
 /dataserver2/@@LastSyncTime (GET)
