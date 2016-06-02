@@ -37,7 +37,9 @@ except ImportError:
     
 LATEST = "22.0.0"
 DEFAULT_VERSION = LATEST
-DEFAULT_URL = "https://downloads.nextthought.com/deps/eggs/"
+DEFAULT_URL_NT = "https://downloads.nextthought.com/deps/eggs/"
+DEFAULT_URL_PYPI = "https://pypi.io/packages/source/s/setuptools/"
+DEFAULT_URL = DEFAULT_URL_PYPI
 DEFAULT_SAVE_DIR = os.curdir
 
 
