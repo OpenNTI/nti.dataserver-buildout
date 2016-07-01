@@ -7,19 +7,19 @@ var $AppConfig = {
 	"enableLogging": ${enable_logging},
 	"enableLogCapture": true,
 	"enableSymbolicLinkingNav": true,
-	
+
 	"obscureUsernames": ${obscure_usernames},
 	"openExternalPDFsInNewWindow": ${external_pdf_new_window},
 
 	"features": {
 		${features}
 	},
-	"server" : {
-		"host": "",
-		"data": "/dataserver2/",
-		"login": "${unauth_location}",
-		"unsupported": "/login/unsupported.html"
-	},
+
+	"server": "/dataserver2/",
+	"server-host": "",
+	"server-path": "/dataserver2/",
+	"login": "${unauth_location}",
+	"unsupported": "/login/unsupported.html",
 
 	"corsSalt": "${cors_salt}",
 	"allowIPad": ${allow_mobile_safari},
@@ -32,7 +32,7 @@ var $AppConfig = {
 		"inactive_timeout": ${activity_inactive_timeout},
 		"inactive_warn": ${activity_inactive_warn},
 		"blur_timeout": ${activity_blur_timeout},
-		"blur_warn": ${activity_blur_warn}	
+		"blur_warn": ${activity_blur_warn}
 	}
 };
 
@@ -42,11 +42,11 @@ if( ${enable_global_onerror} ){
 		var urls = url.split(/([\r\n]+)|(\s*-\>\s*)/);
 		//did it come from us?
 		var basePrefix = new RegExp("^" + location.protocol + '//' + location.host, "i");
-		if (basePrefix.test(urls[0])) {	
+		if (basePrefix.test(urls[0])) {
 			if((window.NextThought || {}).isInitialized){
 				return;
 			}
-			window.location.replace($AppConfig.server.unsupported);
+			window.location.replace($AppConfig.unsupported);
 		}
 	};
 
