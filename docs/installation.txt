@@ -14,6 +14,7 @@
 	sudo port install graphviz-devel
 	sudo port install wget
 	sudo port install openjpeg
+	sudo port xmlsec (Optional)
 
 	(Optional)
 
@@ -201,7 +202,6 @@ Install the following ports:
 [dataserver (Optional)]
 	- xpdf
 	- gtk2
-	- redis
 	- jsmin
 	- asymptote
 	- enchant
