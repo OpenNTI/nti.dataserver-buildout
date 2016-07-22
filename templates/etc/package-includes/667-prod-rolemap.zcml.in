@@ -34,6 +34,9 @@
 	<sp:principal id="meleah.meadows" login="meleah.meadows" title="Meleah Meadows"/>
 	<sp:grant principal="meleah.meadows" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="julie.zhu" login="julie.zhu" title="Julie Zhu"/>
+	<sp:grant principal="julie.zhu" role="nti.roles.contentlibrary.admin"/>
+	
 	<sp:principal id="stacy.zemke" login="stacy.zemke" title="Stacy Zemke"/>
 	<sp:grant principal="stacy.zemke" role="nti.roles.contentlibrary.admin"/>
 </configure>
