@@ -8,7 +8,7 @@
 
 	<include package="z3c.baseregistry" file="meta.zcml" />
 
-	<registerIn registry="nti.app.sites.augs.AUGS">
+	<registerIn registry="nti.app.sites.augs.sites.AUGS">
 		<adb:registerAnalyticsDB
 				dburi="${analytics-aug:driver}://${analytics-aug:user}:${analytics-aug:password}@${analytics-aug:host}/${analytics-aug:dbname}?charset=utf8"
 				twophase="${analytics-aug:twophase}"
