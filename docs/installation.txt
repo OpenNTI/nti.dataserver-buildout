@@ -14,7 +14,7 @@
 	sudo port install graphviz-devel
 	sudo port install wget
 	sudo port install openjpeg
-	sudo port xmlsec (Optional)
+	sudo port xmlsec
 
 	(Optional)
 
