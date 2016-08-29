@@ -207,8 +207,3 @@ Install the following ports:
 	- enchant
 	- mysql56
 	- mysql56-server
-
-Install/download
-- phantomjs >= 1.9 < 2.0
-  http://phantomjs.org, download and place the phantomjs command somewhere on your path, e.g.,
-  ~/bin/
