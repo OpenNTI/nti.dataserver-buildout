@@ -1,6 +1,6 @@
 1) Download/Install Xcode
 2) Download/Install Xcode command line tools ()
-3) Download/Install latest [Oracle] JDK 1.7
+3) Download/Install latest [Oracle] JDK
 4) Install macports
 5) execute:
 	sudo port install python27
