@@ -7,8 +7,8 @@
 	It must match the username of a User in the database
 	to have any effect.
 	-->
-	<sp:principal id="carmon.drumm" login="carmon.drumm" title="Carmon Drumm"/>
-	<sp:grant principal="carmon.drumm" role="nti.roles.contentlibrary.admin"/>
+	<sp:principal id="janelle.barrick" login="janelle.barrick" title="Janelle Barrick"/>
+	<sp:grant principal="janelle.barrick" role="nti.roles.contentlibrary.admin"/>
 	
 	<sp:principal id="lacey.white" login="lacey.white" title="Lacey White"/>
 	<sp:grant principal="lacey.white" role="nti.roles.contentlibrary.admin"/>
@@ -21,9 +21,6 @@
 
 	<sp:principal id="ega.panjei" login="ega.panjei" title="Ega Panjei"/>
 	<sp:grant principal="ega.panjei" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="nic.stockdale" login="nic.stockdale" title="Nic Stockdale"/>
-	<sp:grant principal="nic.stockdale" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="brianna.gaither" login="brianna.gaither" title="Brianna Gaither"/>
 	<sp:grant principal="brianna.gaither" role="nti.roles.contentlibrary.admin"/>
