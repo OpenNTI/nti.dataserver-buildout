@@ -34,6 +34,9 @@
 	<sp:principal id="julie.zhu" login="julie.zhu" title="Julie Zhu"/>
 	<sp:grant principal="julie.zhu" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
+	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
+	
 	<sp:principal id="yvonne.chan" login="yvonne.chan" title="Yvonne Chan"/>
 	<sp:grant principal="yvonne.chan" role="nti.roles.contentlibrary.admin"/>
 	
