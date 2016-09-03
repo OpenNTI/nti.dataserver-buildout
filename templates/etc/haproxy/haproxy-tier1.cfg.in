@@ -89,6 +89,8 @@ frontend all
 
     use_backend ip_blocked_backend if is_blocked_ip
     use_backend ci_backend if is_ci
+    use_backend genius_backend if is_genius
+    use_backend genius_alpha_backend if is_genius_alpha
     use_backend jira_backend if is_jira
     use_backend npm_backend if is_npm
     use_backend splunk_backend if is_splunk
@@ -127,6 +129,18 @@ backend ci_backend
     option http-server-close
     ${haproxy_ci_backend}
 
+# Genius
+backend genius_backend
+    mode http
+    option http-server-close
+    ${haproxy_genius_backend}
+
+# Genius Alpha
+backend genius_alpha_backend
+    mode http
+    option http-server-close
+    ${haproxy_genius_alpha_backend}
+
 # Jira
 backend jira_backend
     mode http
@@ -140,7 +154,6 @@ backend npm_backend
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
     timeout server 30s
-    timeout client 30s
     ${haproxy_npm_backend}
 
 # Splunk
@@ -156,76 +169,65 @@ backend static_hosting_backend
     option forwardfor # This sets X-Forwarded-For
     option http-server-close
     timeout server 30s
-    timeout client 30s
     ${haproxy_static_hosting_backend}
 
 # Old Prod
 backend tier2_backend0
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend0}
 
 # MATHCOUNTS
 backend tier2_backend1
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend1}
 
 # Alpha
 backend tier2_backend2
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend2}
 
 # Janux
 backend tier2_backend3
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend3}
 
 # OU-Test
 backend tier2_backend4
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend4}
 
 # Content Dev
 backend tier2_backend5
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend5}
 
 # Connect
 backend tier2_backend6
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend6}
 
 # CCMF
 backend tier2_backend7
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend7}
 
 # Performance Testing
 backend tier2_backend8
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend8}
 
 # OKState
 backend tier2_backend9
     mode http
-    option forwardfor # This sets X-Forwarded-For
     option http-server-close
     ${haproxy_tier2_backend9}
 
