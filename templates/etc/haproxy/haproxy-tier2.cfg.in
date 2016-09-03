@@ -42,19 +42,6 @@ frontend all
     acl google_verification url_beg /google
 
     acl is_mobile path_beg /mobile
-
-    acl is_websocket hdr(Upgrade) -i WebSocket
-    acl is_websocket hdr_beg(Host) -i ws
-
-    acl is_dyn path_beg /dataserver
-    acl is_dyn path_beg /_ops
-    acl is_dyn path_beg /library
-    acl is_dyn path_beg /socket.io
-    acl is_dyn path_beg /dictionary
-    # The plain strings (non-site-specific) is also passed to the DS
-    # for language negotiation and a redirect
-    acl is_dyn path_beg ${webapp_location}resources/strings/strings.js
-
     # unlike site css above for the mobile app we pass
     # site requests to nginx where we try file the appropriate places
     # that may contain this data.  This is the approach we took with
@@ -62,9 +49,12 @@ frontend all
     # this for the rest of the site.css files also - CMU
     acl is_mobile_site_css path_beg /mobile/resources/css/sites/
 
-    # Acls for optimizing away having to wait for a several second
-    # webapp load if we know we are def. not authed
-    acl is_maybe_authed hdr_sub(cookie) nti.auth_tkt # Do we have an auth.tkt? if not we are def. not authed
+    acl is_websocket hdr(Upgrade) -i WebSocket
+    acl is_websocket hdr_beg(Host) -i ws
+
+    acl is_dyn path_beg /dataserver
+    acl is_dyn path_beg /_ops
+    acl is_dyn path_beg /socket.io
 
     # Block some common attack vectors and private info
     acl is_blocked_name path_end .php .asp .jsp .exe .aspx
@@ -77,16 +67,6 @@ frontend all
     ${haproxy_extra_config}
 
     ${haproxy_extra_redirects}
-
-    # Go to the app by default
-    # redirect location /down/down.html code 302 if { path_beg /NextThoughtWebApp or path_beg /login }  #THIS IS FOR THE DOWN PAGE ONLY- NOT WORKING YET
-    # redirect location /NextThoughtWebApp/index.html code 301 if { path / }
-    redirect location /tutorials/index.html code 301 if { path /tutorials }
-
-    # If we might be authenticated, then if we are coming in to the root,
-    # try to go to the app instead. This helps preserve old bookmarks
-    # as well as streamlining the process.
-    redirect location /app/ code 302 if is_maybe_authed { path / } !robots !google_verification
 
     # use_backend www_backend_up if is_down
     use_backend s3_backend if robots
@@ -122,6 +102,9 @@ backend static_backend
 
     timeout server 15m
     timeout connect 4s
+
+    option httpchk GET / HTTP/1.1\r\nHost:\ ${hostname}
+
     ${static_servers}
 
 backend data_backend
@@ -138,12 +121,12 @@ backend data_backend
     # could send one request to each type of resource in the same
     # TCP connection. So we need server-close.
     # NOTE: This seems to be fixed in 1.5-dev22
-    # option http-server-close
+    #option http-server-close
     option prefer-last-server
     # option forwardfor if-none # This sets X-Forwarded-For
     # If we don't set this, then we lose X-Forwarded-For
 
-    option httpchk GET /_ops/ping HTTP/1.1
+    option httpchk GET /_ops/ping HTTP/1.1\r\nHost:\ ${hostname}
 
     ${dataservers}
 
