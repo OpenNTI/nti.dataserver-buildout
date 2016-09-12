@@ -11,7 +11,7 @@
 			"logout_requests_signed": false,
 			"authn_requests_signed": false,
 			"allow_unsolicited": true,
-			"required_attributes": ["FirstName", "LastName","Email", "SoonerID"],
+			"required_attributes": ["FirstName", "LastName","Email"],
 			"endpoints": {
 				"single_logout_service": [
 					[

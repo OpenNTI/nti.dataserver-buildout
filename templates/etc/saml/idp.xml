@@ -75,8 +75,11 @@
 			xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
 		<saml:Attribute Name="FirstName"
 			NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
-			xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
+			xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>	
 		<saml:Attribute Name="SoonerID"
+			NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
+			xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
+		<saml:Attribute Name="OuNetId"
 			NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"
 			xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/>
 	</md:IDPSSODescriptor>
