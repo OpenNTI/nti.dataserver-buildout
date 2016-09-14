@@ -1,0 +1,12 @@
+diff -uNr a/Makefile b/Makefile
+--- a/Makefile	2016-09-04 10:16:37.000000000 -0500
++++ b/Makefile	2016-09-14 12:10:08.319821729 -0500
+@@ -17,7 +17,7 @@
+ RM = rm -f
+ 
+ # On some platforms you might need to comment this out:
+-CFLAGS += -std=c90 
++CFLAGS += -ansi 
+ 
+ CFLAGS += -O3 -funroll-loops -fomit-frame-pointer
+ 
