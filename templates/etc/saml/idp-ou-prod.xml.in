@@ -1,0 +1,54 @@
+<md:EntityDescriptor ID="GWBaIjD.qpfwahuDdnUAWDsbSFZ" cacheDuration="PT1440M" entityID="sso.ou.edu" xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata"><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<ds:Reference URI="#GWBaIjD.qpfwahuDdnUAWDsbSFZ">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>DPoexUOTMH7yW/FM76hyWpKfbwLVZRvS4GrYhU7haow=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+NwqwN+SaX8ftQetwwvwc8AYu0cz5HQwvCommzYX5gvqRUQAbSrWoEl6627RZ1CfAY24Pl+5ohsnr
+LSKZhngdZgdG1hyUKGvih3RjwAnKf6S/2Fx2pHtJMoK2QbSOgEtvyi0bUq8JqGXf2FOxp4t/kWYb
+k5ZLb4N6XzhBkhmVK0nRX3Sdc+kE9smDOUOyzMpR67C/PK5MfeeBLLaynfPIpunH5ANOlXscrbcv
+2+dx+wC+S3ofz+7OUvLSU4liVgiTY3Vi5ABjHzwsRVgSfytAO34xIZsPATgWrQIzAOoPT9Fj/bPg
+HZwYziQpy8+HWpaAtGtR3TzR0/DCe1MYhff64X+IWuXE4PMUDeO5mZ+eQLuhGVBQmsDo7MeRbtWa
+4r8F2/nnU1WsB2KbhCxMk98FjHfLGybLo8YoW+vuUAM4hJvKfZrwST+TkSp5K1vjBscsQo87Osj7
+AdEAdEBnS1wXaTfsVm71L2Mk22QoGV1p+/ayvSXDN6t75mcnVGpt43cjtUAkQ37TUHR60mxgfOxe
+jfF1dM70zKUr8JUtXDSAtV4lAxPKQX6xLfCHOo6iFL5uCH//Wy/Xs/3+v+uvVx8pXg4qWJMf7Tsw
+LEX299es3+KldVlbogd2He7airt14q5AOVz8Gm46BHivJ5qYnKVelojaDGbG4TfPweQy8bVESSo=
+</ds:SignatureValue>
+<ds:KeyInfo>
+<ds:X509Data>
+<ds:X509Certificate>
+MIIFFjCCAv6gAwIBAgIGAVWYYTeDMA0GCSqGSIb3DQEBDQUAMEsxCzAJBgNVBAYTAlVTMR8wHQYD
+VQQKExZVbml2ZXJzaXR5IG9mIE9rbGFob21hMRswGQYDVQQDExJzaWduaW5nLnNzby5vdS5lZHUw
+IBcNMTYwNjI4MTg1OTE1WhgPMjExNjA2MDQxODU5MTVaMEsxCzAJBgNVBAYTAlVTMR8wHQYDVQQK
+ExZVbml2ZXJzaXR5IG9mIE9rbGFob21hMRswGQYDVQQDExJzaWduaW5nLnNzby5vdS5lZHUwggIi
+MA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCVhDlgsvc2+6r23QAv2czITg/LAT8xuaXs7eFW
+7/bhBRK69uAL3aaOWRgsnBMEfhAIS+qCkh5SOkDPs1RjF7JGqbU1fo/u5W9G2lMVTYrAIAmdzgd1
+xaOHORpCe+ygxEaOAANKo65l94fcDJqb7QEmPCoPaBTbSOy3MogXoJ/wOq9az+VwXy0Myp8+Y7SX
+RDlT4SU0WBvUyz27oHJQFaLDddYxPOSIEpRLQtNI465JaJ5NpgWgKl39xhLmhzyArNp3rEJ3pN2E
+OzA1Zy4vZj1xxBwzj5/8ojFfhR0G/hDjRhYQGDraDu0k/TLkLbN/zIPS7FlwlDd/s0URqTdEM9gL
+bMAYIfuXatM9ZkoN76K/y1rsyQyikhq254AbpblR6DFov1GwMZmbVnd91g8zXndE2IyejImtpjZG
+a+4vsnnsFNTE8IX9jbFngqQyPmuMZAxlCr6V/YdGbXcnpMTGBsABXH3lL70lcAyPWKmKW3/MmZ+t
+Jc/3kwvuih9N6ZUQybBKvpykJ3CWN1+FlQnRADSaFxU5dfGfbrKWHC5iHNsLFe6OQfWELvwplXag
+gzPwn+0pt4nJAl40wWM+JYe4i+381fwyptRQIOnRmkCsL+u5fL+R0PLyXtn9VHyL4AmtdbPGXV71
+ETDOgp2gQ968vCtFBaaVYymIUIpik98QNVtJ6wIDAQABMA0GCSqGSIb3DQEBDQUAA4ICAQBMSjp7
+6hUN4QRgm9mMGFdikL4htzYzhUccLe4PgyC6ekh7h7mivp4K8+C6o3jJbFeTQzSd11K6bAYZA2Qb
+rGMuqlP/IBKtr1wO1LZ58DgsW6W0hDLClkv8DNFuyLA2hgh+i6iIv01zWsJlzknlQ9IvfB7BqK2f
+NgX2ZcmsLadVGx1CD5svvePbxuZJtdxOwzytY35T/kmNZWL8r30kWJBlpNIRHQapwnXZwWerjkXO
+0TFSfIgdJSxB5qtSJ1bk6xtSf61VV0st2LRBOb65ix+ihh9Ds8UxqZhw44GbrfEhn91EYmuR8D7p
+jZw6+HRruCrEQyU2/A3fVpiy7XlqP1iLGAsHrqxwMlEz/9L2SQ23PPClukDOT5kyGN5H8h762CfX
+M9YKdgdSwB7o45xgcBnrGt+TwBNoSqEEjlKdjMmUZTFavgIZqgLueGkUBbLU2sDb1Y78VsCQjixU
+nY3RsMIkvDX4hd2v/+WDGGzqMGsWZfSKGCjuDEvbcMufWm/8PpKzC6nu21b+Frtnk30xYD3Hi39g
+rGG771p83X8ZneKMcLETq5znRByEZQZYPvox/Ju8dciZtZptlKCpPO4I49tGpmBbOf6dH9qWFewm
+mYoAuJBieBAAisQ0kyHMZWZ0AwmjYEZORMSutyFqO4iQH8S4DiT1Hgc2rtKqHle+eGV6+w==
+</ds:X509Certificate>
+</ds:X509Data>
+</ds:KeyInfo>
+</ds:Signature><md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol" WantAuthnRequestsSigned="false"><md:KeyDescriptor use="signing"><ds:KeyInfo xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><ds:X509Data><ds:X509Certificate>MIIFFjCCAv6gAwIBAgIGAVWYYTeDMA0GCSqGSIb3DQEBDQUAMEsxCzAJBgNVBAYTAlVTMR8wHQYDVQQKExZVbml2ZXJzaXR5IG9mIE9rbGFob21hMRswGQYDVQQDExJzaWduaW5nLnNzby5vdS5lZHUwIBcNMTYwNjI4MTg1OTE1WhgPMjExNjA2MDQxODU5MTVaMEsxCzAJBgNVBAYTAlVTMR8wHQYDVQQKExZVbml2ZXJzaXR5IG9mIE9rbGFob21hMRswGQYDVQQDExJzaWduaW5nLnNzby5vdS5lZHUwggIiMA0GCSqGSIb3DQEBAQUAA4ICDwAwggIKAoICAQCVhDlgsvc2+6r23QAv2czITg/LAT8xuaXs7eFW7/bhBRK69uAL3aaOWRgsnBMEfhAIS+qCkh5SOkDPs1RjF7JGqbU1fo/u5W9G2lMVTYrAIAmdzgd1xaOHORpCe+ygxEaOAANKo65l94fcDJqb7QEmPCoPaBTbSOy3MogXoJ/wOq9az+VwXy0Myp8+Y7SXRDlT4SU0WBvUyz27oHJQFaLDddYxPOSIEpRLQtNI465JaJ5NpgWgKl39xhLmhzyArNp3rEJ3pN2EOzA1Zy4vZj1xxBwzj5/8ojFfhR0G/hDjRhYQGDraDu0k/TLkLbN/zIPS7FlwlDd/s0URqTdEM9gLbMAYIfuXatM9ZkoN76K/y1rsyQyikhq254AbpblR6DFov1GwMZmbVnd91g8zXndE2IyejImtpjZGa+4vsnnsFNTE8IX9jbFngqQyPmuMZAxlCr6V/YdGbXcnpMTGBsABXH3lL70lcAyPWKmKW3/MmZ+tJc/3kwvuih9N6ZUQybBKvpykJ3CWN1+FlQnRADSaFxU5dfGfbrKWHC5iHNsLFe6OQfWELvwplXaggzPwn+0pt4nJAl40wWM+JYe4i+381fwyptRQIOnRmkCsL+u5fL+R0PLyXtn9VHyL4AmtdbPGXV71ETDOgp2gQ968vCtFBaaVYymIUIpik98QNVtJ6wIDAQABMA0GCSqGSIb3DQEBDQUAA4ICAQBMSjp76hUN4QRgm9mMGFdikL4htzYzhUccLe4PgyC6ekh7h7mivp4K8+C6o3jJbFeTQzSd11K6bAYZA2QbrGMuqlP/IBKtr1wO1LZ58DgsW6W0hDLClkv8DNFuyLA2hgh+i6iIv01zWsJlzknlQ9IvfB7BqK2fNgX2ZcmsLadVGx1CD5svvePbxuZJtdxOwzytY35T/kmNZWL8r30kWJBlpNIRHQapwnXZwWerjkXO0TFSfIgdJSxB5qtSJ1bk6xtSf61VV0st2LRBOb65ix+ihh9Ds8UxqZhw44GbrfEhn91EYmuR8D7pjZw6+HRruCrEQyU2/A3fVpiy7XlqP1iLGAsHrqxwMlEz/9L2SQ23PPClukDOT5kyGN5H8h762CfXM9YKdgdSwB7o45xgcBnrGt+TwBNoSqEEjlKdjMmUZTFavgIZqgLueGkUBbLU2sDb1Y78VsCQjixUnY3RsMIkvDX4hd2v/+WDGGzqMGsWZfSKGCjuDEvbcMufWm/8PpKzC6nu21b+Frtnk30xYD3Hi39grGG771p83X8ZneKMcLETq5znRByEZQZYPvox/Ju8dciZtZptlKCpPO4I49tGpmBbOf6dH9qWFewmmYoAuJBieBAAisQ0kyHMZWZ0AwmjYEZORMSutyFqO4iQH8S4DiT1Hgc2rtKqHle+eGV6+w==</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://sso.ou.edu/idp/SSO.saml2"/><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://sso.ou.edu/idp/SSO.saml2"/><saml:Attribute Name="Email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/><saml:Attribute Name="LastName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/><saml:Attribute Name="FirstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/><saml:Attribute Name="SoonerID" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified" xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"/></md:IDPSSODescriptor><md:ContactPerson contactType="administrative"><md:Company>University of Oklahoma</md:Company><md:GivenName>Mark</md:GivenName><md:SurName>McClellan</md:SurName><md:EmailAddress>mmcclellan@ou.edu</md:EmailAddress><md:TelephoneNumber>405-325-1810</md:TelephoneNumber></md:ContactPerson></md:EntityDescriptor>
