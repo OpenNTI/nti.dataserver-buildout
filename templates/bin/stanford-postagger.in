@@ -4,4 +4,9 @@ JAVA_CMD=${java-cmd}
 JAVA_OPTS=${java-opts}
 JAVA_MAIN=edu.stanford.nlp.tagger.maxent.MaxentTagger
 
-$JAVA_CMD $JAVA_OPTS -cp '${libraries}/*' $JAVA_MAIN -model "${models}/$1" -textFile $2
+OUTFILE=$3
+if [ -z "$3" ]; then
+	OUTFILE=$(echo $2 | cut -f 1 -d '.').tag
+fi
+
+$JAVA_CMD $JAVA_OPTS -cp '${libraries}/*' $JAVA_MAIN -model "${models}/$1" -textFile $2 -outputFormat tsv -outputFile $OUTFILE
