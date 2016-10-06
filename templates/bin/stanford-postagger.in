@@ -1,0 +1,7 @@
+#!/bin/sh
+
+JAVA_CMD=${java-cmd}
+JAVA_OPTS=${java-opts}
+JAVA_MAIN=edu.stanford.nlp.tagger.maxent.MaxentTagger
+
+$JAVA_CMD $JAVA_OPTS -cp '${libraries}/*' $JAVA_MAIN -model "${models}/$1" -textFile $2
