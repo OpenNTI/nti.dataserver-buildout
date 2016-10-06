@@ -6,7 +6,6 @@ JAVA_MAIN=edu.stanford.nlp.tagger.maxent.MaxentTagger
 
 MODEL=$1
 TEXT_FILE=$2
-OUTPUT_FILE=$3
 
 # if no second param assume default model
 if [ -z "$2" ]; then
@@ -14,8 +13,4 @@ if [ -z "$2" ]; then
 	MODEL=english-left3words-distsim.tagger
 fi
 
-if [ -z "$OUTPUT_FILE" ]; then
-	OUTPUT_FILE=$(echo $TEXT_FILE | cut -f 1 -d '.').tag
-fi
-
-$JAVA_CMD $JAVA_OPTS -cp '${libraries}/*' $JAVA_MAIN -model "${models}/$MODEL" -textFile $TEXT_FILE -outputFormat tsv -outputFile $OUTPUT_FILE
+$JAVA_CMD $JAVA_OPTS -cp '${libraries}/*' $JAVA_MAIN -model "${models}/$MODEL" -textFile $TEXT_FILE -outputFormat tsv
