@@ -9,5 +9,7 @@
 	-->
 	<sp:principal id="utz8239" login="utz8239" title="Chris Utz"/>
 	<sp:grant principal="utz8239" role="role:nti.oubound.scholarship.admin"/>
+	<sp:principal id="higg2108" login="higg2108" title="Greg Higgins"/>
+	<sp:grant principal="higg2108" role="role:nti.oubound.scholarship.admin"/>
 
 </configure>
