@@ -9,7 +9,43 @@
 	-->
 	<sp:principal id="utz8239" login="utz8239" title="Chris Utz"/>
 	<sp:grant principal="utz8239" role="role:nti.oubound.scholarship.admin"/>
+
 	<sp:principal id="higg2108" login="higg2108" title="Greg Higgins"/>
 	<sp:grant principal="higg2108" role="role:nti.oubound.scholarship.admin"/>
 
+	<sp:principal id="enos8977" login="enos8977" title="Mary Enos"/>
+	<sp:grant principal="enos8977" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="zhu8310" login="zhu8310" title="Julie Zhu"/>
+	<sp:grant principal="zhu8310" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="kunk4966" login="kunk4966" title="Bryce Kunkel"/>
+	<sp:grant principal="kunk4966" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="dixo5791" login="dixo5791" title="C Bass"/>
+	<sp:grant principal="dixo5791" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="hock9471" login="hock9471" title="John Hockett"/>
+	<sp:grant principal="hock9471" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="scho1463" login="scho1463" title="Scholarship Dept"/>
+	<sp:grant principal="scho1463" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="hans8603" login="hans8603" title="Glenn Hansen"/>
+	<sp:grant principal="hans8603" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="koon1197" login="koon1197" title="Trish Koonce"/>
+	<sp:grant principal="koon1197" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="schw2561" login="schw2561" title="Jess Schwater"/>
+	<sp:grant principal="schw2561" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="aren5450" login="aren5450" title="Mark Arens"/>
+	<sp:grant principal="aren5450" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="smit3720" login="smit3720" title="Bethanye Smith"/>
+	<sp:grant principal="smit3720" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="main5653" login="main5653" title="Alison Baker"/>
+	<sp:grant principal="main5653" role="role:nti.oubound.scholarship.admin"/>
 </configure>
