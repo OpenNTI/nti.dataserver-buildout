@@ -22,9 +22,6 @@
 	<sp:principal id="ega.panjei" login="ega.panjei" title="Ega Panjei"/>
 	<sp:grant principal="ega.panjei" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="brianna.gaither" login="brianna.gaither" title="Brianna Gaither"/>
-	<sp:grant principal="brianna.gaither" role="nti.roles.contentlibrary.admin"/>
-
 	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
 	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
 
@@ -37,8 +34,8 @@
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
 	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
 	
-	<sp:principal id="yvonne.chan" login="yvonne.chan" title="Yvonne Chan"/>
-	<sp:grant principal="yvonne.chan" role="nti.roles.contentlibrary.admin"/>
+	<sp:principal id="julie.davie" login="julie.davie" title="Julie Davie"/>
+	<sp:grant principal="julie.davie" role="nti.roles.contentlibrary.admin"/>
 	
 	<sp:principal id="stacy.zemke" login="stacy.zemke" title="Stacy Zemke"/>
 	<sp:grant principal="stacy.zemke" role="nti.roles.contentlibrary.admin"/>
