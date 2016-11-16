@@ -10,7 +10,7 @@
 		${nginx-conf:nginx_extra_binds}
 
 		root   ${root_path|shell-path};
-		server_name	 ${global_host_name};
+		server_name	 ${nginx_host_name};
 		# Don't use our defined server name if we do a redirect;
 		# instead use the value the client supplies in the
 		# Host header. This is necessary if we are virtual
@@ -38,15 +38,15 @@
 		real_ip_header proxy_protocol;
 
 		location = /favicon.ico {
-			alias ${nginx-conf:nodeapp_path/dist/client/|shell-path}/resources/images/favicon.ico;
+			alias ${nodeapp_path/dist/client/|shell-path}/resources/images/favicon.ico;
 		}
 
 		location /js/ {
-			alias ${nginx-conf:nodeapp_path/dist/client/|shell-path}/js/;
+			alias ${nodeapp_path/dist/client/|shell-path}/js/;
 		}
 
 		location /resources/ {
-			alias ${nginx-conf:nodeapp_path/dist/client/|shell-path}/resources/;
+			alias ${nodeapp_path/dist/client/|shell-path}/resources/;
 		}
 
 ${extra_config}
