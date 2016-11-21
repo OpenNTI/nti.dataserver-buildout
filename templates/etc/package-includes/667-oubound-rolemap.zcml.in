@@ -34,6 +34,9 @@
 	<sp:principal id="hans8602" login="hans8602" title="Glenn Hansen"/>
 	<sp:grant principal="hans8602" role="role:nti.oubound.scholarship.admin"/>
 
+	<sp:principal id="penn9921" login="penn9921" title="Nicholas Penner"/>
+	<sp:grant principal="penn9921" role="role:nti.oubound.scholarship.admin"/>
+
 	<sp:principal id="koon1197" login="koon1197" title="Trish Koonce"/>
 	<sp:grant principal="koon1197" role="role:nti.oubound.scholarship.admin"/>
 
