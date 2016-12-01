@@ -19,6 +19,9 @@
 	<sp:principal id="ega.panjei" login="ega.panjei" title="Ega Panjei"/>
 	<sp:grant principal="ega.panjei" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="james.stenson" login="james.stenson" title="james Stenson"/>
+	<sp:grant principal="james.stenson" role="nti.roles.contentlibrary.admin"/>
+	
 	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
 	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
 
