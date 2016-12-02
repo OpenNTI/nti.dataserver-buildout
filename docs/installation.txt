@@ -205,5 +205,6 @@ Install the following ports:
 	- jsmin
 	- asymptote
 	- enchant
+	- freetds +odbc
 	- mysql56
 	- mysql56-server
