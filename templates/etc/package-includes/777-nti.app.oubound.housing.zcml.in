@@ -8,7 +8,7 @@
 
 	<include package="z3c.baseregistry" file="meta.zcml" />
 
-	<registerIn registry="nti.app.oubound.housing">
+	<registerIn registry="nti.app.oubound.housing.sites.HOUSING">
 			<starrez:registerStarrezDB
 					 dburi="${starrez:protocol}://${starrez:user}:${starrez:password}@${starrez:host}/${starrez:dbname}?driver=${starrez:driver}"
 					 twophase="False"
