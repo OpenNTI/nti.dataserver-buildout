@@ -15,4 +15,14 @@
 	<grant	permission="nti.oubound.scholarship.actions.view_reports"
 			role="role:nti.oubound.scholarship.admin"/>
 
+	<!-- Housing -->
+	<role 	id="role:nti.oubound.housing.admin" 
+			title="A role for housing administrators"
+			description="Currently provides access to reporting and other analytics data"/>
+
+	<permission id="nti.oubound.housing.actions.view_reports" title="View Housing Reports"/>
+
+	<grant	permission="nti.oubound.housing.actions.view_reports"
+			role="role:nti.oubound.housing.admin"/>
+
 </configure>
