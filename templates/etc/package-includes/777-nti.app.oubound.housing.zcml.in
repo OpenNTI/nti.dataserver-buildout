@@ -12,7 +12,8 @@
 			<starrez:registerStarrezDB
 					 dburi="${starrez:protocol}://${starrez:user}:${starrez:password}@${starrez:host}/${starrez:dbname}?driver=${starrez:driver}"
 					 twophase="False"
-					 autocommit="False" />
+					 autocommit="False"
+					 security_user_id="${starrez:security_user_id}" />
 	</registerIn>
 
 </configure>
