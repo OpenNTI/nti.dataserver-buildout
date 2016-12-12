@@ -97,6 +97,14 @@
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="higg2108"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="thom7767"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="trev5031"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="sand6554"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="ridg2798"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="wood8304"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="dave3132"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="irvi1666"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="fenw5559"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="butc8266"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="brow8191"/>
 	</registerIn>
 
 </configure>
