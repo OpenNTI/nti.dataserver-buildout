@@ -86,10 +86,8 @@
 	<sp:principal id="trev5031" login="trev5031" title="Keri Trevino"/>
 	<sp:grant principal="trev5031" role="role:nti.oubound.housing.admin"/>
 
-	<sp:principal id="utz8239" login="utz8239" title="Chris Utz"/>
 	<sp:grant principal="utz8239" role="role:nti.oubound.housing.admin"/>
 
-	<sp:principal id="higg2108" login="higg2108" title="Greg Higgins"/>
 	<sp:grant principal="higg2108" role="role:nti.oubound.housing.admin"/>
 
 	<!-- Give a subset of users access to impersonate in the housing site.
