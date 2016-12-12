@@ -51,4 +51,39 @@
 
 	<sp:principal id="main5653" login="main5653" title="Alison Baker"/>
 	<sp:grant principal="main5653" role="role:nti.oubound.scholarship.admin"/>
+
+	<!--
+	Housing admins 
+	-->
+	
+	<sp:principal id="brow8191" login="brow8191" title="Erikah Brown"/>
+	<sp:grant principal="brow8191" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="butc8266" login="butc8266" title="Joshua Butcher"/>
+	<sp:grant principal="butc8266" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="thom7767" login="thom7767" title="Jennifer Doughty"/>
+	<sp:grant principal="thom7767" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="fenw5559" login="fenw5559" title="Shaista Fenwick"/>
+	<sp:grant principal="fenw5559" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="irvi1666" login="irvi1666" title="Jackie Irvin"/>
+	<sp:grant principal="irvi1666" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="dave3132" login="dave3132" title="Rachel Pearce"/>
+	<sp:grant principal="dave3132" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="wood8304" login="wood8304" title="Karla Pitre"/>
+	<sp:grant principal="wood8304" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="ridg2798" login="ridg2798" title="Rachel Ridgway Davis"/>
+	<sp:grant principal="ridg2798" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="sand6554" login="sand6554" title="Olivia Sandown"/>
+	<sp:grant principal="sand6554" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="trev5031" login="trev5031" title="Keri Trevino"/>
+	<sp:grant principal="trev5031" role="role:nti.oubound.housing.admin"/>
+
 </configure>
