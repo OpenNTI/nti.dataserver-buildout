@@ -21,8 +21,12 @@
 			description="Currently provides access to reporting and other analytics data"/>
 
 	<permission id="nti.oubound.housing.actions.view_reports" title="View Housing Reports"/>
+	<permission id="nti.oubound.housing.actions.manage_contracts" title="Manage Housing Contracts"/>
 
 	<grant	permission="nti.oubound.housing.actions.view_reports"
+			role="role:nti.oubound.housing.admin"/>
+
+	<grant	permission="nti.oubound.housing.actions.manage_contracts"
 			role="role:nti.oubound.housing.admin"/>
 
 </configure>
