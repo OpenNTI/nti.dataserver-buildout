@@ -14,7 +14,7 @@
 					 twophase="False"
 					 autocommit="False"
 					 security_user_id="${starrez:security_user_id}"
- 					 timezone=${starrez:timezone}/>
+ 					 timezone="${starrez:timezone}"/>
 	</registerIn>
 
 </configure>
