@@ -13,7 +13,8 @@
 					 dburi="${starrez:protocol}://${starrez:user}:${starrez:password}@${starrez:host}/${starrez:dbname}?driver=${starrez:driver}"
 					 twophase="False"
 					 autocommit="False"
-					 security_user_id="${starrez:security_user_id}" />
+					 security_user_id="${starrez:security_user_id}"
+ 					 timezone=${starrez:timezone}/>
 	</registerIn>
 
 </configure>
