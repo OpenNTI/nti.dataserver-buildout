@@ -113,6 +113,8 @@
 	<sp:principal id="ratc9183" login="ratc9183" title="Marissa Ratcliff"/>	
 	<sp:grant principal="ratc9183" role="role:nti.oubound.housing.support"/>
 
+	<sp:principal id="next0000" login="next0000" title="Next Thought"/>	
+	<sp:grant principal="next0000" role="role:nti.oubound.housing.support"/>
 
 	<!-- Give a subset of users access to impersonate in the housing site.
 	     Note this relies on a ISiteRoleManager in the site as well -->
