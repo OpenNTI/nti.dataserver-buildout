@@ -29,4 +29,8 @@
 	<grant	permission="nti.oubound.housing.actions.manage_contracts"
 			role="role:nti.oubound.housing.admin"/>
 
+	<role     id="role:nti.oubound.housing.support" 
+			title="A role for housing support personel"
+			description="Currently provides readonly access to reporting and other analytics data"/>
+
 </configure>
