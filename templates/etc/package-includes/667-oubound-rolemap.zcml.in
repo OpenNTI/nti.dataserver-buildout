@@ -1,6 +1,8 @@
 <configure xmlns="http://namespaces.zope.org/zope"
 	xmlns:sp="http://nextthought.com/ntp/securitypolicy">
 
+	<include package="z3c.baseregistry" file="meta.zcml" />
+
 	<!-- Assign principals to roles in the Alpha and Test environment -->
 	<!--
 	For principals, note that only 'id' actually matters.
@@ -55,7 +57,7 @@
 	<!--
 	Housing admins  - these account can manage contracts 
 	-->
-	
+
 	<sp:principal id="brow8191" login="brow8191" title="Erikah Brown"/>
 	<sp:grant principal="brow8191" role="role:nti.oubound.housing.admin"/>
 
