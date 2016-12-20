@@ -47,5 +47,8 @@
 
 	<sp:principal id="global.admin.alpha1" login="global.admin.alpha1" title="Global Admin Alpha 1"/>
 	<sp:grant principal="global.admin.alpha1" role="nti.roles.contentlibrary.admin"/>
+	
+	<!-- Setup Global admins -->
+	<sp:grant principal="meleah.meadows" role="role:nti.globalsupport.admin"/>
 
 </configure>
