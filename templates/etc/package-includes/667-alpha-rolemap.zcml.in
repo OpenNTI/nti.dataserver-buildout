@@ -37,6 +37,9 @@
 	<sp:principal id="rebecca.higgins" login="rebecca.higgins" title="Rebecca Higgins"/>
 	<sp:grant principal="rebecca.higgins" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="lily.moinette" login="lily.moinette" title="Lily Moinette"/>
+	<sp:grant principal="lily.moinette" role="nti.roles.contentlibrary.admin"/>
+
 	<!-- For testing -->
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
 	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
