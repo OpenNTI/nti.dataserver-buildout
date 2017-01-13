@@ -40,6 +40,14 @@
 	<sp:principal id="julie.davie" login="julie.davie" title="Julie Davie"/>
 	<sp:grant principal="julie.davie" role="nti.roles.contentlibrary.admin"/>
 	
-	<sp:principal id="stacy.zemke" login="stacy.zemke" title="Stacy Zemke"/>
-	<sp:grant principal="stacy.zemke" role="nti.roles.contentlibrary.admin"/>
+	<sp:principal id="rebecca.higgins" login="rebecca.higgins" title="Rebecca Higgins"/>
+	<sp:grant principal="rebecca.higgins" role="nti.roles.contentlibrary.admin"/>
+
+	<!-- Setup Global admins -->
+	<sp:grant principal="meleah.meadows" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="lily.moinette" role="role:nti.globalsupport.admin"/>
+
 </configure>
