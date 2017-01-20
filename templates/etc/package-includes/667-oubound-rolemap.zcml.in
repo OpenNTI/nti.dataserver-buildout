@@ -121,6 +121,7 @@
 	<!-- Give a subset of users access to impersonate in the housing site.
 	     Note this relies on a ISiteRoleManager in the site as well -->
 	<registerIn registry="nti.app.oubound.housing.sites.HOUSING">
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="next0001"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="utz8239"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="higg2108"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="broo2049"/>
