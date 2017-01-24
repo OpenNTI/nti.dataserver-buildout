@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-$VIRTUAL_ENV/bin/python `dirname $0`/bootstrap.py --allow-site-packages
+$VIRTUAL_ENV/bin/python `dirname $0`/bootstrap.py
 
 # It is important that the version of setuptools we bootstrap against
 # MATCHES the version listed in versions.cfg. If it does not, then we
