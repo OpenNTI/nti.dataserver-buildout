@@ -54,6 +54,12 @@
 	<sp:principal id="main5653" login="main5653" title="Alison Baker"/>
 	<sp:grant principal="main5653" role="role:nti.oubound.scholarship.admin"/>
 
+	<sp:principal id="blah1469" login="blah1469" title="Jeffrey Blahnik"/>
+	<sp:grant principal="blah1469" role="role:nti.oubound.scholarship.admin"/>
+
+	<sp:principal id="hogg6498" login="hogg6498" title="Michael Hoggatt"/>
+	<sp:grant principal="hogg6498" role="role:nti.oubound.scholarship.admin"/>
+
 	<!--
 	Housing admins  - these account can manage contracts 
 	-->
