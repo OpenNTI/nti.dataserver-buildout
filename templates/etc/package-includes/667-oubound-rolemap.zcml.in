@@ -88,6 +88,9 @@
 	<sp:principal id="trev5031" login="trev5031" title="Keri Trevino"/>
 	<sp:grant principal="trev5031" role="role:nti.oubound.housing.admin"/>
 
+	<sp:principal id="next0001" login="next0001" title="Next Thought"/>
+	<sp:grant principal="next0001" role="role:nti.oubound.housing.admin"/>
+
 	<sp:grant principal="utz8239" role="role:nti.oubound.housing.admin"/>
 
 	<sp:grant principal="higg2108" role="role:nti.oubound.housing.admin"/>
