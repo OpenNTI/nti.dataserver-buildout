@@ -63,8 +63,13 @@
 			alias ${sitepackage_location}/dist/shared/favicon.ico;
 		}
 
+
 		location = /mobile/resources/css/sites/current/site.css {
 			return 301 $uri_scheme://$host/site-assets/mobileapp/site.css;
+		}
+
+		location = /mobile/resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
 		}
 
 		location /site-assets/ {
