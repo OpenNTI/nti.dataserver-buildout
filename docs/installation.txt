@@ -162,22 +162,23 @@ Install the following ports:
 	- texlive
 	- texlive-basic
 	- texlive-bibtex-extra
- 	- texlive-bin
- 	- texlive-bin-extra
- 	- texlive-common
- 	- texlive-context
+	- texlive-bin
+	- texlive-bin-extra
+	- texlive-common
+	- texlive-context
 	- texlive-fonts-extra
 	- texlive-fonts-recommended
 	- texlive-fontutils
+	- texlive-formats-extra
 	- texlive-generic-extra
 	- texlive-generic-recommended
+	- texlive-htmlxml
 	- texlive-lang-czechslovak
 	- texlive-lang-english
 	- texlive-lang-european
 	- texlive-lang-french
 	- texlive-lang-german
-	- texlive-lang-greek
- 	- texlive-lang-italian
+	- texlive-lang-italian
 	- texlive-lang-polish
 	- texlive-lang-portuguese
 	- texlive-lang-spanish
@@ -189,7 +190,7 @@ Install the following ports:
 	- texlive-metapost
 	- texlive-pictures
 	- texlive-plain-extra
-	- texlive-pstricks
+	- texlive-publishers
 	- texlive-science
 	- texlive-xetex
 	- pdf2svg
