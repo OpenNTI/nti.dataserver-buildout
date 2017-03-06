@@ -2,9 +2,8 @@ user  ${nginx_user};
 worker_processes  ${nginx_workers};
 daemon ${nginx_daemon};
 
-error_log  ${deployment:log-directory/nginx/error.log} warn;
-pid		   ${deployment:run-directory}/nginx.pid;
-
+error_log  ${nginx_error_log} ${nginx_error_log_level};
+pid  ${nginx_pidfile};
 
 events {
 	worker_connections	1024;
@@ -20,7 +19,7 @@ http {
 					  '$status $body_bytes_sent "$http_referer" '
 					  '"$http_user_agent" "$http_x_forwarded_for"';
 
-	access_log	${deployment:log-directory/nginx/access.log}  main buffer=4k flush=1m;
+	access_log	${nginx_access_log} ${nginx_access_log_options};
 
 	sendfile		on;
 	tcp_nopush		on;
