@@ -1,0 +1,31 @@
+	server {
+		charset utf-8;
+
+		# The origin server only expect connections over HTTP
+		listen ${nginx_ip}:${nginx_http_port};
+
+		root   ${global_content_directory|shell-path};
+		server_name	 ${global_host_name};
+
+		proxy_http_version 1.1;
+		etag on;
+		if_modified_since before;
+		lingering_close on;
+
+		# deny access to .htaccess files, if Apache's document root
+		# concurs with nginx's one
+		#
+		location ~ /\.ht {
+			deny  all;
+		}
+
+		# shutdown .svn and .git, apperantly 
+		location ~ /\.svn/ {
+			deny all;
+		}
+
+		location ~ /\.git/ {
+			deny all;
+		}
+
+	}
