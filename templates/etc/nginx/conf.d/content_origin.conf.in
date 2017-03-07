@@ -12,7 +12,7 @@
 		if_modified_since before;
 		lingering_close on;
 
-		expires ${nginx_cache_interval}
+		expires ${nginx_cache_interval};
 
 		# deny access to .htaccess files, if Apache's document root
 		# concurs with nginx's one
