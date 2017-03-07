@@ -144,6 +144,9 @@
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="fenw5559"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="butc8266"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="brow8191"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="dorj6190"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="dumo3746"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="eoff5495"/>
 	</registerIn>
 
 </configure>
