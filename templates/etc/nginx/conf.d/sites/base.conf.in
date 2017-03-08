@@ -76,6 +76,10 @@
 			alias ${sitepackage_location}/dist/;
 		}
 
+		location /vendor/ {
+			alias ${nginx-conf:vendor_lib_path}/;
+		}
+
 		location /widgets {
 			root ${nginx-conf:mobileweb_path}/dist;
 		}
