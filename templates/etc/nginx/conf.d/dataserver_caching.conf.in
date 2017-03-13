@@ -48,10 +48,16 @@
 ${nginx_extra_server_config}
 
 		location ${global_content_location} {
+			alias ${global_content_directory/.|shell-path}/;
 			auth_request /_ops/identify;
 			location ~* ${global_content_location}(.*\.(png|jpg|jpeg|svg|gif)) {
 				auth_request off;
+				try_files $uri @origin;
 			}
+			try_files $uri @origin;
+		}
+
+		location @origin {
 			proxy_pass ${global_content_origin};
 			proxy_set_header Host       $host;
 			proxy_cache content;
