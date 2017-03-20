@@ -6,6 +6,8 @@
 	sudo port install python27
 	sudo port install py27-setuptools
 	sudo port install py27-yaml
+	sudo port install py27-virtualenv
+	sudo port install py27-virtualenvwrapper
 	sudo port install libxml
 	sudo port install libxml2
 	sudo port install nasm
@@ -41,30 +43,24 @@
 7) source bash profile (or restart terminal) e.g (source .profile)
 
 8) execute:
-		sudo easy_install-2.7 stevedore
-		sudo easy_install-2.7 virtualenv-clone
-		sudo easy_install-2.7 virtualenv
-		sudo easy_install-2.7 virtualenvwrapper
-
-9) execute:
 	mkvirtualenv --distribute nti.dataserver-buildout
 
-10) execute:
+9) execute:
 	workon  nti.dataserver-buildout
 
-11) Create a Projects directory under ~/  (HOME DIRECTORY)
+10) Create a Projects directory under ~/  (HOME DIRECTORY)
 	execute:
 		mkdir ~/Projects
 
-12) cd ~/Projects
+11) cd ~/Projects
 	execute:
 		svn co https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/nti.dataserver-buildout nti.dataserver-buildout
 
-13) cd nti.dataserver-buildout
+12) cd nti.dataserver-buildout
 	execute:
 		python bootstrap.py
 
-14) edit buildout.cfg file and comment # lxml entry e.g.
+13) edit buildout.cfg file and comment # lxml entry e.g.
 
 parts =
 	  libgmp
@@ -72,33 +68,33 @@ parts =
 	  cython
 #	  lxml
 
-15) execute (long process)
+14) execute (long process)
 		./bin/buildout -c python_developer_environment.cfg
 
-16) execute
+15) execute
 		svn revert buildout.cfg
 
-17) minify app
+16) minify app
 	execute:
 		./bin/app-minify
 
-18) cd to ~/Projects and create soft links to the login and webapp
+17) cd to ~/Projects and create soft links to the login and webapp
 	execute
 		cd ~/Projects
 		ln -s nti.dataserver-buildout/sources/NextThoughtWebApp
 		ln -s nti.dataserver-buildout/sources/NextThoughtLoginApp
 
-19) in ~/Projects create library and images directories
+18) in ~/Projects create library and images directories
 	execute:
 		mkdir DataserverGlobalLibrary
 		mkdir hosted_badge_images
 
 	[Download Sample content if available]
 
-20) edit ~/VirtualEnvs/nti.dataserver-buildout/bin/postactivate and add
+19) edit ~/VirtualEnvs/nti.dataserver-buildout/bin/postactivate and add
 	PATH=/Users/{your user}/Projects/nti.dataserver-buildout/bin:$PATH
 
-21) create default .buildout config
+20) create default .buildout config
 	execute:
 		mkdir ~/.buildout
 
@@ -122,25 +118,36 @@ parts =
 
 [Optional]
 
-21) Start dataserver
+20) Start dataserver
 	execute:
 		cd ~/Projects/nti.dataserver-buildout
 		./bin/supervisord -n
 
-22) Log into the dataserver at
+21) Log into the dataserver at
 	http://localhost:8082/login
 
-23) Janux HAProxy change
-	edit file in ~/Projects/nti.dataserver-buildout/etc/haproxy/haproxy.cfg
-	search for the line where the string "reqadd X-FORWARDED-PROTOCOL:\ ssl if is_ssl" occurs
-	add/uncomment after it the following
+22) edit (with sudo) the file /etc/hosts and add the following entries
 
-	reqidel ^ORIGIN:.*
-	reqadd ORIGIN:\ http://janux.ou.edu
+127.0.0.1    alpha.dev
+127.0.0.1    connect.dev
+127.0.0.1    demo.dev
+127.0.0.1    edbooks.dev
+127.0.0.1    history.dev
+127.0.0.1    i2.dev
+127.0.0.1    iled.dev
+127.0.0.1    janux.dev
+127.0.0.1    k20.dev
+127.0.0.1    litworld.dev
+127.0.0.1    mathcounts.dev
+127.0.0.1    oc.dev
+127.0.0.1    okstate.dev
+127.0.0.1    prmia.dev
+127.0.0.1    genius.dev
+127.0.0.1    housing.dev
 
 [Daily]
 
-24) refresh the latest code
+23) refresh the latest code
 	execute:
 		workon nti.dataserver-buildout
 		cd ~/Projects/nti.dataserver-buildout
