@@ -13,6 +13,10 @@
 	<pyramid:static name="${environment:webapp_location}resources/locales"
 					path="nti.app.i18n:locales" />
 
-	<include package="nti.app.i18n" file="pyramid.zcml" />
+	<!--
+	By the time this package is included, we expect the
+	route 'webapp.i18n.strings_js' to have been defined
+	-->
+	<pyramid:scan package='nti.app.i18n.views' />
 
 </configure>
