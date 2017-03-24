@@ -14,6 +14,10 @@
 
 		expires ${nginx_cache_interval};
 
+		location /content {
+			alias ${global_content_directory|shell-path};
+		}
+
 		# deny access to .htaccess files, if Apache's document root
 		# concurs with nginx's one
 		#
