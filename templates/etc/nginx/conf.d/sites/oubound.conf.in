@@ -40,9 +40,19 @@
 			error_page 404 =503 /maintenance/index.html;
 		}
 
+		location = /favicon.ico {
+			alias ${favicon_path|shell-path};
+		}
+
 		location @error {
 			return 404;
 		}
+
+		location /site-assets/ {
+			alias ${sitepackage_location}/dist/;
+		}
+
+${extra_config}
 
 		# deny access to .htaccess files, if Apache's document root
 		# concurs with nginx's one

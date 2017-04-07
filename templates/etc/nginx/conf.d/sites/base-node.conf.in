@@ -30,27 +30,26 @@
 		lingering_close on;
 
 		set_real_ip_from 192.168.0.0/24;
-		set_real_ip_from 10.50.0.0/24;
-		set_real_ip_from 10.50.8.0/24;
+		set_real_ip_from 10.50.0.0/16;
 		set_real_ip_from 127.0.0.1;
 		set_real_ip_from unix:;
 		real_ip_recursive on;
 		real_ip_header proxy_protocol;
 
+		location /this/should/not/exist.html {
+			error_page 404 =503 /maintenance/index.html;
+		}
+
 		location = /favicon.ico {
-			alias ${nodeapp_path/dist/client/|shell-path}/resources/images/favicon.ico;
+			alias ${favicon_path|shell-path};
 		}
 
-		location /js/ {
-			alias ${nodeapp_path/dist/client/|shell-path}/js/;
-		}
-
-		location /resources/ {
-			alias ${nodeapp_path/dist/client/|shell-path}/resources/;
+		location @error {
+			return 404;
 		}
 
 		location /site-assets/ {
-			return 404;
+			alias ${sitepackage_location}/dist/;
 		}
 
 ${extra_config}
