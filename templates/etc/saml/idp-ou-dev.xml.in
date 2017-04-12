@@ -64,6 +64,8 @@
     <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
     <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://ssotest.ou.edu/idp/SSO.saml2"/>
     <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://ssotest.ou.edu/idp/SSO.saml2"/>
+        <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://ssotest.ou.edu/idp/startSLO.ping"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://ssotest.ou.edu/idp/startSLO.ping"/>
     <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="Email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
     <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="LastName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>
     <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="FirstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"/>

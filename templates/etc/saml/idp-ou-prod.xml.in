@@ -65,6 +65,8 @@ mYoAuJBieBAAisQ0kyHMZWZ0AwmjYEZORMSutyFqO4iQH8S4DiT1Hgc2rtKqHle+eGV6+w==
     <md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat>
     <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://sso.ou.edu/idp/SSO.saml2"/>
     <md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://sso.ou.edu/idp/SSO.saml2"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://sso.ou.edu/idp/startSLO.ping"/>
+    <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://sso.ou.edu/idp/startSLO.ping"/>
     <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="Email" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"/>
     <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="LastName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"/>
     <saml:Attribute xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" Name="FirstName" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:unspecified"/>
