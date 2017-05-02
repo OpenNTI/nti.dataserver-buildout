@@ -91,6 +91,9 @@
 	<sp:principal id="next0001" login="next0001" title="Next Thought"/>
 	<sp:grant principal="next0001" role="role:nti.oubound.housing.admin"/>
 
+	<sp:principal id="next0002" login="next0002" title="Next Thought"/>
+	<sp:grant principal="next0002" role="role:nti.oubound.housing.admin"/>
+
 	<sp:grant principal="utz8239" role="role:nti.oubound.housing.admin"/>
 
 	<sp:grant principal="higg2108" role="role:nti.oubound.housing.admin"/>
@@ -131,6 +134,7 @@
 	     Note this relies on a ISiteRoleManager in the site as well -->
 	<registerIn registry="nti.app.oubound.housing.sites.HOUSING">
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="next0001"/>
+		<sp:grantSite role="role:nti.dataserver.site-admin" principal="next0002"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="utz8239"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="higg2108"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="broo2049"/>
