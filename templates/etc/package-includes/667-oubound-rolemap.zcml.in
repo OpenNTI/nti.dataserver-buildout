@@ -61,7 +61,7 @@
 	<sp:grant principal="hogg6498" role="role:nti.oubound.scholarship.admin"/>
 
 	<!--
-	Housing admins  - these account can manage contracts 
+	Housing admins  - these account can manage contracts
 	-->
 
 	<sp:principal id="brow8191" login="brow8191" title="Erikah Brown"/>
@@ -100,34 +100,34 @@
 
 
 	<!--
-	Housing read only account 
+	Housing read only account
 	-->
 
-	<sp:principal id="broo2049" login="broo2049" title="Dante Brooks"/>	
+	<sp:principal id="broo2049" login="broo2049" title="Dante Brooks"/>
 	<sp:grant principal="broo2049" role="role:nti.oubound.housing.support"/>
-	
-	<sp:principal id="dorj6190" login="dorj6190" title="Thupten Dorji"/>	
+
+	<sp:principal id="dorj6190" login="dorj6190" title="Thupten Dorji"/>
 	<sp:grant principal="dorj6190" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="dumo3746" login="dumo3746" title="Eryn Dumond"/>	
+	<sp:principal id="dumo3746" login="dumo3746" title="Eryn Dumond"/>
 	<sp:grant principal="dumo3746" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="eoff5495" login="eoff5495" title="Casey Eoff"/>	
+	<sp:principal id="eoff5495" login="eoff5495" title="Casey Eoff"/>
 	<sp:grant principal="eoff5495" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="haas9161" login="haas9161" title="Emily Haastrup"/>	
+	<sp:principal id="haas9161" login="haas9161" title="Emily Haastrup"/>
 	<sp:grant principal="haas9161" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="irvi1666" login="irvi1666" title="Jackie Irvin"/>	
+	<sp:principal id="irvi1666" login="irvi1666" title="Jackie Irvin"/>
 	<sp:grant principal="irvi1666" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="wood8304" login="wood8304" title="Karla Pitre"/>	
+	<sp:principal id="wood8304" login="wood8304" title="Karla Pitre"/>
 	<sp:grant principal="wood8304" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="ratc9183" login="ratc9183" title="Marissa Ratcliff"/>	
+	<sp:principal id="ratc9183" login="ratc9183" title="Marissa Ratcliff"/>
 	<sp:grant principal="ratc9183" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="next0000" login="next0000" title="Next Thought"/>	
+	<sp:principal id="next0000" login="next0000" title="Next Thought"/>
 	<sp:grant principal="next0000" role="role:nti.oubound.housing.support"/>
 
 	<!-- Give a subset of users access to impersonate in the housing site.
@@ -152,5 +152,12 @@
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="dumo3746"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="eoff5495"/>
 	</registerIn>
+
+	<!-- FSP -->
+	<sp:principal id="iadvise@ou.edu"
+				  login="iadvise@ou.edu"
+				  title="OU iAdvise"/>
+	<sp:grant principal="iadvise@ou.edu"
+			  role="role:nti.oubound.financialplan.iadvise"/>
 
 </configure>

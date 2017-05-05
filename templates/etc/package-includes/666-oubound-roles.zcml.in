@@ -6,7 +6,7 @@
 	<include file="meta.zcml" package="nti.securitypolicy"/>
 
 	<!-- Define a role, the easier to group permissions -->
-	<role 	id="role:nti.oubound.scholarship.admin" 
+	<role 	id="role:nti.oubound.scholarship.admin"
 			title="A role for scholarship administrators"
 			description="Currently provides access to reporting and other analytics data"/>
 
@@ -16,7 +16,7 @@
 			role="role:nti.oubound.scholarship.admin"/>
 
 	<!-- Housing -->
-	<role 	id="role:nti.oubound.housing.admin" 
+	<role 	id="role:nti.oubound.housing.admin"
 			title="A role for housing administrators"
 			description="Currently provides access to reporting and other analytics data"/>
 
@@ -29,8 +29,18 @@
 	<grant	permission="nti.oubound.housing.actions.manage_contracts"
 			role="role:nti.oubound.housing.admin"/>
 
-	<role     id="role:nti.oubound.housing.support" 
+	<role     id="role:nti.oubound.housing.support"
 			title="A role for housing support personel"
 			description="Currently provides readonly access to reporting and other analytics data"/>
+
+	<!-- FSP -->
+	<role id="role:nti.oubound.financialplan.iadvise"
+		  title="A role granted to the iadvise integration service account"
+		  description="Granted to the OU idvise API integration service account"/>
+
+	<permission id="nti.oubound.financialplan.actions.query_plansummary" title="Access to query plan summaries by ouid"/>
+
+	<grant	permission="nti.oubound.financialplan.actions.query_plansummary"
+			role="role:nti.oubound.financialplan.iadvise"/>
 
 </configure>
