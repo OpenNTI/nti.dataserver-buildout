@@ -25,9 +25,6 @@
 	<sp:principal id="ega.panjei" login="ega.panjei" title="Ega Panjei"/>
 	<sp:grant principal="ega.panjei" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
-	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
-
 	<sp:principal id="meleah.meadows" login="meleah.meadows" title="Meleah Meadows"/>
 	<sp:grant principal="meleah.meadows" role="nti.roles.contentlibrary.admin"/>
 
