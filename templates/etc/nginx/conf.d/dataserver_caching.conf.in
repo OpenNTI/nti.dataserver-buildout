@@ -47,23 +47,16 @@
 
 ${nginx_extra_server_config}
 
+		location = /_ops/ping {
+			return 204
+		}
+
 		location ${global_content_location} {
 			alias ${global_content_directory/.|shell-path}/;
 			auth_request /_ops/identify;
 			location ~* ${global_content_location}(.*\.(png|jpg|jpeg|svg|gif)) {
 				auth_request off;
-				try_files $uri @origin;
 			}
-			try_files $uri @origin;
-		}
-
-		location @origin {
-			proxy_pass ${global_content_origin};
-			proxy_set_header Host       $host;
-			proxy_cache content;
-			proxy_cache_revalidate on;
-			proxy_cache_methods GET HEAD;
-			proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
 		}
 
 		location ${hosted_badge_images_location} {
