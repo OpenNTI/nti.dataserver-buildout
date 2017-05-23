@@ -48,7 +48,7 @@
 ${nginx_extra_server_config}
 
 		location = /_ops/ping {
-			return 204
+			return 204;
 		}
 
 		location ${global_content_location} {
