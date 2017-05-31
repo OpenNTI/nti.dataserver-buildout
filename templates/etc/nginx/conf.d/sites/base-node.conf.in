@@ -36,6 +36,10 @@
 		real_ip_recursive on;
 		real_ip_header proxy_protocol;
 
+		location = /_ops/ping {
+			return 204;
+		}
+
 		location /this/should/not/exist.html {
 			error_page 404 =503 /maintenance/index.html;
 		}

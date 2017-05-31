@@ -18,6 +18,10 @@
 		if_modified_since before;
 		lingering_close on;
 
+		location = /_ops/ping {
+			return 204;
+		}
+
 		# deny access to .htaccess files, if Apache's document root
 		# concurs with nginx's one
 		#
