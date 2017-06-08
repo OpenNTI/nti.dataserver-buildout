@@ -95,6 +95,10 @@
 					@error;
 		}
 
+		location /vendor/ {
+			alias ${nginx-conf:vendor_lib_path}/;
+		}
+
 		location /widgets {
 			root ${mobileweb_path}/dist;
 		}
