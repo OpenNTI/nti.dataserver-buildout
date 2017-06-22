@@ -88,6 +88,9 @@
 	<sp:principal id="trev5031" login="trev5031" title="Keri Trevino"/>
 	<sp:grant principal="trev5031" role="role:nti.oubound.housing.admin"/>
 
+	<sp:principal id="wood8304" login="wood8304" title="Karla Pitre"/>
+	<sp:grant principal="wood8304" role="role:nti.oubound.housing.support"/>
+
 	<sp:principal id="next0001" login="next0001" title="Next Thought"/>
 	<sp:grant principal="next0001" role="role:nti.oubound.housing.admin"/>
 
@@ -120,9 +123,6 @@
 
 	<sp:principal id="irvi1666" login="irvi1666" title="Jackie Irvin"/>
 	<sp:grant principal="irvi1666" role="role:nti.oubound.housing.support"/>
-
-	<sp:principal id="wood8304" login="wood8304" title="Karla Pitre"/>
-	<sp:grant principal="wood8304" role="role:nti.oubound.housing.support"/>
 
 	<sp:principal id="ratc9183" login="ratc9183" title="Marissa Ratcliff"/>
 	<sp:grant principal="ratc9183" role="role:nti.oubound.housing.support"/>
