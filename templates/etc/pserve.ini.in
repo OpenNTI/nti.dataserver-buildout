@@ -22,6 +22,8 @@
 # the 'pipeline:dataserver_gunicorn' which is loaded manually by gunicorn.py
 # in worker processes.
 
+[pserve]
+
 [DEFAULT]
 the_deploy_root = ${deploy_root|shell-path}
 sync_changes = True
