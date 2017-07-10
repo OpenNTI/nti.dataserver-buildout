@@ -33,6 +33,9 @@
 			title="A role for housing support personel"
 			description="Currently provides readonly access to reporting and other analytics data"/>
 
+	<grant	permission="nti.oubound.housing.actions.view_reports"
+			role="role:nti.oubound.housing.support"/>
+
 	<grant	permission="nti.oubound.housing.actions.manage_contracts"
 			role="role:nti.oubound.housing.support"/>
 
