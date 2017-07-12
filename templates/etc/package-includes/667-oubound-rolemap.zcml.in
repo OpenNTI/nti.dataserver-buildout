@@ -160,4 +160,8 @@
 	<sp:grant principal="iadvise@ou.edu"
 			  role="role:nti.oubound.financialplan.iadvise"/>
 
+	<!-- OUBOUND APP -->
+	<sp:grant principal="utz8239" role="role:nti.app.oubound.app-admin"/>
+	<sp:grant principal="higg2108" role="role:nti.app.oubound.app-admin"/>
+
 </configure>

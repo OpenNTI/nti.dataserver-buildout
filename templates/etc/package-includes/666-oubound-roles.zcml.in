@@ -49,4 +49,9 @@
 	<grant	permission="nti.oubound.financialplan.actions.query_plansummary"
 			role="role:nti.oubound.financialplan.iadvise"/>
 
+	<!-- oubound app -->
+	<role id="role:nti.app.oubound.app-admin"
+		  title="A role for oubound-app administrators"
+		  description="Currently provides access to oubound tasks manager."/>
+
 </configure>
