@@ -85,6 +85,8 @@ frontend all
 	acl is_app path_beg /app
 	acl is_app_config path_beg /app/config.js
 
+	acl is_loginapp path_beg /login/
+
 	acl is_mobile path_beg /mobile
 
 	acl is_websocket hdr(Upgrade) -i WebSocket
@@ -155,6 +157,7 @@ frontend all
 	use_backend static_backend if is_favicon
 	use_backend static_backend if is_host_cors
 	use_backend node_backend if is_app
+    use_backend node_backend if is_loginapp
 	use_backend node_backend if is_mobile
 	use_backend render_backend if is_import_export
 	use_backend render_backend if is_render
