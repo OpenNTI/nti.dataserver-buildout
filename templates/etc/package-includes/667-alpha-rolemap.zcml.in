@@ -1,5 +1,8 @@
-<configure xmlns="http://namespaces.zope.org/zope"
-	xmlns:sp="http://nextthought.com/ntp/securitypolicy">
+<configure 	xmlns="http://namespaces.zope.org/zope"
+			xmlns:z3c="http://namespaces.zope.org/z3c"
+			xmlns:i18n="http://namespaces.zope.org/i18n"
+			xmlns:zcml="http://namespaces.zope.org/zcml"
+			xmlns:sp="http://nextthought.com/ntp/securitypolicy">
 
 	<!-- Assign principals to roles in the Alpha and Test environment -->
 	<!--
