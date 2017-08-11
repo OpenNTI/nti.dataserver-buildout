@@ -1,5 +1,4 @@
-<configure 	xmlns="http://namespaces.zope.org/zope"
-			xmlns:z3c="http://namespaces.zope.org/z3c"
+<configure	xmlns="http://namespaces.zope.org/zope"
 			xmlns:i18n="http://namespaces.zope.org/i18n"
 			xmlns:zcml="http://namespaces.zope.org/zcml"
 			xmlns:sp="http://nextthought.com/ntp/securitypolicy">
@@ -54,15 +53,10 @@
 	<sp:grant principal="global.admin.alpha1" role="nti.roles.contentlibrary.admin"/>
 
 	<!-- Setup Global admins -->
-	<sp:grant principal="meleah.meadows" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="lily.moinette" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="meleah.meadows" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
 
-    <!-- ATS IMIS for prmia -->
-    <registerIn registry="nti.app.sites.prmia.sites.PRMIA">
-        <sp:grantSite role="role:nti.app.products.ats_imis.ats_imis_admin"
-                      principal="ats-integration@prmia.org"/>
-    </registerIn>
 </configure>
