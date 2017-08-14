@@ -52,10 +52,4 @@
 	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="lily.moinette" role="role:nti.globalsupport.admin"/>
-
-    <!-- ATS IMIS for prmia -->
-    <registerIn registry="nti.app.sites.prmia.sites.PRMIA">
-        <sp:grantSite role="role:nti.app.products.ats_imis.ats_imis_admin"
-                      principal="ats-integration@prmia.org"/>
-    </registerIn>
 </configure>
