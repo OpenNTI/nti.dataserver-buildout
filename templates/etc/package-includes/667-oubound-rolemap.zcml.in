@@ -92,8 +92,11 @@
 	<sp:grant principal="trev5031" role="role:nti.oubound.housing.admin"/>
 
 	<sp:principal id="wood8304" login="wood8304" title="Karla Pitre"/>
-	<sp:grant principal="wood8304" role="role:nti.oubound.housing.support"/>
+	<sp:grant principal="wood8304" role="role:nti.oubound.housing.admin"/>
 
+	<sp:principal id="broo2049" login="broo2049" title="Dante Brooks"/>
+	<sp:grant principal="broo2049" role="role:nti.oubound.housing.admin"/>
+	
 	<sp:principal id="next0001" login="next0001" title="Next Thought"/>
 	<sp:grant principal="next0001" role="role:nti.oubound.housing.admin"/>
 
@@ -108,9 +111,6 @@
 	<!--
 	Housing read only account
 	-->
-
-	<sp:principal id="broo2049" login="broo2049" title="Dante Brooks"/>
-	<sp:grant principal="broo2049" role="role:nti.oubound.housing.support"/>
 
 	<sp:principal id="dorj6190" login="dorj6190" title="Thupten Dorji"/>
 	<sp:grant principal="dorj6190" role="role:nti.oubound.housing.support"/>
