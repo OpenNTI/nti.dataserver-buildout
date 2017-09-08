@@ -17,6 +17,7 @@
 	sudo port install wget
 	sudo port install openjpeg
 	sudo port xmlsec
+	sudo port freetds +odbc
 
 	(Optional)
 
@@ -63,19 +64,20 @@
 	execute:
 		python bootstrap.py
 
-13) edit buildout.cfg file and comment # lxml entry e.g.
+13) edit dataserver_buildout.cfg file and comment # lxml entry e.g.
 
 parts =
-	  libgmp
-	  pycrypto
-	  cython
-#	  lxml
+	libgmp
+	pycrypto
+	libyaml
+	pyyaml
+#	lxml
 
 14) execute (long process)
 		./bin/buildout -c python_developer_environment.cfg
 
 15) execute
-		svn revert buildout.cfg
+		svn revert dataserver_buildout.cfg
 
 16) Softlinks in /usr/local/include:
     freetds -> /opt/local/include/freetds/
@@ -126,7 +128,9 @@ parts =
 
 22) edit (with sudo) the file /etc/hosts and add the following entries
 
+127.0.0.1    alibra.dev
 127.0.0.1    alpha.dev
+127.0.0.1    columbia.dev
 127.0.0.1    connect.dev
 127.0.0.1    demo.dev
 127.0.0.1    edbooks.dev
@@ -140,8 +144,13 @@ parts =
 127.0.0.1    oc.dev
 127.0.0.1    okstate.dev
 127.0.0.1    prmia.dev
+127.0.0.1    ifsta.dev
+127.0.0.1    santafesouth.dev
+127.0.0.1    spurstartup.dev
+127.0.0.1    symmys.dev
 127.0.0.1    genius.dev
 127.0.0.1    housing.dev
+127.0.0.1    codesooner.dev
 
 [Daily]
 
@@ -211,6 +220,5 @@ Install the following ports:
 	- jsmin
 	- asymptote
 	- enchant
-	- freetds +odbc
 	- mysql56
 	- mysql56-server
