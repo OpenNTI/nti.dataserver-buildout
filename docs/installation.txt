@@ -117,7 +117,7 @@ parts =
 20) Install NPM
 	visit https://nodejs.org/en/
 	download v6.xx.x release (e.g. v6.11.3 LTS)
-	install the node-v6.xx.x.pkg (e.g. node-v6.11.3.pkg)
+	install the downloaded node-v6.xx.x.pkg (e.g. node-v6.11.3.pkg)
 
 ==================
 
