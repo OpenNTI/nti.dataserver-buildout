@@ -114,19 +114,24 @@ parts =
 	[zeo]
 	name=data
 
+20) Install NPM
+	visit https://nodejs.org/en/
+	download v6.xx.x release (e.g. v6.11.3 LTS)
+	install the node-v6.xx.x.pkg (e.g. node-v6.11.3.pkg)
+
 ==================
 
 [Optional]
 
-20) Start dataserver
+21) Start dataserver
 	execute:
 		cd ~/Projects/nti.dataserver-buildout
 		./bin/supervisord -n
 
-21) Log into the dataserver at
+22) Log into the dataserver at
 	http://localhost:8082/login
 
-22) edit (with sudo) the file /etc/hosts and add the following entries
+23) edit (with sudo) the file /etc/hosts and add the following entries
 
 127.0.0.1    alibra.dev
 127.0.0.1    alpha.dev
@@ -154,7 +159,7 @@ parts =
 
 [Daily]
 
-23) refresh the latest code
+24) refresh the latest code
 	execute:
 		workon nti.dataserver-buildout
 		cd ~/Projects/nti.dataserver-buildout
