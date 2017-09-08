@@ -43,7 +43,10 @@
 7) source bash profile (or restart terminal) e.g (source .profile)
 
 8) execute:
-	mkvirtualenv --distribute nti.dataserver-buildout
+	mkvirtualenv nti.dataserver-buildout
+
+8.1) cd ~/VirtualEnvs/nti.dataserver-buildout
+    ./bin/easy_install-2.7 -U setuptools==33.1.1
 
 9) execute:
 	workon  nti.dataserver-buildout
@@ -74,27 +77,22 @@ parts =
 15) execute
 		svn revert buildout.cfg
 
-16) minify app
-	execute:
-		./bin/app-minify
+16) Softlinks in /usr/local/include:
+    freetds -> /opt/local/include/freetds/
+    graphviz -> /opt/local/include/graphviz/
+    openssl -> /opt/local/include/openssl
 
-17) cd to ~/Projects and create soft links to the login and webapp
-	execute
-		cd ~/Projects
-		ln -s nti.dataserver-buildout/sources/NextThoughtWebApp
-		ln -s nti.dataserver-buildout/sources/NextThoughtLoginApp
-
-18) in ~/Projects create library and images directories
+17) in ~/Projects create library and images directories
 	execute:
 		mkdir DataserverGlobalLibrary
 		mkdir hosted_badge_images
 
 	[Download Sample content if available]
 
-19) edit ~/VirtualEnvs/nti.dataserver-buildout/bin/postactivate and add
+18) edit ~/VirtualEnvs/nti.dataserver-buildout/bin/postactivate and add
 	PATH=/Users/{your user}/Projects/nti.dataserver-buildout/bin:$PATH
 
-20) create default .buildout config
+19) create default .buildout config
 	execute:
 		mkdir ~/.buildout
 
@@ -206,7 +204,7 @@ Install the following ports:
 	- openexr
 	- liblqr
 	- npm
-	
+
 [dataserver (Optional)]
 	- xpdf
 	- gtk2
