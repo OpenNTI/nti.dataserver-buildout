@@ -1,0 +1,14 @@
+<!-- -*- mode: nxml -*- -->
+<configure	xmlns="http://namespaces.zope.org/zope"
+			xmlns:i18n="http://namespaces.zope.org/i18n"
+			xmlns:zcml="http://namespaces.zope.org/zcml"
+			xmlns:aws="http://nextthought.com/ntp/aws">
+
+	<include package="nti.common" file="meta.zcml" />
+	<aws:registerAWSKey
+		purpose="S3"
+		bucket_name="${aws-s3:bucket-name}"
+		access_key="${aws-s3:access-key}"
+		secret_key="${aws-s3:secret-key}" />
+
+</configure>
