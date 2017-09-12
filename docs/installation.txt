@@ -166,7 +166,6 @@ parts =
 		svn up
 		./bootstrap.sh
 		./bin/buildout -c python_developer_environment.cfg
-		./bin/app-minify
 
 	after the .buildout has been run the ~/Projects/nti.dataserver-buildout/etc/haproxy/haproxy.cfg is overwritten so execute step 23 if required
 
