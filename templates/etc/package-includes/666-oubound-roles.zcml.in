@@ -22,11 +22,15 @@
 
 	<permission id="nti.oubound.housing.actions.view_reports" title="View Housing Reports"/>
 	<permission id="nti.oubound.housing.actions.manage_contracts" title="Manage Housing Contracts"/>
+	<permission id="nti.oubound.housing.actions.manage_availability" title="Manage Housing Contracts, should be only granted to housing admin role"/>
 
 	<grant	permission="nti.oubound.housing.actions.view_reports"
 			role="role:nti.oubound.housing.admin"/>
 
 	<grant	permission="nti.oubound.housing.actions.manage_contracts"
+			role="role:nti.oubound.housing.admin"/>
+
+	<grant	permission="nti.oubound.housing.actions.manage_availability"
 			role="role:nti.oubound.housing.admin"/>
 
 	<role     id="role:nti.oubound.housing.support"
