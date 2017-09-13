@@ -51,5 +51,5 @@
 	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="lily.moinette" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="troy.savaiinaea" role="role:nti.globalsupport.admin"/>
 </configure>
