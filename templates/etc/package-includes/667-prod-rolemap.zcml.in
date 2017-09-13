@@ -40,8 +40,8 @@
 	<sp:principal id="rebecca.higgins" login="rebecca.higgins" title="Rebecca Higgins"/>
 	<sp:grant principal="rebecca.higgins" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="lily.moinette" login="lily.moinette" title="Lily Moinette"/>
-	<sp:grant principal="lily.moinette" role="nti.roles.contentlibrary.admin"/>
+	<sp:principal id="troy.savaiinaea" login="troy.savaiinaea" title="Troy Savaiinaea"/>
+	<sp:grant principal="troy.savaiinaea" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="james.stenson" login="james.stenson" title="James Stenson"/>
 	<sp:grant principal="james.stenson" role="nti.roles.contentlibrary.admin"/>
