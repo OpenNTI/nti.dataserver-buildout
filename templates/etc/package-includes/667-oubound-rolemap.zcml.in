@@ -170,10 +170,17 @@
 	<sp:grant principal="utz8239" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="higg2108" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="next0001" role="role:nti.app.oubound.app-admin"/>
-	<!--
+
+	<sp:principal id="wolf3382" login="wolf3382" title="Erin Wolfe"/>
 	<sp:grant principal="wolf3382" role="role:nti.app.oubound.app-admin"/>
+
+	<sp:principal id="thom6159" login="thom6159" title="George Thomas"/>
 	<sp:grant principal="thom6159" role="role:nti.app.oubound.app-admin"/>
+
+	<sp:principal id="ho4879" login="ho4879" title="Steven Ho"/>
 	<sp:grant principal="ho4879" role="role:nti.app.oubound.app-admin"/>
+
+	<sp:principal id="gree2873" login="gree2873" title="Corbin Greer"/>
 	<sp:grant principal="gree2873" role="role:nti.app.oubound.app-admin"/>
-	-->
+
 </configure>
