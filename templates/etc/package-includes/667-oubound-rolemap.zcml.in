@@ -170,9 +170,10 @@
 	<sp:grant principal="utz8239" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="higg2108" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="next0001" role="role:nti.app.oubound.app-admin"/>
+	<!--
 	<sp:grant principal="wolf3382" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="thom6159" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="ho4879" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="gree2873" role="role:nti.app.oubound.app-admin"/>
-
+	-->
 </configure>
