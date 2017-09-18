@@ -262,11 +262,22 @@ backend render_backend
     ${render_servers}
 
 backend node_backend
-	mode http
-	option prefer-last-server
-	timeout server 15m
-	timeout connect 4s
+    mode http
+    option prefer-last-server
+    timeout server 15m
+    timeout connect 4s
 
-	option httpchk GET /mobile/api/_ops/ping HTTP/1.1\r\nHost:\ ${hostname}
+    option httpchk GET /mobile/api/_ops/ping HTTP/1.1\r\nHost:\ ${hostname}
 
-	${nodejs_servers}
+    ${nodejs_servers}
+
+backend widget_dev_backend
+    mode http
+    option prefer-last-server
+    timeout server 15m
+    timeout connect 4s
+
+    reqrep ^(.*\ )/widget(/?.*) \1\2
+
+    ${widget_servers}
+
