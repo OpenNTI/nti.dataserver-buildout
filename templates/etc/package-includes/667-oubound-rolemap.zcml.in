@@ -87,7 +87,7 @@
 
 	<sp:principal id="ratc9183" login="ratc9183" title="Marissa Ratcliff"/>
 	<sp:grant principal="ratc9183" role="role:nti.oubound.housing.admin"/>
-	
+
 	<sp:principal id="trev5031" login="trev5031" title="Keri Trevino"/>
 	<sp:grant principal="trev5031" role="role:nti.oubound.housing.admin"/>
 
@@ -96,7 +96,7 @@
 
 	<sp:principal id="broo2049" login="broo2049" title="Dante Brooks"/>
 	<sp:grant principal="broo2049" role="role:nti.oubound.housing.admin"/>
-	
+
 	<sp:principal id="next0001" login="next0001" title="Next Thought"/>
 	<sp:grant principal="next0001" role="role:nti.oubound.housing.admin"/>
 
@@ -123,16 +123,16 @@
 
 	<sp:principal id="hous0873" login="hous0873" title="Leah Houston"/>
 	<sp:grant principal="hous0873" role="role:nti.oubound.housing.support"/>
-	
+
 	<sp:principal id="thib8635" login="thib8635" title="Megan Thibodeau"/>
 	<sp:grant principal="thib8635" role="role:nti.oubound.housing.support"/>
-	
+
 	<sp:principal id="torr9414" login="torr9414" title="Crystian Torres"/>
 	<sp:grant principal="torr9414" role="role:nti.oubound.housing.support"/>
-	
+
 	<sp:principal id="walk0014" login="walk0014" title="Kamisha Walker"/>
 	<sp:grant principal="walk0014" role="role:nti.oubound.housing.support"/>
-	
+
 	<sp:principal id="next0000" login="next0000" title="Next Thought"/>
 	<sp:grant principal="next0000" role="role:nti.oubound.housing.support"/>
 
@@ -170,5 +170,9 @@
 	<sp:grant principal="utz8239" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="higg2108" role="role:nti.app.oubound.app-admin"/>
 	<sp:grant principal="next0001" role="role:nti.app.oubound.app-admin"/>
+	<sp:grant principal="wolf3382" role="role:nti.app.oubound.app-admin"/>
+	<sp:grant principal="thom6159" role="role:nti.app.oubound.app-admin"/>
+	<sp:grant principal="ho4879" role="role:nti.app.oubound.app-admin"/>
+	<sp:grant principal="gree2873" role="role:nti.app.oubound.app-admin"/>
 
 </configure>
