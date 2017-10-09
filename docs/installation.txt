@@ -5,7 +5,6 @@
 5) execute:
 	sudo port install python27
 	sudo port install py27-setuptools
-	sudo port install py27-yaml
 	sudo port install py27-tox
 	sudo port install py27-virtualenv
 	sudo port install py27-virtualenvwrapper
@@ -19,6 +18,7 @@
 	sudo port install openjpeg
 	sudo port xmlsec
 	sudo port freetds +odbc
+	sudo port install ghostscript
 
 	(Optional)
 
