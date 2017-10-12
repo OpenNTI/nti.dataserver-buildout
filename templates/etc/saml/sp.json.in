@@ -11,6 +11,7 @@
 			"logout_requests_signed": false,
 			"authn_requests_signed": false,
 			"allow_unsolicited": true,
+			"want_response_signed": false,
 			"required_attributes": ${required_attributes},
 			"endpoints": {
 				"single_logout_service": [
