@@ -136,6 +136,9 @@
 	<sp:principal id="next0000" login="next0000" title="Next Thought"/>
 	<sp:grant principal="next0000" role="role:nti.oubound.housing.support"/>
 
+	<!-- Principal defined above -->
+	<sp:grant principal="hans8602" role="role:nti.oubound.housing.support"/>
+
 	<!-- Give a subset of users access to impersonate in the housing site.
 	     Note this relies on a ISiteRoleManager in the site as well -->
 	<registerIn registry="nti.app.oubound.housing.sites.HOUSING">
