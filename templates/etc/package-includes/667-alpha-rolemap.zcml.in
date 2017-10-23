@@ -42,6 +42,12 @@
 	<sp:principal id="troy.savaiinaea" login="troy.savaiinaea" title="Troy Savaiinaea"/>
 	<sp:grant principal="troy.savaiinaea" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="bhoke" login="bhoke" title="Bryan Hoke"/>
+	<sp:grant principal="bhoke" role="nti.roles.contentlibrary.admin"/>
+
+	<sp:principal id="martinngo@goappable.com" login="martinngo@goappable.com" title="Martin Ngo"/>
+	<sp:grant principal="martinngo@goappable.com" role="nti.roles.contentlibrary.admin"/>
+
 	<!-- For testing -->
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
 	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
