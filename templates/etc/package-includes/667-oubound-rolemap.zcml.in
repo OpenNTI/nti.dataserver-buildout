@@ -97,7 +97,7 @@
 	<sp:principal id="broo2049" login="broo2049" title="Dante Brooks"/>
 	<sp:grant principal="broo2049" role="role:nti.oubound.housing.admin"/>
 
-	<sp:principal id="john1215" login="john1215" title="Cody Johnson
+	<sp:principal id="john1215" login="john1215" title="Cody Johnson"/>
 	<sp:grant principal="john1215" role="role:nti.oubound.housing.admin"/>
 	
 	<sp:principal id="next0001" login="next0001" title="Next Thought"/>
