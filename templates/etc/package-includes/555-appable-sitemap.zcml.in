@@ -1,0 +1,5 @@
+<!-- -*- mode: nxml -*- -->
+<configure xmlns:sites="http://nextthought.com/sites">
+	<sites:registerSiteMapping source_site_name="alpha-appable.nextthought.com"
+                                 target_site_name="alpha.nextthought.com" />
+</configure>
