@@ -55,6 +55,12 @@
 	<sp:principal id="global.admin.alpha1" login="global.admin.alpha1" title="Global Admin Alpha 1"/>
 	<sp:grant principal="global.admin.alpha1" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="martin.ngo" login="martin.ngo"" title="Martin Ngo""/>
+	<sp:grant principal="martin.ngo" role="nti.roles.contentlibrary.admin"/>
+	
+	<sp:principal id="michael.mclaughlin" login="michael.mclaughlin"" title="Michael Mclaughlin""/>
+	<sp:grant principal="michael.mclaughlin" role="nti.roles.contentlibrary.admin"/>
+
 	<!-- Setup Global admins -->
 	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>
