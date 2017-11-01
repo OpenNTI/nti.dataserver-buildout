@@ -1,5 +1,6 @@
 <!-- -*- mode: nxml -*- -->
 <configure xmlns:sites="http://nextthought.com/sites">
+	<include package="nti.site" file="meta.zcml" />
 	<sites:registerSiteMapping source_site_name="alpha-appable.nextthought.com"
                                  target_site_name="alpha.nextthought.com" />
 </configure>
