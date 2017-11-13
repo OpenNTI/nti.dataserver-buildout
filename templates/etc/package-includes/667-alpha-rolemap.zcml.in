@@ -3,6 +3,8 @@
 			xmlns:zcml="http://namespaces.zope.org/zcml"
 			xmlns:sp="http://nextthought.com/ntp/securitypolicy">
 
+	<include package="z3c.baseregistry" file="meta.zcml" />
+
 	<!-- Assign principals to roles in the Alpha and Test environment -->
 	<!--
 	For principals, note that only 'id' actually matters.
@@ -59,10 +61,10 @@
 
 	<sp:principal id="michael.mclaughlin" login="michael.mclaughlin" title="Michael Mclaughlin" />
 
-    <registerIn registry="nti.app.sites.alpha.sites.ALPHA">
-        <sp:principal id="site.admin.alpha" login="site.admin.alpha" title="Site Admin Alpha"/>
-        <sp:grant principal="site.admin.alpha" role="role:nti.dataserver.site-admin'"/>
-    </registerIn>
+	<registerIn registry="nti.app.sites.alpha.sites.ALPHA">
+		<sp:principal id="site.admin.alpha" login="site.admin.alpha" title="Site Admin Alpha"/>
+		<sp:grant principal="site.admin.alpha" role="role:nti.dataserver.site-admin"/>
+	</registerIn>
 
 	<!-- Setup Global admins -->
 	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
