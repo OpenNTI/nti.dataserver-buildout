@@ -61,10 +61,7 @@
 
 	<sp:principal id="michael.mclaughlin" login="michael.mclaughlin" title="Michael Mclaughlin" />
 
-	<registerIn registry="nti.app.sites.alpha.sites.ALPHA">
-		<sp:principal id="site.admin.alpha" login="site.admin.alpha" title="Site Admin Alpha"/>
-		<sp:grantSite principal="site.admin.alpha" role="role:nti.dataserver.site-admin"/>
-	</registerIn>
+	<sp:principal id="site.admin.alpha" login="site.admin.alpha" title="Site Admin Alpha"/>
 
 	<!-- Setup Global admins -->
 	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
