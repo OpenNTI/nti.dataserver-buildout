@@ -19,6 +19,7 @@
 	sudo port xmlsec
 	sudo port freetds +odbc
 	sudo port install ghostscript
+	sudo port install pdf2svg
 
 	(Optional)
 
