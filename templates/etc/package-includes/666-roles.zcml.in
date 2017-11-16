@@ -12,22 +12,20 @@
 	<permission id="nti.actions.contentlibrary.sync_library" title="Sync the content library"/>
 
 	<!-- Define a role, the easier to group permissions -->
-	<role	id="nti.roles.contentlibrary.admin" 
+	<role	id="nti.roles.contentlibrary.admin"
 			title="Content library administrators"
 			description="..."/>
 
-	<role	id="role:nti.globalsupport.admin" 
+	<role	id="role:nti.globalsupport.admin"
 			title="Roles for global support administrators" />
-	<grant 	permission="nti.actions.impersonate" 
+	<grant 	permission="nti.actions.impersonate"
 			role="role:nti.globalsupport.admin" />
-	
+
 	<!-- Give the permission to the role -->
 	<grant	permission="nti.actions.contentlibrary.sync_library"
 			role="nti.roles.contentlibrary.admin"/>
 
 	<!-- Content editing -->
-	<permission id="nti.actions.contentedit" title="Edit content"/>
-
 	<role	id="role:nti.content.editor" title="Content editors"
 			description="..."/>
 
