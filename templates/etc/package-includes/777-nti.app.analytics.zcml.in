@@ -4,7 +4,7 @@
 			xmlns:zcml="http://namespaces.zope.org/zcml"
 			xmlns:adb="http://nextthought.com/analytics/database">
 
-	<include package="nti.analytics.database" file="meta.zcml" />
+	<include package="nti.analytics_database" file="meta.zcml" />
 	<adb:registerAnalyticsDB
 				dburi="${analytics:driver}://${analytics:user}:${analytics:password}@${analytics:host}/${analytics:dbname}?charset=utf8"
 				twophase="${analytics:twophase}"
