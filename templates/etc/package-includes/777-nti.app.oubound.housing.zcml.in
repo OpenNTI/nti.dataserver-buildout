@@ -10,7 +10,8 @@
 
 	<registerIn registry="nti.app.oubound.housing.sites.HOUSING">
 			<starrez:registerStarrezDB
-					 dburi="${starrez:protocol}://${starrez:user}:${starrez:password}@${starrez:host}/${starrez:dbname}?driver=${starrez:driver}"
+					 dburi="${starrez:protocol}://${starrez:user}:${starrez:password}@${starrez:freetds_name}/?charset=utf8"
+
 					 twophase="False"
 					 autocommit="False"
 					 security_user_id="${starrez:security_user_id}"
