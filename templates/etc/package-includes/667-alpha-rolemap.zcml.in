@@ -61,8 +61,6 @@
 
 	<sp:principal id="michael.mclaughlin" login="michael.mclaughlin" title="Michael Mclaughlin" />
 
-	<sp:principal id="site.admin.alpha" login="site.admin.alpha" title="Site Admin Alpha"/>
-
 	<!-- Setup Global admins -->
 	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>

@@ -52,4 +52,12 @@
 	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="troy.savaiinaea" role="role:nti.globalsupport.admin"/>
+
+	<!-- Epic -->
+	<registerIn registry="nti.app.sites.epiccharterschools">
+	    <sp:grantSite role="role:nti.dataserver.site-admin"
+                      principal="yolanda.merriman"/>
+        <sp:grantSite role="role:nti.dataserver.site-admin"
+                      principal="yolanda.merriman@epiccharterschools.org"/>
+    </registerIn>
 </configure>
