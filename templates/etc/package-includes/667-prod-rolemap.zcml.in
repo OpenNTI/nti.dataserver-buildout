@@ -1,4 +1,5 @@
 <configure	xmlns="http://namespaces.zope.org/zope"
+            xmlns:zcml="http://namespaces.zope.org/zcml"
 			xmlns:sp="http://nextthought.com/ntp/securitypolicy">
 
 	<!-- Assign principals to roles in the Production environment -->
