@@ -54,10 +54,12 @@
 	<sp:grant principal="troy.savaiinaea" role="role:nti.globalsupport.admin"/>
 
 	<!-- Epic -->
-	<registerIn registry="nti.app.sites.epiccharterschools">
-	    <sp:grantSite role="role:nti.dataserver.site-admin"
-                      principal="yolanda.merriman"/>
-        <sp:grantSite role="role:nti.dataserver.site-admin"
-                      principal="yolanda.merriman@epiccharterschools.org"/>
-    </registerIn>
+	<configure zcml:condition="installed nti.app.sites.epiccharterschools">
+    	<registerIn registry="nti.app.sites.epiccharterschools">
+    	    <sp:grantSite role="role:nti.dataserver.site-admin"
+                          principal="yolanda.merriman"/>
+            <sp:grantSite role="role:nti.dataserver.site-admin"
+                          principal="yolanda.merriman@epiccharterschools.org"/>
+        </registerIn>
+    </configure>
 </configure>
