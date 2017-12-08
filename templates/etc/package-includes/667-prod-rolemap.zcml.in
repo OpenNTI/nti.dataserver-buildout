@@ -2,6 +2,8 @@
             xmlns:zcml="http://namespaces.zope.org/zcml"
 			xmlns:sp="http://nextthought.com/ntp/securitypolicy">
 
+    <include package="z3c.baseregistry" file="meta.zcml" />
+
 	<!-- Assign principals to roles in the Production environment -->
 	<!--
 	For principals, note that only 'id' actually matters.
