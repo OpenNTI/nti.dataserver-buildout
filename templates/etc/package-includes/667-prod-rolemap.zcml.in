@@ -56,7 +56,7 @@
 
 	<!-- Epic -->
 	<configure zcml:condition="installed nti.app.sites.epiccharterschools">
-    	<registerIn registry="nti.app.sites.epiccharterschools">
+    	<registerIn registry="nti.app.sites.epiccharterschools.sites.EPICCHARTERSCHOOLS">
     	    <sp:grantSite role="role:nti.dataserver.site-admin"
                           principal="yolanda.merriman"/>
             <sp:grantSite role="role:nti.dataserver.site-admin"
