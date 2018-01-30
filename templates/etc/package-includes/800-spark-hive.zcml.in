@@ -7,6 +7,7 @@
 	<include package="nti.spark" file="meta.zcml"/>
 	<spark:registerHiveSparkInstance master="${spark-hive:master}" 
 									 app_name="${spark-hive:app-name}"
+									 location="${spark-hive:location}"
 									 log_level="${spark-hive:log-level}" />
 
 </configure>
