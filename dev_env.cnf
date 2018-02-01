@@ -1,0 +1,145 @@
+####################################################################
+[ca]
+default_ca = CA_default
+
+####################################################################
+[CA_default]
+# Directory and file locations.
+dir = $ENV::HOME/DevCA
+certs = $dir/certsdb
+new_certs_dir = $certs
+database = $dir/index.txt
+serial = $dir/serial
+crldir = $dir/crl
+RANDFILE = $dir/private/.rand
+
+# The root key and root certificate.
+private_key = $dir/private/cakey.pem
+certificate = $dir/cacert.pem
+
+# For certificate revocation lists.
+crlnumber = $dir/crlnumber
+crl = $crldir/crl.pem
+crl_extensions	= crl_ext
+default_crl_days= 30
+
+# SHA-1 is deprecated, so use SHA-2 instead.
+default_md = sha256
+
+name_opt = ca_default
+cert_opt = ca_default
+default_days = 375
+preserve = no
+policy = policy_match
+
+####################################################################
+[ policy_match ]
+countryName             = match
+stateOrProvinceName     = match
+localityName            = supplied
+organizationName        = match
+organizationalUnitName  = optional
+commonName              = supplied
+emailAddress            = optional
+
+####################################################################
+# Extensions for when we sign normal certs (specified as default)
+[ usr_cert ]
+basicConstraints = CA:false
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+#subjectAltName = email:move
+
+####################################################################
+# Same as above, but cert req already has SubjectAltName
+[ usr_cert_has_san ]
+basicConstraints = CA:false
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid,issuer
+
+####################################################################
+# Extensions to use when signing a CA
+[ v3_ca ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+basicConstraints = CA:true
+subjectAltName=email:move
+
+####################################################################
+# Same as above, but CA req already has SubjectAltName
+[ v3_ca_has_san ]
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+basicConstraints = CA:true
+
+####################################################################
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+
+####################################################################
+[ req_attributes ]
+
+####################################################################
+[req_distinguished_name]
+countryName = Country Name (2 letter code)
+countryName_default = US
+stateOrProvinceName = State or Province Name (full name)
+stateOrProvinceName_default = Oklahoma
+localityName = Locality Name (eg, city)
+localityName_default = Norman
+0.organizationName = Organization Name (eg, company)
+0.organizationName_default = NextThought
+organizationalUnitName = Organizational Unit Name (eg, section)
+organizationalUnitName_default = DevOps
+commonName = Common Name (eg, YOUR name)
+commonName_default = localhost
+
+####################################################################
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alt_names
+extendedKeyUsage=serverAuth,clientAuth
+
+####################################################################
+[alt_names]
+DNS.1 = alpha.dev
+DNS.2 = rwi.dev
+DNS.3 = accenture-rwi.dev
+DNS.4 = ifsta.dev
+DNS.5 = changemaker.dev
+DNS.6 = cceducare.dev
+DNS.7 = codesooner.dev
+DNS.8 = epiccharterschools.dev
+DNS.9 = greatexpectations.dev
+DNS.10 = ona.dev
+DNS.11 = columbia.dev
+DNS.12 = edbooks.dev
+DNS.13 = litworld.dev
+DNS.14 = mathcounts.dev
+DNS.15 = prmia.dev
+DNS.16 = oc.dev
+DNS.17 = symmys.dev
+DNS.18 = wiley.dev
+DNS.19 = janux.dev
+DNS.20 = okstate.dev
+DNS.21 = connect.dev
+DNS.22 = lab.dev
+DNS.23 = i2.dev
+DNS.24 = iled.dev
+DNS.25 = k20.dev
+DNS.26 = movingup.dev
+DNS.27 = osde.dev
+DNS.28 = santafesouth.dev
+DNS.29 = spurstartup.dev
+DNS.30 = arlensa.dev
+DNS.31 = associationlearning.dev
+DNS.32 = dpcedcenter.dev
+DNS.33 = odapca.dev
+DNS.34 = okbfaa.dev
+DNS.34 = financialplan.dev
+DNS.35 = housing.dev
+DNS.36 = oubound.dev
+
