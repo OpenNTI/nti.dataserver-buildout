@@ -145,6 +145,9 @@
 	<sp:principal id="next0000" login="next0000" title="Next Thought"/>
 	<sp:grant principal="next0000" role="role:nti.oubound.housing.support"/>
 
+	<sp:principal id="lee3402" login="lee3402" title="Steven Lee"/>
+	<sp:grant principal="lee3402" role="role:nti.oubound.housing.support"/>
+
 	<!-- Principal defined above -->
 	<sp:grant principal="hans8602" role="role:nti.oubound.housing.support"/>
 
