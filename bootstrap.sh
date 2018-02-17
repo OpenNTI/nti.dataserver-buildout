@@ -66,11 +66,28 @@ if [ -f .installed.cfg ]; then
 	esac
 fi
 
+buildout_egg=`grep -o $setuptools_egg bin/buildout`
+
+# If we have a common installation, check if the eggs folder exists
+if [ -d "eggs" ]; then
+	# If the setuptools exists in and the buildout version is different 
+	# update buildout script
+ 	if [ -f eggs/$setuptools_egg -a "$buildout_egg" != "$setuptools_egg" ]; then
+		case `uname` in
+			Darwin)
+				sed -E -i "" "s/setuptools-([0-9]\.?)+-/$setuptools_egg-/" bin/buildout
+				;;
+			*)
+				sed -E -i""  "s/setuptools-([0-9]\.?)+-/$setuptools_egg-/" bin/buildout
+				;;
+		esac
+	fi
+fi
+
 # If we bootstrapped to a different version, we cannot change it
 # as the 'desired' egg may not actually exist...this is typically
 # a developer bug with mismatched versions.cfg...best we can do is a
 # warning
-buildout_egg=`grep -o $setuptools_egg bin/buildout`
 if [ "$buildout_egg" != "$setuptools_egg" ]; then
 	RED="\033[0;31m"
 	COLOR_NONE="\e[0m"
