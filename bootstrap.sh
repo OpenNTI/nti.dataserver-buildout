@@ -85,6 +85,7 @@ if [ -d "eggs" ]; then
 	fi
 fi
 
+buildout_egg=`grep -o $setuptools_egg bin/buildout`
 # If we bootstrapped to a different version, we cannot change it
 # as the 'desired' egg may not actually exist...this is typically
 # a developer bug with mismatched versions.cfg...best we can do is a
