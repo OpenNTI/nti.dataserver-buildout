@@ -70,9 +70,10 @@ buildout_egg=`grep -o $setuptools_egg bin/buildout`
 
 # If we have a common installation, check if the eggs folder exists
 if [ -d "eggs" ]; then
-	# If the setuptools exists in and the buildout version is different 
+	# If the versioned setuptools exists and the buildout version is different 
 	# update buildout script
- 	if [ -f eggs/$setuptools_egg -a "$buildout_egg" != "$setuptools_egg" ]; then
+	count_found=`find eggs -maxdepth 1 -name "$setuptools_egg*" -print  | wc -l | xargs`
+ 	if [ $count_found > 0 -a "$buildout_egg" != "$setuptools_egg" ]; then
 		case `uname` in
 			Darwin)
 				sed -E -i "" "s/setuptools-([0-9]\.?)+-/$setuptools_egg-/" bin/buildout
