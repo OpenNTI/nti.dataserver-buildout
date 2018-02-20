@@ -148,6 +148,9 @@
 	<sp:principal id="lee3402" login="lee3402" title="Steven Lee"/>
 	<sp:grant principal="lee3402" role="role:nti.oubound.housing.support"/>
 
+	<sp:principal id="bore0010" login="bore0010" title="Tony Borelli"/>
+	<sp:grant principal="bore0010" role="role:nti.oubound.housing.support"/>
+
 	<!-- Principal defined above -->
 	<sp:grant principal="hans8602" role="role:nti.oubound.housing.support"/>
 
