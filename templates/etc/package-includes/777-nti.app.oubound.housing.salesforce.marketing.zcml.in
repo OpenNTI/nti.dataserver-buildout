@@ -1,0 +1,19 @@
+<!-- -*- mode: nxml -*- -->
+<configure	xmlns="http://namespaces.zope.org/zope"
+			xmlns:i18n="http://namespaces.zope.org/i18n"
+			xmlns:zcml="http://namespaces.zope.org/zcml"
+			xmlns:salesforce="http://nextthought.com/ntp/salesforce">
+
+	<include package="nti.oubound.common.salesforce" file="meta.zcml" />
+
+	<include package="z3c.baseregistry" file="meta.zcml" />
+
+	<registerIn registry="nti.app.oubound.housing.sites.HOUSING">
+		<salesforce:registerSalesforceAPI
+				 username="${salesforce-housing-marketing-conf:username}"
+				 password="${salesforce-housing-marketing-conf:password}"
+				 security_token="${salesforce-housing-marketing-conf:security_token}"
+				 sandbox="${salesforce-housing-marketing-conf:sandbox}"
+				 name="housing-marketing" />
+	</registerIn>
+</configure>
