@@ -5,8 +5,10 @@
 			xmlns:tableau="http://nextthought.com/ntp/tableau">
 
 	<include package="nti.tableau" file="meta.zcml"/>
-	<tableau:registerTableauInstance url="${tableau:url}" 
-									 username="${tableau:username}"
-									 password="${tableau:password}" />
+	<tableau:registerTableauInstance
+							url="${tableau:url}" 
+							site="${tableau:site}"
+							username="${tableau:username}"
+							password="${tableau:password}" />
 
 </configure>
