@@ -1,0 +1,13 @@
+<!-- -*- mode: nxml -*- -->
+<configure	xmlns="http://namespaces.zope.org/zope"
+			xmlns:i18n="http://namespaces.zope.org/i18n"
+			xmlns:zcml="http://namespaces.zope.org/zcml"
+			xmlns:ourecomm="http://nextthought.com/ntp/ourecomm">
+
+	<include package="nti.ou.recommendations_database" file="meta.zcml" />
+	<ourecomm:registerOURecommendationsDB
+				dburi="${ourecomm-db:driver}://${ourecomm-db:user}:${ourecomm-db:password}@${ourecomm-db:host}/${ourecomm-db:dbname}"
+				twophase="${ourecomm-db:twophase}"
+				autocommit="${ourecomm-db:autocommit}" />
+
+</configure>
