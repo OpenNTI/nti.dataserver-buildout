@@ -2,7 +2,7 @@ ${deployment:log-directory}/*supervisor*.log {
     daily
     rotate 7
     dateext
-    nocompress
+    compress
     notifempty
     missingok
     sharedscripts
