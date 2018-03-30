@@ -60,6 +60,8 @@
 	<sp:principal id="hogg6498" login="hogg6498" title="Michael Hoggatt"/>
 	<sp:grant principal="hogg6498" role="role:nti.oubound.scholarship.admin"/>
 
+	<sp:principal id="mcal8291" login="mcal8291" title="Trisha Cole"/>
+	<sp:grant principal="mcal8291" role="role:nti.oubound.scholarship.admin"/>
 	<!--
 	Housing admins  - these account can manage contracts
 	-->
