@@ -6,7 +6,7 @@
 
 	<include package="nti.orgsync_rdbms.database" file="meta.zcml" />
 	<orgsync_rdbms:registerOrgSyncDB
-				dburi="${orgsync-db:driver}://${orgsync-db:user}:${orgsync-db:password}@${orgsync-db:host}/${orgsync-db:dbname}"
+				dburi="${orgsync-db:driver}://${orgsync-db:user}:${orgsync-db:password}@${orgsync-db:host}/${orgsync-db:dbname}?charset=utf8"
 				twophase="${orgsync-db:twophase}"
 				autocommit="${orgsync-db:autocommit}" />
 

@@ -6,7 +6,7 @@
 
 	<include package="nti.ou.recommendations_database" file="meta.zcml" />
 	<ourecomm:registerOURecommendationsDB
-				dburi="${ourecomm-db:driver}://${ourecomm-db:user}:${ourecomm-db:password}@${ourecomm-db:host}/${ourecomm-db:dbname}"
+				dburi="${ourecomm-db:driver}://${ourecomm-db:user}:${ourecomm-db:password}@${ourecomm-db:host}/${ourecomm-db:dbname}?charset=utf8"
 				twophase="${ourecomm-db:twophase}"
 				autocommit="${ourecomm-db:autocommit}" />
 
