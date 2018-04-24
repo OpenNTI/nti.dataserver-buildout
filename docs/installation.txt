@@ -16,9 +16,9 @@
 	sudo port install graphviz-devel
 	sudo port install wget
 	sudo port install openjpeg
-	sudo port xmlsec
-	sudo port libyaml
-	sudo port freetds +odbc
+	sudo port install xmlsec
+	sudo port install libyaml
+	sudo port install freetds +odbc
 	sudo port install ghostscript
 	sudo port install pdf2svg
 
