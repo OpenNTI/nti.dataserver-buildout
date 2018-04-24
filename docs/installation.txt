@@ -17,6 +17,7 @@
 	sudo port install wget
 	sudo port install openjpeg
 	sudo port xmlsec
+	sudo port libyaml
 	sudo port freetds +odbc
 	sudo port install ghostscript
 	sudo port install pdf2svg
