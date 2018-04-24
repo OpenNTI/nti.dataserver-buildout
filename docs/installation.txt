@@ -227,5 +227,5 @@ Install the following ports:
 	- jsmin
 	- asymptote
 	- enchant
-	- mysql56
-	- mysql56-server
+	- mysql57
+	- mysql57-server
