@@ -46,8 +46,8 @@
 	<sp:principal id="troy.savaiinaea" login="troy.savaiinaea" title="Troy Savaiinaea"/>
 	<sp:grant principal="troy.savaiinaea" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="james.stenson" login="james.stenson" title="James Stenson"/>
-	<sp:grant principal="james.stenson" role="nti.roles.contentlibrary.admin"/>
+	<sp:principal id="matt.patrick" login="matt.patrick" title="matt patrick"/>
+	<sp:grant principal="matt.patrick" role="nti.roles.contentlibrary.admin"/>
 
 	<!-- Setup Global admins -->
 	<sp:grant principal="meleah.meadows" role="role:nti.globalsupport.admin"/>
