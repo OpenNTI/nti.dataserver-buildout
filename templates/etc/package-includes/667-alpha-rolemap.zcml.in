@@ -44,6 +44,9 @@
 	<sp:principal id="troy.savaiinaea" login="troy.savaiinaea" title="Troy Savaiinaea"/>
 	<sp:grant principal="troy.savaiinaea" role="nti.roles.contentlibrary.admin"/>
 
+	<sp:principal id="matt.patrick" login="matt.patrick" title="matt patrick"/>
+	<sp:grant principal="matt.patrick" role="nti.roles.contentlibrary.admin"/>
+	
 	<sp:principal id="bhoke" login="bhoke" title="Bryan Hoke"/>
 	<sp:grant principal="bhoke" role="nti.roles.contentlibrary.admin"/>
 
