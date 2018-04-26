@@ -1,6 +1,7 @@
 port ${port}
 unixsocket ${deployment:run-directory/redis.sock}
 loglevel notice
+protected-mode no
 ################################ SNAPSHOTTING  #################################
 #
 # Save the DB on disk:
