@@ -1,0 +1,15 @@
+<!-- -*- mode: nxml -*- -->
+<configure	xmlns="http://namespaces.zope.org/zope"
+			xmlns:i18n="http://namespaces.zope.org/i18n"
+			xmlns:zcml="http://namespaces.zope.org/zcml"
+			xmlns:sooner="http://nextthought.com/ntp/sooner_card">
+
+	<include package="nti.ou.sooner_card" file="meta.zcml" />
+
+	<sooner:registerSalesforceAPI
+			 sandbox="${sooner-card-conf:sandbox}"
+			 username="${sooner-card-conf:username}"
+			 password="${sooner-card-conf:password}"
+			 security_token="${sooner-card-conf:security_token}" />
+
+</configure>
