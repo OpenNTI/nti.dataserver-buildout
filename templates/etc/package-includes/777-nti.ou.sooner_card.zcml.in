@@ -5,11 +5,10 @@
 			xmlns:sooner="http://nextthought.com/ntp/sooner_card">
 
 	<include package="nti.ou.sooner_card" file="meta.zcml" />
-
 	<sooner:registerSalesforceAPI
-			 sandbox="${sooner-card:sandbox}"
-			 username="${sooner-card:username}"
-			 password="${sooner-card:password}"
-			 security_token="${sooner-card:security_token}" />
+			sandbox="${sooner-card:sandbox}"
+			username="${sooner-card:username}"
+			password="${sooner-card:password}"
+			security_token="${sooner-card:security_token}" />
 
 </configure>
