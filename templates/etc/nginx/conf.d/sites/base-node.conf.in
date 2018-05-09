@@ -36,6 +36,8 @@
 		real_ip_recursive on;
 		real_ip_header proxy_protocol;
 
+		index index.html page.html;
+
 		location = /_ops/ping {
 			return 204;
 		}
