@@ -75,9 +75,6 @@
 	<sp:principal id="thom7767" login="thom7767" title="Jennifer Doughty"/>
 	<sp:grant principal="thom7767" role="role:nti.oubound.housing.admin"/>
 
-	<sp:principal id="fenw5559" login="fenw5559" title="Shaista Fenwick"/>
-	<sp:grant principal="fenw5559" role="role:nti.oubound.housing.admin"/>
-
 	<sp:principal id="dave3132" login="dave3132" title="Rachel Pearce"/>
 	<sp:grant principal="dave3132" role="role:nti.oubound.housing.admin"/>
 
@@ -117,8 +114,6 @@
 	Housing read only account
 	-->
 
-	<sp:principal id="dorj6190" login="dorj6190" title="Thupten Dorji"/>
-	<sp:grant principal="dorj6190" role="role:nti.oubound.housing.support"/>
 
 	<sp:principal id="eoff5495" login="eoff5495" title="Casey Eoff"/>
 	<sp:grant principal="eoff5495" role="role:nti.oubound.housing.support"/>
@@ -134,9 +129,6 @@
 
 	<sp:principal id="torr9414" login="torr9414" title="Crystian Torres"/>
 	<sp:grant principal="torr9414" role="role:nti.oubound.housing.support"/>
-
-	<sp:principal id="walk0014" login="walk0014" title="Kamisha Walker"/>
-	<sp:grant principal="walk0014" role="role:nti.oubound.housing.support"/>
 
 	<sp:principal id="grov4690" login="grov4690" title="Makenzie Grover"/>
 	<sp:grant principal="grov4690" role="role:nti.oubound.housing.support"/>
@@ -171,10 +163,8 @@
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="dave3132"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="ratc9183"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="haas9161"/>
-		<sp:grantSite role="role:nti.dataserver.site-admin" principal="fenw5559"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="butc8266"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="brow8191"/>
-		<sp:grantSite role="role:nti.dataserver.site-admin" principal="dorj6190"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="dumo3746"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="eoff5495"/>
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="john1215"/>
