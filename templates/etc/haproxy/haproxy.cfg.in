@@ -95,6 +95,7 @@ frontend all
 	acl is_content path_beg /content
 	acl is_content path_beg /hosted_badge_images
 
+	acl is_dyn path_beg /_debug_toolbar
 	acl is_dyn path_beg /dataserver
 	acl is_dyn path_beg /_ops
 	acl is_dyn path_beg /socket.io
@@ -157,7 +158,7 @@ frontend all
 	use_backend static_backend if is_favicon
 	use_backend static_backend if is_host_cors
 	use_backend node_backend if is_app
-    use_backend node_backend if is_loginapp
+    	use_backend node_backend if is_loginapp
 	use_backend node_backend if is_mobile
 	use_backend render_backend if is_import_export
 	use_backend render_backend if is_render
