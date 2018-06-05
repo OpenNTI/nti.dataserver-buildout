@@ -72,5 +72,6 @@
 	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="martin.ngo" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="michael.mclaughlin" role="role:nti.globalsupport.admin"/>
+	<sp:grant principal="matt.patrick" role="role:nti.globalsupport.admin"/>
 
 </configure>
