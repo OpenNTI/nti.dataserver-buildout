@@ -76,38 +76,14 @@ frontend all
 	# (We can't match on ssl itself because that's already been handled)
 	bind unix@${ssl_socket} user ${ssl_socket_owner} mode 600 id 42 accept-proxy
 
-	default_backend static_backend
+	default_backend ${default_backend}
 
 	acl robots url_sub -i robots.txt robots-dev.txt
 	acl google_verification url_beg /google
 	acl is_favicon url_sub -i favicon.ico
 
-	acl is_app path_beg /app
-	acl is_app_config path_beg /app/config.js
-
-	acl is_loginapp path_beg /login/
-
-	acl is_mobile path_beg /mobile
-
 	acl is_websocket hdr(Upgrade) -i WebSocket
 	acl is_websocket hdr_beg(Host) -i ws
-
-	acl is_content path_beg /content
-	acl is_content path_beg /hosted_badge_images
-
-	acl is_dyn path_beg /_debug_toolbar
-	acl is_dyn path_beg /dataserver
-	acl is_dyn path_beg /_ops
-	acl is_dyn path_beg /socket.io
-	acl is_dyn path_beg /library
-	acl is_dyn path_beg /dictionary
-
-	acl is_import_export path_beg /dataserver2/CourseAdmin
-
-	acl is_render path_beg /dataserver2/Library/
-
-	acl is_sync path_beg /dataserver2/@@SyncAllLibraries
-	acl is_sync path_beg /dataserver2/SyncAllLibraries
 
 	# Block some common attack vectors and private info
 	acl is_blocked_name path_end .php .asp .jsp .exe .aspx
@@ -137,10 +113,6 @@ frontend all
 	# already. List those here.
 	${haproxy_addl_ssl_acls}
 
-	# Define an ACL to block incoming IP addresses
-	acl is_blocked_ip src 0.0.0.0
-	${haproxy_addl_blocked_ip_acls}
-
 	${haproxy_extra_config}
 
 	${haproxy_extra_redirects}
@@ -150,21 +122,14 @@ frontend all
 	# as well as streamlining the process.
 	redirect location /app/ code 302 if is_maybe_authed { path / } !robots !google_verification !is_favicon
 
-	# use_backend www_backend_up if is_down
+	# Block incoming IP addresses that are on the blacklist
+	use_backend %[src,map_ip(${deployment:etc-directory}/haproxy/ip_blacklist.map)] if { src,map_ip(${deployment:etc-directory}/haproxy/ip_blacklist.map) -m found }
+
 	use_backend s3_backend if robots
-	use_backend s3_backend if google_verification
-	use_backend content_backend if is_content
-	use_backend static_backend if is_app_config
 	use_backend static_backend if is_favicon
-	use_backend static_backend if is_host_cors
-	use_backend node_backend if is_app
-    	use_backend node_backend if is_loginapp
-	use_backend node_backend if is_mobile
-	use_backend render_backend if is_import_export
-	use_backend render_backend if is_render
-	use_backend render_backend if is_sync
 	use_backend data_backend if is_websocket
-	use_backend data_backend if is_dyn
+
+	use_backend %[path,map_beg(${deployment:etc-directory}/haproxy/rproxy.map)] if { path,map_beg(${deployment:etc-directory}/haproxy/rproxy.map) -m found }
 
 backend s3_backend
 	mode http
@@ -238,30 +203,6 @@ backend data_backend
 
 	${dataserver_servers}
 
-backend render_backend
-    mode http
-    balance source
-    hash-type consistent sdbm avalanche
-    # Recent versions of the server support (and require) the PROXY
-    # protocol, meaning that X-Forwarded-For is not needed (or even
-    # supported anymore). This lets us not need http-server-close or
-    # forwardfor; in theory it might let us use http-keep-alive, if
-    # there is any benefit.
-
-    # Unfortunately, because we mix and match static content requests with
-    # DS requests, true keep-alive might not be possible; the browser
-    # could send one request to each type of resource in the same
-    # TCP connection. So we need server-close.
-    # NOTE: This seems to be fixed in 1.5-dev22
-    #option http-server-close
-    option prefer-last-server
-    # option forwardfor if-none # This sets X-Forwarded-For
-    # If we don't set this, then we lose X-Forwarded-For
-
-    option httpchk GET /_ops/ping HTTP/1.1\r\nHost:\ ${hostname}
-
-    ${render_servers}
-
 backend node_backend
     mode http
     option prefer-last-server
@@ -271,14 +212,3 @@ backend node_backend
     option httpchk GET /mobile/api/_ops/ping HTTP/1.1\r\nHost:\ ${hostname}
 
     ${nodejs_servers}
-
-backend widget_dev_backend
-    mode http
-    option prefer-last-server
-    timeout server 15m
-    timeout connect 4s
-
-    reqrep ^(.*\ )/widget(/?.*) \1\2
-
-    ${widget_servers}
-
