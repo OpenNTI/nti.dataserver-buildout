@@ -2,7 +2,7 @@
 <configure	xmlns="http://namespaces.zope.org/zope"
 			xmlns:i18n="http://namespaces.zope.org/i18n"
 			xmlns:zcml="http://namespaces.zope.org/zcml"
-			xmlns:sooner="http://nextthought.com/ntp/evergage"">
+			xmlns:sooner="http://nextthought.com/ntp/evergage">
 
 	<include package="nti.ou.evergage" file="meta.zcml" />
 	<sooner:registerSalesforceAPI
