@@ -1,0 +1,17 @@
+.installed.cfg
+bin
+data
+eggs
+etc
+node_modules
+parts
+develop-eggs
+sources
+var
+package.json
+node_modules
+*.dev.cfg
+.mr.developer.cfg
+.project
+.pydevproject
+.settings
