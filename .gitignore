@@ -1,4 +1,5 @@
 .installed.cfg
+.installed.cfg-e
 bin
 data
 eggs
@@ -11,6 +12,7 @@ var
 package.json
 node_modules
 *.dev.cfg
+*.my.cfg
 .mr.developer.cfg
 .project
 .pydevproject
