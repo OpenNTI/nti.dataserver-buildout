@@ -172,6 +172,7 @@
 
 	<!-- housing bulk cancellation -->
 	<sp:grant principal="trev5031" permission="nti.oubound.housing.actions.bulk_cancel"/>
+	<sp:grant principal="dave3132" permission="nti.oubound.housing.actions.bulk_cancel"/>
 	<sp:grant principal="next0001" permission="nti.oubound.housing.actions.bulk_cancel"/>
 
 	<!-- FSP -->
