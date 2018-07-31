@@ -170,6 +170,11 @@
 		<sp:grantSite role="role:nti.dataserver.site-admin" principal="john1215"/>
 	</registerIn>
 
+	<!-- housing bulk cancellation -->
+	<sp:grant principal="trev5031" permission="nti.oubound.housing.actions.bulk_cancel"/>
+	<sp:grant principal="dave3132" permission="nti.oubound.housing.actions.bulk_cancel"/>
+	<sp:grant principal="next0001" permission="nti.oubound.housing.actions.bulk_cancel"/>
+
 	<!-- FSP -->
 	<sp:principal id="iadvise@ou.edu"
 				  login="iadvise@ou.edu"
