@@ -68,7 +68,7 @@
 		}
 
 		location = /robots.txt {
-			alias ${environment_support_path}/dist/${robots_file};
+			alias ${nginx-conf:environment_support_path}/dist/${nginx-conf:robots_file};
 		}
 
 		location = /mobile/resources/css/sites/current/site.css {
