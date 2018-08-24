@@ -67,6 +67,9 @@
 			alias ${sitepackage_location}/dist/shared/favicon.ico;
 		}
 
+		location = /robots.txt {
+			alias ${environment_support_path}/dist/${robots_file};
+		}
 
 		location = /mobile/resources/css/sites/current/site.css {
 			return 301 $uri_scheme://$host/site-assets/mobileapp/site.css;
