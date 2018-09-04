@@ -83,11 +83,11 @@
 			# On a successful login, the login app will redirect
 			# here by default (see defaults.js). We then
 			# redirect to the app; this keeps the coupling minimal
-			rewrite ^.*$ ${nginx-conf:webapp_location} redirect;
+			return 302 $uri_scheme://$host${nginx-conf:webapp_location};
 		}
 
 		location @login {
-			rewrite ^.*$ ${nginx-conf:loginapp_location} redirect;
+			return 302 $uri_scheme://$host/login/;
 		}
 
 		location @error {
