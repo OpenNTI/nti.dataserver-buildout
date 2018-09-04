@@ -83,7 +83,7 @@
 			# On a successful login, the login app will redirect
 			# here by default (see defaults.js). We then
 			# redirect to the app; this keeps the coupling minimal
-			return 302 $uri_scheme://$host/${nginx-conf:webapp_location};
+			return 302 $uri_scheme://$host${nginx-conf:webapp_location};
 		}
 
 		location @login {
