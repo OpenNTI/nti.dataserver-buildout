@@ -15,11 +15,11 @@
 
 		# All non-debug traffic should come from HAProxy in the PROXY protocol.
 		# This is more efficient than communicating over HTTP.
-		listen ${nginx_ip}:${nginx_proxy_port} proxy_protocol;
+		listen ${nginx-conf:nginx_ip}:${nginx-conf:nginx_proxy_port} proxy_protocol;
 
 		# However for development and debugging there may be a need to bind
 		# to additional ports and use other protocols than PROXY.
-		${nginx_extra_binds}
+		${nginx-conf:nginx_extra_binds}
 
 		root   ${global_content_directory|shell-path};
 		server_name	 ${global_host_name};
@@ -58,7 +58,7 @@
 		}
 
 		location = / {
-			# haproxy is redirecting to ${webapp_location} if the root
+			# haproxy is redirecting to ${nginx-conf:webapp_location} if the root
 			# gets hit and we could be authenticated. This makes it hard
 			# to get back to the landing content, if any. So we redirect
 			# (unauthenticated) hits of the root to be directly to
@@ -72,27 +72,27 @@
 			root ${loginapp_path/src/main/WebApp|shell-path}/;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
-			# Is there a maintenance page? If so, go there. Did we get a
-			# landing cookie that maps to a file on disk? if so, go there;
-			# do the same for the server name. Finally, if nothing matches,
-			# go to login.
-			try_files /maintenance/index.html
-					  /landing/$site_landing_name$uri
-					  /landing/$host$uri
-					  /landing/$server_name$uri
-					  /landing/$site_landing_name$uri/index.html
-					  /landing/$host$uri/index.html
-					  /landing/$server_name$uri/index.html
-					  @login;
+			try_files $uri $uri/ @login;
+		}
+
+		location = /favicon.ico {
+			alias ${sitepackage_location}/dist/shared/favicon.ico;
+		}
+
+		location = /robots.txt {
+			alias ${nginx-conf:environment_support_path}/dist/${nginx-conf:robots_file};
 		}
 
 		location = /mobile/resources/css/sites/current/site.css {
-			root ${mobileweb_path}/dist/client/resources/css/sites/;
-			try_files   /$host/site.css
-					/$server_name/site.css
-				    	/$host/site.css
-					/$server_name/site.css
-					@error;
+			return 301 $uri_scheme://$host/site-assets/mobileapp/site.css;
+		}
+
+		location = /mobile/resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+
+		location /site-assets/ {
+			alias ${sitepackage_location}/dist/;
 		}
 
 		location /vendor/ {
@@ -100,11 +100,7 @@
 		}
 
 		location /widgets {
-			root ${mobileweb_path}/dist;
-		}
-
-		location = /maintenance/index.html {
-			expires 30s;
+			root ${nginx-conf:mobileweb_path}/dist;
 		}
 
 		location = /loginsuccess {
@@ -122,48 +118,60 @@
 			return 404;
 		}
 
-		location /dataserver {
-			# We don't proxy to the DS; haproxy in front
-			# of us should do that.
-			return 404;
-		}
-
-		location ${webapp_location} {
-			alias ${webapp_path/dist/client/|shell-path}/;
+		location ${nginx-conf:webapp_location} {
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/;
 			# a header so that we can do a head request and try to
 			# bust the cached redirect... see login app.
 			add_header X-NTI-WebApp true;
-			try_files $uri /app/index.html;
+			try_files $uri ${nginx-conf:webapp_location}index.html;
 		}
 
-${nginx_extra_server_config}
-
-		location ${webapp_location}js/ {
-			alias ${webapp_path/dist/client/|shell-path}/js/;
+		location ${nginx-conf:webapp_location}js/ {
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/js/;
 		}
 
-		location ${webapp_location}resources/ {
-			alias ${webapp_path/dist/client/|shell-path}/resources/;
+		location ${nginx-conf:webapp_location}resources/ {
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/resources/;
 		}
 
-		location ${webapp_location}content/ {
-			alias ${webapp_path/dist/client/|shell-path}/content/;
+		location ${nginx-conf:webapp_location}content/ {
+			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/content/;
 		}
 
-		location ${webapp_location}config.js {
-			alias ${webapp_config_file};
+		location ${nginx-conf:webapp_location}config.js {
+			alias ${nginx-conf:webapp_config_file};
 		}
 
-		location ${global_content_location} {
-			alias ${global_content_directory/.|shell-path}/;
+		location ${nginx-conf:webapp_location}resources/css/site.css {
+			return 301 $uri_scheme://$host/site-assets/webapp/site.css;
+		}
+
+		location ${nginx-conf:webapp_location}resources/css/site/ {
+			alias ${sitepackage_location}/dist/webapp/;
+		}
+
+		location ${nginx-conf:webapp_location}resources/css/shared/ {
+			alias ${sitepackage_location}/dist/shared/;
+		}
+
+		location ${nginx-conf:webapp_location}resources/strings/site.js {
+			return 301 $uri_scheme://$host/site-assets/webapp/strings.js;
+		}
+
+		location = ${nginx-conf:webapp_location}resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+
+		location ${nginx-conf:global_content_location} {
+			alias ${nginx-conf:global_content_directory/.|shell-path}/;
 			auth_request /_ops/identify;
-			location ~* ${global_content_location}(.*\.(png|jpg|jpeg|svg|gif)) {
+			location ~* ${nginx-conf:global_content_location}(.*\.(png|jpg|jpeg|svg|gif)) {
 				auth_request off;
 			}
 		}
 
-		location ${hosted_badge_images_location} {
-			alias ${hosted_badge_images_directory/.|shell-path}/;
+		location ${nginx-conf:hosted_badge_images_location} {
+			alias ${nginx-conf:hosted_badge_images_directory/.|shell-path}/;
 		}
 		
 		location = /_ops/identify {
@@ -174,39 +182,43 @@ ${nginx_extra_server_config}
 			proxy_set_header Content-Length "";
 		}
 
-
-		location ${global_content_location}welcome/ {
-			alias ${webapp_path/dist/client/content/welcome/|shell-path}/;
+		location ${nginx-conf:global_content_location}welcome/ {
+			alias ${nginx-conf:webapp_path/dist/client/content/welcome/|shell-path}/;
 		}
 
-		location /purchasables/ { # JAM: Not sure what this is
-			alias /var/www/html/purchasables/;
-		}
-
-		location ${loginapp_location} {
-			alias ${loginapp_path/src/main/WebApp/|shell-path}/;
-
+		location ${nginx-conf:loginapp_location} {
+			alias ${nginx-conf:loginapp_path/src/main/WebApp/|shell-path}/;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
-
 		}
 
- 		# JAM: The locations beginning with /NextThoughtWebApp/ are for
-		# BWC (old bookmarks) only right now.
-		location /NextThoughtWebApp/ {
-			alias ${webapp_path/dist/client/|shell-path}/;
+		location = ${nginx-conf:loginapp_location}resources/css/site.css {
+			return 301 $uri_scheme://$host/site-assets/loginapp/site.css;
 		}
 
-		location /NextThoughtWebApp/config.js {
-			alias ${webapp_config_file};
+		location ${nginx-conf:loginapp_location}resources/css/site/ {
+			alias ${sitepackage_location}/dist/loginapp/;
 		}
 
-		# JAM: Likewise for /landing
+		location ${nginx-conf:loginapp_location}resources/shared/ {
+			alias ${sitepackage_location}/dist/shared/;
+		}
+
+		location = ${nginx-conf:loginapp_location}resources/strings/site.js {
+			return 301 $uri_scheme://$host/site-assets/loginapp/strings.js;
+		}
+
+		location = ${nginx-conf:loginapp_location}resources/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+
 		location /landing {
 			# Send them to the root
 			rewrite ^/landing$ /index.html redirect;
 			rewrite ^/landing/(.*)$ /$1 redirect;
 		}
+
+${nginx_extra_server_config}
 
 		# deny access to .htaccess files, if Apache's document root
 		# concurs with nginx's one
