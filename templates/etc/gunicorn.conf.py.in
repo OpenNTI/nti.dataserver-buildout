@@ -33,5 +33,5 @@ worker_connections = ${worker_connections}
 
 # We want to dump the stack of any greenlet running for more than 5s
 # (cpu bound).
-raw_env = ['gevent_blocking_trace=True',
+raw_env = ['gevent_blocking_trace=False',
            'gevent_max_blocking_time=5']
