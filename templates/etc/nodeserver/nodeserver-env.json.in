@@ -26,7 +26,6 @@
 
 		"external-libraries": {
 			"mathquill": {
-				"requires": ["jquery"],
 				"url": "${mathquill-url}",
 				"definesSymbol": "jQuery.fn.mathquill",
 				"stylesheets": ["${mathquill-stylesheet}"]
