@@ -48,6 +48,11 @@ session_cookie_secret = ${session_cookie_secret}
 facebook.app.id = 272442356159055
 facebook.app.secret = 964997cea8939ffae988668f6c634f0c
 
+gc_debug = ${gc_debug}
+gc_gen0_threshold = ${gc_gen0_threshold}
+gc_gen1_threshold = ${gc_gen1_threshold}
+gc_gen2_threshold = ${gc_gen2_threshold}
+
 # If this is defined, perfmetrics is active and establishes
 # the statsd client stack.
 # Note: because this is UDP, even if
