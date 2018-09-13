@@ -12,6 +12,7 @@ bind = [":${http-port}", "unix:${unix-socket|shell-path}"]
 # specified
 workers = "${workers}" or multiprocessing.cpu_count() * 2 + 1
 worker_class =  "nti.appserver.nti_gunicorn.GeventApplicationWorker"
+logger_class = "nti.appserver.nti_gunicorn.GunicornLogger"
 accesslog = "/dev/stderr"
 timeout = ${timeout}
 preload_app = ${preload_app}
@@ -24,7 +25,6 @@ forwarded_allow_ips = "${forwarded_allow_ips}" or "*"
 # is a simple method to help limit the damage of memory leaks. If this
 # is set to zero (the default) then the automatic worker restarts are
 # disabled.
-
 max_requests = ${max_requests}
 
 # The maximum number of simultaneous clients. This setting only
