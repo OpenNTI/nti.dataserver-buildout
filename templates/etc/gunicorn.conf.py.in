@@ -1,4 +1,5 @@
 import multiprocessing
+import os
 
 # Let true and false be synonyms for ease of
 # the templaters
@@ -33,5 +34,8 @@ worker_connections = ${worker_connections}
 
 # We want to dump the stack of any greenlet running for more than 5s
 # (cpu bound).
-raw_env = ['gevent_blocking_trace=False',
-           'gevent_max_blocking_time=5']
+raw_env = [${raw_env}]
+
+# StatsD connection
+statsd_host = "${environment:statsd_host}:${environment:statsd_port}"
+statsd_prefix = ${environment:statsd_prefix}
