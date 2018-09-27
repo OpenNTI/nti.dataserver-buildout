@@ -1,4 +1,5 @@
 import multiprocessing
+import os
 
 # Let true and false be synonyms for ease of
 # the templaters
@@ -12,6 +13,7 @@ bind = [":${http-port}", "unix:${unix-socket|shell-path}"]
 # specified
 workers = "${workers}" or multiprocessing.cpu_count() * 2 + 1
 worker_class =  "nti.appserver.nti_gunicorn.GeventApplicationWorker"
+logger_class = "nti.appserver.nti_gunicorn.GunicornLogger"
 accesslog = "/dev/stderr"
 timeout = ${timeout}
 preload_app = ${preload_app}
@@ -24,7 +26,6 @@ forwarded_allow_ips = "${forwarded_allow_ips}" or "*"
 # is a simple method to help limit the damage of memory leaks. If this
 # is set to zero (the default) then the automatic worker restarts are
 # disabled.
-
 max_requests = ${max_requests}
 
 # The maximum number of simultaneous clients. This setting only
@@ -33,5 +34,8 @@ worker_connections = ${worker_connections}
 
 # We want to dump the stack of any greenlet running for more than 5s
 # (cpu bound).
-raw_env = ['gevent_blocking_trace=True',
-           'gevent_max_blocking_time=5']
+raw_env = [${raw_env}]
+
+# StatsD connection
+statsd_host = "${environment:statsd_host}:${environment:statsd_port}"
+statsd_prefix = ${environment:statsd_prefix}
