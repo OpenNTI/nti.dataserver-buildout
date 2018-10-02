@@ -121,9 +121,6 @@
 	<sp:principal id="irvi1666" login="irvi1666" title="Jackie Irvin"/>
 	<sp:grant principal="irvi1666" role="role:nti.oubound.housing.support"/>
 
-	<sp:principal id="hous0873" login="hous0873" title="Leah Houston"/>
-	<sp:grant principal="hous0873" role="role:nti.oubound.housing.support"/>
-
 	<sp:principal id="thib8635" login="thib8635" title="Megan Thibodeau"/>
 	<sp:grant principal="thib8635" role="role:nti.oubound.housing.support"/>
 
