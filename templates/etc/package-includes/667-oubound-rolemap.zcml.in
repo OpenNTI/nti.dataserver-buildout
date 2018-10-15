@@ -130,9 +130,6 @@
 	<sp:principal id="grov4690" login="grov4690" title="Makenzie Grover"/>
 	<sp:grant principal="grov4690" role="role:nti.oubound.housing.support"/>
 	
-	<sp:principal id="cala0007" login="cala0007" title="Caleb Calame"/>
-	<sp:grant principal="cala0007" role="role:nti.oubound.housing.support"/>
-	
 	<sp:principal id="next0000" login="next0000" title="Next Thought"/>
 	<sp:grant principal="next0000" role="role:nti.oubound.housing.support"/>
 
