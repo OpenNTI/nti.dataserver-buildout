@@ -34,8 +34,8 @@ try:
     from site import USER_SITE
 except ImportError:
     USER_SITE = None
-    
-LATEST = "40.4.3"
+
+LATEST = "40.5.0"
 DEFAULT_VERSION = LATEST
 DEFAULT_URL_NT = "https://downloads.nextthought.com/deps/eggs/"
 DEFAULT_URL_PYPI = "https://pypi.io/packages/source/s/setuptools/"
