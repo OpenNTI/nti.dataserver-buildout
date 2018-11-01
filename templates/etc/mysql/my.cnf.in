@@ -1,21 +1,32 @@
 [mysqld]
 basedir = ${mysqld-conf:basedir}
-plugin_dir = ${mysqld-conf:basedir}/lib/plugin
+plugin_dir = ${mysqld-conf:plugin_dir}
 server_id = ${mysqld-conf:server_id}
+log-bin = ${mysqld-conf:binary_log_prefix}
 binlog_format=${mysqld-conf:binlog_format}
 expire_logs_days=${mysqld-conf:expire_logs_days}
-
-# Disabling symbolic-links is recommended to prevent assorted security risks
-symbolic-links = 0
 
 max_allowed_packet = ${mysqld-conf:max_allowed_packet}
 max_connections = ${mysqld-conf:max_connections}
 open_files_limit = ${mysqld-conf:open_files_limit}
-#storage_engine = InnoDB
-innodb_additional_mem_pool_size = ${mysqld-conf:innodb_additional_mem_pool_size}
+
+# Recommended in standard MySQL setup
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+
+# Remove leading # and set to the amount of RAM for the most important data
+# cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
 innodb_buffer_pool_size = ${mysqld-conf:innodb_buffer_pool_size}
+
 innodb_file_per_table = ${mysqld-conf:innodb_file_per_table}
 innodb_flush_method = ${mysqld-conf:innodb_flush_method}
 key_buffer_size = ${mysqld-conf:key_buffer_size}
 read_buffer_size = ${mysqld-conf:read_buffer_size}
 
+datadir=${mysqld-conf:datadir}
+socket=${mysqld-conf:socket}
+
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links = 0
+
+log-error=${mysqld-conf:error_log}
+pid-file=${mysqld-conf:pidfile}
