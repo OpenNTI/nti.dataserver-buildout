@@ -27,6 +27,3 @@ socket=${mysqld-conf:socket}
 
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links = 0
-
-log-error=${mysqld-conf:error_log}
-pid-file=${mysqld-conf:pidfile}
