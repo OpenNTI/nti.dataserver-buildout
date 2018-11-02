@@ -11,7 +11,7 @@ max_connections = ${mysqld-conf:max_connections}
 open_files_limit = ${mysqld-conf:open_files_limit}
 
 # Recommended in standard MySQL setup
-sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
+sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ZERO_DATE,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZER
 
 # Remove leading # and set to the amount of RAM for the most important data
 # cache in MySQL. Start at 70% of total RAM for dedicated server, else 10%.
