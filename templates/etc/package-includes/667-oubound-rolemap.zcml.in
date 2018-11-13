@@ -98,7 +98,13 @@
 
 	<sp:principal id="john1215" login="john1215" title="Cody Johnson"/>
 	<sp:grant principal="john1215" role="role:nti.oubound.housing.admin"/>
-	
+
+	<sp:principal id="eoff0000" login="eoff0000" title="Hannah Eoff"/>
+	<sp:grant principal="eoff0000" role="role:nti.oubound.housing.admin"/>
+
+	<sp:principal id="scha6947" login="scha6947" title="Ann Schafer"/>
+	<sp:grant principal="scha6947" role="role:nti.oubound.housing.admin"/>
+
 	<sp:principal id="next0001" login="next0001" title="Next Thought"/>
 	<sp:grant principal="next0001" role="role:nti.oubound.housing.admin"/>
 
