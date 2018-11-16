@@ -67,6 +67,9 @@ frontend all
     acl is_blocked_name path_dir .nti_acl indexdir
     http-request deny if is_blocked_name
 
+    # Band-aid for client not auto picking a language file
+    redirect location /app/resources/locales/en/LC_MESSAGES/NextThoughtWebApp.js code 302 if { path_beg /app/resources/strings/strings.js }
+
     ${haproxy_extra_config}
 
     ${haproxy_extra_redirects}
