@@ -57,6 +57,12 @@
 			error_page 404 =503 /maintenance/index.html;
 		}
 
+		error_page 404 = /404.html;
+		location = /404.html {
+			alias ${nginx-conf:environment_support_path}/dist/404.html;
+			internal;
+		}
+
 		location = / {
 			# haproxy is redirecting to ${nginx-conf:webapp_location} if the root
 			# gets hit and we could be authenticated. This makes it hard
@@ -70,6 +76,12 @@
 		location  / {
 			index  index.html index.htm;
 			root ${loginapp_path/src/main/WebApp|shell-path}/;
+			expires +1h;
+			add_header Cache-Control proxy-revalidate;
+		}
+
+		location = /index.html {
+			root ${landingpage_path|shell-path}/;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
 			try_files $uri $uri/ @login;
