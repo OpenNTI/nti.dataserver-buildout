@@ -86,7 +86,7 @@
 		}
 
 		location = /favicon.ico {
-			alias ${sites_basedir}/$host/shared/;
+			root ${sites_basedir}/$host/shared/;
 			try_files $uri @default_favicon;
 		}
 
