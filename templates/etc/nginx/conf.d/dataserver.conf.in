@@ -21,7 +21,7 @@
 		# to additional ports and use other protocols than PROXY.
 		${nginx-conf:nginx_extra_binds}
 
-		root   ${global_content_directory|shell-path};
+		root   ${nginx_root|shell-path};
 		server_name	 ${global_host_name};
 		# Don't use our defined server name if we do a redirect;
 		# instead use the value the client supplies in the
@@ -42,8 +42,8 @@
 		lingering_close on;
 
 		set_real_ip_from 192.168.0.0/24;
-		set_real_ip_from 10.50.0.0/24;
-		set_real_ip_from 10.50.8.0/24;
+		set_real_ip_from 10.50.0.0/16;
+		set_real_ip_from 172.16.48.0/22;
 		set_real_ip_from 127.0.0.1;
 		set_real_ip_from unix:;
 		real_ip_recursive on;
@@ -55,6 +55,12 @@
 
 		location /this/should/not/exist.html {
 			error_page 404 =503 /maintenance/index.html;
+		}
+
+		error_page 404 = /404.html;
+		location = /404.html {
+			alias ${nginx-conf:environment_support_path}/dist/404.html;
+			internal;
 		}
 
 		location = / {
@@ -69,38 +75,42 @@
 
 		location  / {
 			index  index.html index.htm;
-			root ${loginapp_path/src/main/WebApp|shell-path}/;
+			expires +1h;
+			add_header Cache-Control proxy-revalidate;
+		}
+
+		location = /index.html {
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
 			try_files $uri $uri/ @login;
 		}
 
 		location = /favicon.ico {
-			alias ${sitepackage_location}/dist/shared/favicon.ico;
+			root ${sites_basedir}/$host/shared/;
+			try_files $uri @default_favicon;
+		}
+
+		location @default_favicon {
+			root ${default_site_assets}/dist/shared/;
+			internal;
 		}
 
 		location = /robots.txt {
 			alias ${nginx-conf:environment_support_path}/dist/${nginx-conf:robots_file};
 		}
 
-		location = /mobile/resources/css/sites/current/site.css {
-			return 301 $uri_scheme://$host/site-assets/mobileapp/site.css;
-		}
-
-		location = /mobile/resources/images/favicon.ico {
-			return 301 $uri_scheme://$host/favicon.ico;
-		}
-
 		location /site-assets/ {
-			alias ${sitepackage_location}/dist/;
+			alias ${sites_basedir}/$host/;
+			try_files $uri @default_site_assets;
+		}
+
+		location @default_site_assets {
+			rewrite /site-assets(/.*) $1;
+			internal;
 		}
 
 		location /vendor/ {
 			alias ${nginx-conf:vendor_lib_path}/;
-		}
-
-		location /widgets {
-			root ${nginx-conf:mobileweb_path}/dist;
 		}
 
 		location = /loginsuccess {
@@ -118,50 +128,7 @@
 			return 404;
 		}
 
-		location ${nginx-conf:webapp_location} {
-			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/;
-			# a header so that we can do a head request and try to
-			# bust the cached redirect... see login app.
-			add_header X-NTI-WebApp true;
-			try_files $uri ${nginx-conf:webapp_location}index.html;
-		}
-
-		location ${nginx-conf:webapp_location}js/ {
-			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/js/;
-		}
-
-		location ${nginx-conf:webapp_location}resources/ {
-			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/resources/;
-		}
-
-		location ${nginx-conf:webapp_location}content/ {
-			alias ${nginx-conf:webapp_path/dist/client/|shell-path}/content/;
-		}
-
-		location ${nginx-conf:webapp_location}config.js {
-			alias ${nginx-conf:webapp_config_file};
-		}
-
-		location ${nginx-conf:webapp_location}resources/css/site.css {
-			return 301 $uri_scheme://$host/site-assets/webapp/site.css;
-		}
-
-		location ${nginx-conf:webapp_location}resources/css/site/ {
-			alias ${sitepackage_location}/dist/webapp/;
-		}
-
-		location ${nginx-conf:webapp_location}resources/css/shared/ {
-			alias ${sitepackage_location}/dist/shared/;
-		}
-
-		location ${nginx-conf:webapp_location}resources/strings/site.js {
-			return 301 $uri_scheme://$host/site-assets/webapp/strings.js;
-		}
-
-		location = ${nginx-conf:webapp_location}resources/images/favicon.ico {
-			return 301 $uri_scheme://$host/favicon.ico;
-		}
-
+##### Content rules ####
 		location ${nginx-conf:global_content_location} {
 			alias ${nginx-conf:global_content_directory/.|shell-path}/;
 			auth_request /_ops/identify;
@@ -181,27 +148,35 @@
 			proxy_pass_request_body off;
 			proxy_set_header Content-Length "";
 		}
+#### ******** ####
 
-		location ${nginx-conf:global_content_location}welcome/ {
-			alias ${nginx-conf:webapp_path/dist/client/content/welcome/|shell-path}/;
+##### Legacy mobile app rules ####
+		location = /mobile/resources/css/sites/current/site.css {
+			return 301 $uri_scheme://$host/site-assets/mobileapp/site.css;
 		}
 
-		location ${nginx-conf:loginapp_location} {
-			alias ${nginx-conf:loginapp_path/src/main/WebApp/|shell-path}/;
-			expires +1h;
-			add_header Cache-Control proxy-revalidate;
+		location = /mobile/resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+#### ******** ####
+
+##### Legacy web app rules ####
+		location ${nginx-conf:webapp_location}resources/css/site.css {
+			return 301 $uri_scheme://$host/site-assets/webapp/site.css;
 		}
 
+		location ${nginx-conf:webapp_location}resources/strings/site.js {
+			return 301 $uri_scheme://$host/site-assets/webapp/strings.js;
+		}
+
+		location = ${nginx-conf:webapp_location}resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+#### ******** ####
+
+##### Legacy login app rules ####
 		location = ${nginx-conf:loginapp_location}resources/css/site.css {
 			return 301 $uri_scheme://$host/site-assets/loginapp/site.css;
-		}
-
-		location ${nginx-conf:loginapp_location}resources/css/site/ {
-			alias ${sitepackage_location}/dist/loginapp/;
-		}
-
-		location ${nginx-conf:loginapp_location}resources/shared/ {
-			alias ${sitepackage_location}/dist/shared/;
 		}
 
 		location = ${nginx-conf:loginapp_location}resources/strings/site.js {
@@ -211,14 +186,7 @@
 		location = ${nginx-conf:loginapp_location}resources/favicon.ico {
 			return 301 $uri_scheme://$host/favicon.ico;
 		}
-
-		location /landing {
-			# Send them to the root
-			rewrite ^/landing$ /index.html redirect;
-			rewrite ^/landing/(.*)$ /$1 redirect;
-		}
-
-${nginx_extra_server_config}
+#### ******** ####
 
 		# deny access to .htaccess files, if Apache's document root
 		# concurs with nginx's one
@@ -235,5 +203,8 @@ ${nginx_extra_server_config}
 		location ~ /\.git/ {
 			deny all;
 		}
+
+		# Additional custom configuration below
+		${nginx_extra_server_config}
 
 	}
