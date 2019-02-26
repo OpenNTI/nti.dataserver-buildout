@@ -1,0 +1,5 @@
+        upstream dataserver {
+                server ${upstream_dataserver};
+
+                keepalive 16;
+        }

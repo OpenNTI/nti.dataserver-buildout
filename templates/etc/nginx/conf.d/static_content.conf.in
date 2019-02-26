@@ -1,0 +1,165 @@
+	server {
+		charset utf-8;
+		
+		# All non-debug traffic should come from HAProxy in the PROXY protocol.
+		# This is more efficient than communicating over HTTP.
+		listen ${nginx_ip}:${nginx_proxy_port} default_server proxy_protocol;
+		
+		# However for development and debugging there may be a need to bind
+		# to additional ports and use other protocols than PROXY.
+		${nginx_extra_binds}
+
+		root   ${nginx_root|shell-path};
+		server_name	 ${nginx_host_name};
+
+		port_in_redirect off;
+
+		proxy_http_version 1.1;
+		etag on;
+		if_modified_since before;
+		lingering_close on;
+
+		set_real_ip_from 192.168.0.0/24;
+		set_real_ip_from 10.50.0.0/16;
+		set_real_ip_from 172.16.48.0/22;
+		set_real_ip_from 127.0.0.1;
+		set_real_ip_from unix:;
+		real_ip_recursive on;
+		real_ip_header proxy_protocol;
+
+		location = /_ops/ping {
+			return 204;
+		}
+		location /this/should/not/exist.html {
+			error_page 404 =503 /maintenance/index.html;
+		}
+
+		error_page 404 = /404.html;
+		location = /404.html {
+			alias ${nginx-conf:environment_support_path}/dist/404.html;
+			internal;
+		}
+
+		location = / {
+			# haproxy is redirecting to ${nginx-conf:webapp_location} if the root
+			# gets hit and we could be authenticated. This makes it hard
+			# to get back to the landing content, if any. So we redirect
+			# (unauthenticated) hits of the root to be directly to
+			# /index.html (which we handle with the block below), letting
+			# the back button work as expected.
+			return 302 $uri_scheme://$host/index.html;
+		}
+
+		location  / {
+			index  index.html index.htm;
+			expires +1h;
+			add_header Cache-Control proxy-revalidate;
+		}
+
+		location = /index.html {
+			expires +1h;
+			add_header Cache-Control proxy-revalidate;
+			try_files $uri $uri/ @login;
+		}
+
+		location = /favicon.ico {
+			alias ${sites_basedir}/$host/shared/;
+			try_files $uri @default_favicon;
+		}
+
+		location @default_favicon {
+			root ${default_site_assets}/dist/shared/;
+			internal;
+		}
+
+		location = /robots.txt {
+			alias ${nginx-conf:environment_support_path}/dist/${nginx-conf:robots_file};
+		}
+
+		location /site-assets/ {
+			alias ${sites_basedir}/$host/;
+			try_files $uri @default_site_assets;
+		}
+
+		location @default_site_assets {
+			rewrite /site-assets(/.*) $1;
+			internal;
+		}
+
+		location /vendor/ {
+			alias ${nginx-conf:vendor_lib_path}/;
+		}
+
+		location = /loginsuccess {
+			# On a successful login, the login app will redirect
+			# here by default (see defaults.js). We then
+			# redirect to the app; this keeps the coupling minimal
+			return 302 $uri_scheme://$host${nginx-conf:webapp_location};
+		}
+
+		location @login {
+			return 302 $uri_scheme://$host/login/;
+		}
+
+		location @error {
+			return 404;
+		}
+
+##### Legacy mobile app rules ####
+		location = /mobile/resources/css/sites/current/site.css {
+			return 301 $uri_scheme://$host/site-assets/mobileapp/site.css;
+		}
+
+		location = /mobile/resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+#### ******** ####
+
+##### Legacy web app rules ####
+		location ${nginx-conf:webapp_location}resources/css/site.css {
+			return 301 $uri_scheme://$host/site-assets/webapp/site.css;
+		}
+
+		location ${nginx-conf:webapp_location}resources/strings/site.js {
+			return 301 $uri_scheme://$host/site-assets/webapp/strings.js;
+		}
+
+		location = ${nginx-conf:webapp_location}resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+#### ******** ####
+
+##### Legacy login app rules ####
+		location = ${nginx-conf:loginapp_location}resources/css/site.css {
+			return 301 $uri_scheme://$host/site-assets/loginapp/site.css;
+		}
+
+		location = ${nginx-conf:loginapp_location}resources/strings/site.js {
+			return 301 $uri_scheme://$host/site-assets/loginapp/strings.js;
+		}
+
+		location = ${nginx-conf:loginapp_location}resources/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+#### ******** ####
+
+		# deny access to .htaccess files, if Apache's document root
+		# concurs with nginx's one
+		#
+		location ~ /\.ht {
+			deny  all;
+		}
+
+		# shutdown .svn and .git, apperantly 
+		location ~ /\.svn/ {
+			deny all;
+		}
+
+		location ~ /\.git/ {
+			deny all;
+		}
+
+		# Additional custom configuration below
+		${nginx_extra_server_config}
+
+	}
