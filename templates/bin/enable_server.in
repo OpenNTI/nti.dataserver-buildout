@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "enable server $1" | socat ${deployment:run-directory}/haproxy.sock stdio

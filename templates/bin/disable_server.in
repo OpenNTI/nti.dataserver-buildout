@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "disable server $1" | socat ${deployment:run-directory}/haproxy.sock stdio

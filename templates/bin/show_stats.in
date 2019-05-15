@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo "show stat" | socat ${deployment:run-directory}/haproxy.sock stdio
