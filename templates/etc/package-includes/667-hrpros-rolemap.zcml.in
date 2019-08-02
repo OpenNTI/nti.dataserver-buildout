@@ -1,0 +1,13 @@
+<configure	xmlns="http://namespaces.zope.org/zope"
+			xmlns:sp="http://nextthought.com/ntp/securitypolicy">
+
+	<!-- Assign principals to roles in the HRPros environment -->
+	<!--
+	For principals, note that only 'id' actually matters.
+	It must match the username of a User in the database
+	to have any effect.
+	-->
+	<!-- Setup Content admins -->
+	<!-- Setup Global admins -->
+
+</configure>
