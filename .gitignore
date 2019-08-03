@@ -3,6 +3,7 @@ bin
 data
 eggs
 etc
+!templates/bin
 !templates/etc
 node_modules
 parts
