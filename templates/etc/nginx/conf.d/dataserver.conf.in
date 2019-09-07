@@ -74,12 +74,14 @@
 		}
 
 		location  / {
+			root ${sites_basedir}/landing/$host;
 			index  index.html index.htm;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
 		}
 
 		location = /index.html {
+			root ${sites_basedir}/landing/$host;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
 			try_files $uri $uri/ @login;
