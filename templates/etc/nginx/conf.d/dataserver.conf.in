@@ -92,6 +92,10 @@
 			try_files $uri @default_favicon;
 		}
 
+		location = /resources/images/favicon.ico {
+			return 301 $uri_scheme://$host/favicon.ico;
+		}
+
 		location @default_favicon {
 			root ${default_site_assets}/dist/shared/;
 			internal;
