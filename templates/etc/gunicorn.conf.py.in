@@ -1,8 +1,7 @@
 import multiprocessing
 import os
 
-# Let true and false be synonyms for ease of
-# the templaters
+# Let true and false be synonyms for ease of the templaters
 true = True
 false = False
 
@@ -17,6 +16,7 @@ logger_class = "nti.appserver.nti_gunicorn.GunicornLogger"
 accesslog = "/dev/stderr"
 timeout = ${timeout}
 preload_app = ${preload_app}
+reuse_port = ${reuse_port}
 
 forwarded_allow_ips = "${forwarded_allow_ips}" or "*"
 
