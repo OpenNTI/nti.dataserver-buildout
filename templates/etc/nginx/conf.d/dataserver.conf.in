@@ -106,12 +106,32 @@
 		}
 
 		location /site-assets/ {
-			alias ${sites_basedir}/$host/;
+			alias ${server_sites_basedir}/$host/;
+			try_files $uri @default_site_assets;
+		}
+
+		location /site-assets/loginapp/ {
+			alias ${sites_basedir}/$host/loginapp/;
+			try_files $uri @default_site_assets;
+		}
+
+		location /site-assets/mobileapp/ {
+			alias ${sites_basedir}/$host/mobileapp/;
+			try_files $uri @default_site_assets;
+		}
+
+		location /site-assets/shared/ {
+			alias ${sites_basedir}/$host/shared/;
+			try_files $uri @default_site_assets;
+		}
+
+		location /site-assets/webapp/ {
+			alias ${sites_basedir}/$host/webapp/;
 			try_files $uri @default_site_assets;
 		}
 
 		location @default_site_assets {
-			rewrite /site-assets(/.*) $1;
+			root ${sites_basedir}/default-assets/;
 			internal;
 		}
 
