@@ -1,0 +1,35 @@
+<!-- -*- mode: nxml -*- -->
+<configure  xmlns="http://namespaces.zope.org/zope"
+            xmlns:i18n="http://namespaces.zope.org/i18n"
+            xmlns:zcml="http://namespaces.zope.org/zcml"
+            xmlns:appsite="http://nextthought.com/ntp/appsite"
+            xmlns:adb="http://nextthought.com/analytics/database"
+            xmlns:sp="http://nextthought.com/ntp/sitepolicy">
+
+  <include package="zope.component" file="meta.zcml" />
+  <include package="zope.security" file="meta.zcml" />
+  <include package="zope.component" />
+  <include package="." file="meta.zcml" />
+
+  <!-- Define our global, non-persistent, base components -->
+  <appsite:createBaseComponents parent="nti.app.sites.ifsta.sites.IFSTA_CHILD" 
+                                name="${site-name}" />
+
+  <appsite:registerInNamedComponents registry="${site-name}">
+
+    <!-- register our site policy -->
+    <sp:createSitePolicy factory="nti.app.sites.ifsta.policy.child_site_policy_factory"
+                         brand="${site-brand}" 
+                         display_name="${site-brand}" 
+                         com_username="${site-name}" />
+
+    <!-- Register an appropriate analytics db -->
+    <adb:registerAnalyticsDB
+        dburi="${analytics-driver}://${analytics-user}:${analytics-password}@${analytics-host}/${analytics-dbname}?charset=utf8"
+        twophase="${analytics-twophase}"
+        autocommit="${analytics-autocommit}" />
+
+    
+  </appsite:registerInNamedComponents>
+
+</configure>
