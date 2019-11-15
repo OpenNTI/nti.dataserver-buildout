@@ -106,7 +106,7 @@
 		}
 
 		location /site-assets/ {
-			alias ${server_sites_basedir}/$host/;
+			alias ${server_sites_basedir}/;
 			try_files $uri @default_site_assets;
 		}
 
