@@ -21,9 +21,11 @@
 
     <!-- register our site policy -->
     <sp:createSitePolicy factory="nti.app.sites.ifsta.policy.child_site_policy_factory"
-                         brand="${site-brand}" 
-                         display_name="${site-brand}" 
-                         com_username="${site-name}" />
+                         brand="${site-brand}"
+                         display_name="${site-brand}"
+                         com_username="${site-name}"
+                         com_alias="${site-brand}"
+                         com_realname="${site-brand}" />
 
     <!-- Register an appropriate analytics db -->
     <adb:registerAnalyticsDB
@@ -31,7 +33,7 @@
         twophase="${analytics-twophase}"
         autocommit="${analytics-autocommit}" />
 
-    
+
   </appsite:registerInNamedComponents>
 
 </configure>
