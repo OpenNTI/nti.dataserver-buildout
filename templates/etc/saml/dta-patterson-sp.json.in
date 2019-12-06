@@ -1,0 +1,39 @@
+{
+	"entityid": "${entityid}",
+	"allow_unknown_attributes": true,
+	"entity_category": [
+		"http://www.geant.net/uri/dataprotection-code-of-conduct/v1"
+	],
+	"description": "${description}",
+	"service": {
+		"sp": {
+			"name_id_format": "urn:oasis:names:tc:SAML:2.0:nameid-format:persistent",
+			"logout_requests_signed": false,
+			"authn_requests_signed": false,
+			"allow_unsolicited": true,
+			"want_response_signed": false,
+			"required_attributes": ${required_attributes},
+			"endpoints": {
+				"single_logout_service": [
+					[
+						"${server_uri}/dataserver2/saml/@@slo",
+						"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+					]
+				],
+				"assertion_consumer_service": [
+					[
+						"${server_uri}/dataserver2/saml/@@acs",
+						"urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+					]
+				]
+			}
+		}
+	},
+	"key_file": "${key_file}",
+	"cert_file": "${cert_file}",
+	"name_form": "urn:oasis:names:tc:SAML:2.0:attrname-format:uri",
+	"xmlsec_binary": "${xmlsec_binary}",
+	"metadata": {
+		"local": ${metadata_local}
+	}
+}
