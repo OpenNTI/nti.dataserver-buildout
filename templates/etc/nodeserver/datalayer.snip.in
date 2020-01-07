@@ -1,0 +1,21 @@
+<script>
+dataLayer = [{
+    appName: '<[cfg:appName]>',
+    appId: '<[cfg:appId]>',
+    appVersion: '<[cfg:appVersion]>',
+    appInstallerId: navigator.standalone ? 'homescreen':'browser',
+    locale: '<[cfg:locale]>',
+    siteName: '<[cfg:siteName]>',
+    siteTitle: '<[cfg:siteTitle]>',
+    userId: '<[cfg:userId]>',
+}];
+addEventListener('user-set', function (e) {
+    var user = e.detail;
+    console.log(user);
+    dataLayer.push({
+        event: 'user-set',
+        _name: user.realname,
+        _email: user.email,
+    });
+});
+</script>
