@@ -87,6 +87,13 @@ purchase_additional_confirmation_addresses = ${purchase_additional_confirmation_
 concurrent_enrollment_addresses = ${concurrent_enrollment_addresses}
 
 ###
+# Invitation BCC email addresses
+# List of emails to be BCCed when sending invitation emails 
+# A comma separated list
+###
+invitations_bcc = ${invitations_bcc}
+
+###
 # I2 BCC enrollment addresses
 # A whitespace separated list
 ###
