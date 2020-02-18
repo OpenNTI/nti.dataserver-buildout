@@ -14,6 +14,7 @@ addEventListener('user-set', function (e) {
     var service = user[Symbol.for('Service')];
 
     function isSiteAdmin(user, service){
+	// Look for a workspace in the service doc called SiteAdmin
 	var items = service && service.Items;
 	return Boolean((items||[]).find(function(x){return x.Title == 'SiteAdmin'}));
     }
