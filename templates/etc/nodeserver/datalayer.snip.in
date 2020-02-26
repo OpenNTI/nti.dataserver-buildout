@@ -11,11 +11,25 @@ dataLayer = [{
 }];
 addEventListener('user-set', function (e) {
     var user = e.detail;
-    console.log(user);
+    var service = user[Symbol.for('Service')];
+
+    function isSiteAdmin(user, service){
+	// Look for a workspace in the service doc called SiteAdmin
+	var items = service && service.Items;
+	return Boolean((items||[]).find(function(x){return x.Title == 'SiteAdmin'}));
+    }
+    
+    // Convention here is that `_` signifies PII
+    // and thus needs to be handled appropriately.
     dataLayer.push({
         event: 'user-set',
         _name: user.realname,
         _email: user.email,
+	_firstName: user.NonI18NFirstName,
+	_lastName: user.NonI18NLastName,
+	createdTime: user.getCreatedTime().getTime(),
+	lastActiveTime: user.getLastSeenTime().getTime(),
+	userType: isSiteAdmin(user, service) ? 'siteadmin' : 'user'
     });
 });
 </script>
