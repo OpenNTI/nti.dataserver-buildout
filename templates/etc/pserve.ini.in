@@ -69,6 +69,7 @@ statsd_uri = statsd://${statsd_host}:${statsd_port}?prefix=${statsd_prefix}
 # knowledge spread around
 web_app_root = ${webapp_location}
 login_app_root = ${loginapp_location}
+invitation_redirect_url = ${invitation_redirect_url}
 
 ###
 ## Purchase email confirmations
