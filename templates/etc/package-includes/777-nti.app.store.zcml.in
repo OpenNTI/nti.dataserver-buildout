@@ -2,15 +2,21 @@
 <configure	xmlns="http://namespaces.zope.org/zope"
 			xmlns:i18n="http://namespaces.zope.org/i18n"
 			xmlns:zcml="http://namespaces.zope.org/zcml"
+			xmlns:oauth="http://nextthought.com/ntp/oauth"
 			xmlns:stripe="http://nextthought.com/ntp/stripe">
 
 	<include package="nti.store.payments.stripe" file="meta.zcml" />
+
+	<!-- OAuth Keys -->
+	<include package="nti.common" file="meta.zcml" />
+	<oauth:registerOAuthKeys
+			apiKey="${stripe:client_id}"
+			secretKey="${stripe:secret_key}"
+			id="stripe" />
+
 	<stripe:registerStripeConnect
-			stripe_oauth_base="${stripe:stripe_oauth_base}"
-			client_id="${stripe:client_id}"
 			token_endpoint="${stripe:token_endpoint}"
 			deauthorize_endpoint="${stripe:deauthorize_endpoint}"
-			completion_route_prefix="${stripe:completion_route_prefix}"
-			secret_key="${stripe:secret_key}" />
+			completion_route_prefix="${stripe:completion_route_prefix}" />
 
 </configure>
