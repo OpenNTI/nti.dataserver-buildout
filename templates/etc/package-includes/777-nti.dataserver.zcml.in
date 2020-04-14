@@ -11,4 +11,8 @@
 			secret="${dataserver-signer:secret}"
 			salt="${dataserver-signer:salt}"/>
 
+	<oauth:registerOAuthService
+		authorization_url="${google-oauth:authorization_url}"
+		id="google"/>
+
 </configure>

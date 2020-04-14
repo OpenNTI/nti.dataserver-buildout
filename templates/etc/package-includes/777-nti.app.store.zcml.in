@@ -19,4 +19,8 @@
 			deauthorize_endpoint="${stripe:deauthorize_endpoint}"
 			completion_route_prefix="${stripe:completion_route_prefix}" />
 
+	<oauth:registerOAuthService
+		authorization_url="${stripe-oauth:authorization_url}"
+		id="stripe"/>
+
 </configure>
