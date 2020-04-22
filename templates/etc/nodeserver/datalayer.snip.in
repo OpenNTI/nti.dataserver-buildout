@@ -1,7 +1,7 @@
 <script>
 dataLayer = [{
     appName: '<[cfg:appName|string]>',
-    appId: '<[cfg:appId]|string>',
+    appId: '<[cfg:appId|string]>',
     appVersion: '<[cfg:appVersion|string]>',
     appInstallerId: navigator.standalone ? 'homescreen':'browser',
     locale: '<[cfg:locale|string]>',
