@@ -48,6 +48,10 @@ session_cookie_secret = ${session_cookie_secret}
 facebook.app.id = 272442356159055
 facebook.app.secret = 964997cea8939ffae988668f6c634f0c
 
+# JWT
+jwt_secret = ${jwt_secret}
+jwt_issuer = ${jwt_issuer}
+
 gc_debug = ${gc_debug}
 gc_gen0_threshold = ${gc_gen0_threshold}
 gc_gen1_threshold = ${gc_gen1_threshold}
