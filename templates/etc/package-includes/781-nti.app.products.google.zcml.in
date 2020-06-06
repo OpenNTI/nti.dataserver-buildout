@@ -1,0 +1,13 @@
+<!-- -*- mode: nxml -*- -->
+<configure	xmlns="http://namespaces.zope.org/zope"
+			xmlns:i18n="http://namespaces.zope.org/i18n"
+			xmlns:zcml="http://namespaces.zope.org/zcml"
+			xmlns:oauth="http://nextthought.com/ntp/oauth" >
+
+    <include package="nti.common" file="meta.zcml" />
+    <oauth:registerOAuthKeys
+            apiKey="${google-sso:api_key}"
+            secretKey="${google-sso:secret_key}"
+            id="google" />
+
+</configure>
