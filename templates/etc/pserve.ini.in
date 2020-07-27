@@ -66,6 +66,9 @@ gc_gen2_threshold = ${gc_gen2_threshold}
 # choose an IP address to avoid ambiguity
 statsd_uri = statsd://${statsd_host}:${statsd_port}?prefix=${statsd_prefix}
 
+# Backoff when retrying a transaction after a conflict
+retry.sleep_ms = ${retry_sleep_ms}
+
 # pyramid.reload_templates = true
 
 # Application route prefixes
