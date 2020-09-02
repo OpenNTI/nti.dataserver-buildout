@@ -140,7 +140,7 @@ debug = ${debug_error_in_html}
 # Always put these in the wsgi error log (pserve-stderr...)
 show_exceptions_in_wsgi_errors = true
 error_email = ${email_error_to}
-smtp_server = ${environment:smtp_server}
+smtp_server = ${environment:smtp_server}:587
 from_address = ${email_error_from}
 smtp_username = ${environment:smtp_username}
 smtp_password = ${environment:smtp_passwd}
