@@ -57,6 +57,18 @@ gc_gen0_threshold = ${gc_gen0_threshold}
 gc_gen1_threshold = ${gc_gen1_threshold}
 gc_gen2_threshold = ${gc_gen2_threshold}
 
+### Sessions
+# How old inactive sessions have to be before they are cleaned up (default 0s)
+session_cleanup_age = ${session_cleanup_age}
+# If a session is inactive for this long (no pingbacks), we'll consider
+# them inactive (default 120s)
+session_server_heartbeat_timeout = ${session_server_heartbeat_timeout}
+# How often we update state when a client pings us back. We want to keep db
+# churn low if a client is frequently responding to pings (default 60s).
+session_reader_heartbeat_update_frequency = ${session_reader_heartbeat_update_frequency}
+# How often the server pings the client (default 5s).
+session_ping_frequency = ${session_ping_frequency}
+
 # If this is defined, perfmetrics is active and establishes
 # the statsd client stack.
 # Note: because this is UDP, even if
