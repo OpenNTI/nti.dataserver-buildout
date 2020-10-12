@@ -7,7 +7,7 @@
 	<include package="nti.app.products.courseware_scorm" file="meta.zcml" />
 	<include package="nti.app.products.courseware_scorm" />
 
-	<appsite:registerInNamedComponents registry="${site-name}">
+	<appsite:registerInNamedComponents registry="${registry}">
 
         <scorm:registerSCORMCloudClient
 				app_id="${app-id}"
