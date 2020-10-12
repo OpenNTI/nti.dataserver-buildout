@@ -1,7 +1,7 @@
 <!-- -*- mode: nxml -*- -->
 <configure	xmlns="http://namespaces.zope.org/zope"
 			xmlns:appsite="http://nextthought.com/ntp/appsite"
-			xmlns:sites="http://nextthought.com/sites">
+			xmlns:scorm="http://nextthought.com/ntp/scorm">
 
 	<include package="nti.app.site" file="meta.zcml" />
 	<include package="nti.app.products.courseware_scorm" file="meta.zcml" />
