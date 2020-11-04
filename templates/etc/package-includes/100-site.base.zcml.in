@@ -5,6 +5,7 @@
 			xmlns:sp="http://nextthought.com/ntp/sitepolicy">
 
 	<include package="nti.app.site" file="meta.zcml" />
+	<include package="nti.appserver.policies" file="meta.zcml" />
 	<include package="nti.site" file="meta.zcml" />
 
 	<appsite:createBaseComponents bases="nti.appserver.policies.sites.BASEADULT" 
