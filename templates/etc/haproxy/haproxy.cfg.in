@@ -53,6 +53,7 @@ frontend all
     default_backend ${default_backend}
 
     acl is_ssl hdr(X-FORWARDED-PROTOCOL) -i ssl
+    http-request set-header X-Forwarded-Proto https
 
     acl robots url_sub -i robots.txt robots-dev.txt
     acl google_verification url_beg /google
