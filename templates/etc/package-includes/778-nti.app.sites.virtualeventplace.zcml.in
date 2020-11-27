@@ -6,7 +6,7 @@
 
 	<include package="nti.app.site" file="meta.zcml" />
 	<include package="nti.app.sites.hrpros" file="meta.zcml" />
-	<include package="nti.app.products.yourmembership file="meta.zcml" />
+	<include package="nti.app.products.yourmembership" file="meta.zcml" />
 
 	<appsite:registerInNamedComponents registry="${site-id}">
 		<hrpros:registerVEPLaunchSettings launch_url="${vep_launch_url}"
