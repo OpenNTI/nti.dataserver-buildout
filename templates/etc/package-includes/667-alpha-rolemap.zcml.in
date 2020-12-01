@@ -11,44 +11,8 @@
 	It must match the username of a User in the database
 	to have any effect.
 	-->
-	<sp:principal id="jae.strickland" login="jae.strickland" title="Jae Strickland"/>
-	<sp:grant principal="jae.strickland" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="lacey.white" login="lacey.white" title="Lacey White"/>
-	<sp:grant principal="lacey.white" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="ashley.stewart" login="ashley.stewart" title="Ashley Stewart"/>
-	<sp:grant principal="ashley.stewart" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="ega.panjei" login="ega.panjei" title="Ega Panjei"/>
-	<sp:grant principal="ega.panjei" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="james.stenson" login="james.stenson" title="james Stenson"/>
-	<sp:grant principal="james.stenson" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="peggy.sabatini" login="peggy.sabatini" title="Peggy Sabatini"/>
-	<sp:grant principal="peggy.sabatini" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="meleah.meadows" login="meleah.meadows" title="Meleah Meadows"/>
-	<sp:grant principal="meleah.meadows" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="stacy.zemke" login="stacy.zemke" title="Stacy Zemke"/>
-	<sp:grant principal="stacy.zemke" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="julie.davie" login="julie.davie" title="Julie Davie"/>
-	<sp:grant principal="julie.davie" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="rebecca.higgins" login="rebecca.higgins" title="Rebecca Higgins"/>
-	<sp:grant principal="rebecca.higgins" role="nti.roles.contentlibrary.admin"/>
-
 	<sp:principal id="troy.savaiinaea" login="troy.savaiinaea" title="Troy Savaiinaea"/>
 	<sp:grant principal="troy.savaiinaea" role="nti.roles.contentlibrary.admin"/>
-
-	<sp:principal id="matt.patrick" login="matt.patrick" title="matt patrick"/>
-	<sp:grant principal="matt.patrick" role="nti.roles.contentlibrary.admin"/>
-	
-	<sp:principal id="bhoke" login="bhoke" title="Bryan Hoke"/>
-	<sp:grant principal="bhoke" role="nti.roles.contentlibrary.admin"/>
 
 	<!-- For testing -->
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
@@ -60,18 +24,7 @@
 	<sp:principal id="global.admin.alpha1" login="global.admin.alpha1" title="Global Admin Alpha 1"/>
 	<sp:grant principal="global.admin.alpha1" role="nti.roles.contentlibrary.admin"/>
 
-	<sp:principal id="martin.ngo" login="martin.ngo" title="Martin Ngo" />
-
-	<sp:principal id="michael.mclaughlin" login="michael.mclaughlin" title="Michael Mclaughlin" />
-
 	<!-- Setup Global admins -->
-	<sp:grant principal="julie.davie" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="lacey.white" role="role:nti.globalsupport.admin"/>
 	<sp:grant principal="troy.savaiinaea" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="meleah.meadows" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="rebecca.higgins" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="martin.ngo" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="michael.mclaughlin" role="role:nti.globalsupport.admin"/>
-	<sp:grant principal="matt.patrick" role="role:nti.globalsupport.admin"/>
 
 </configure>
