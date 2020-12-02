@@ -9,11 +9,11 @@
 
 	<appsite:registerInNamedComponents registry="${registry}">
 
-        <scorm:registerSCORMCloudClient
+		<scorm:registerSCORMCloudClient
 				app_id="${app-id}"
 				secret_key="${secret-key}"
 				service_url="${service-url}" />
 
-    </appsite:registerInNamedComponents>
+	</appsite:registerInNamedComponents>
 	
 </configure>
