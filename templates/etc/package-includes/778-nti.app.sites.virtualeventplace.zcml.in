@@ -10,11 +10,22 @@
 
 	<appsite:registerInNamedComponents registry="${site-id}">
 		<hrpros:registerVEPLaunchSettings launch_url="${vep_launch_url}"
-                          client_id="${vep_client_id}"
-                          client_secret="${vep_client_secret}" />
+				client_id="${vep_client_id}"
+				client_secret="${vep_client_secret}" />
 
-        <your:registerYourMembershipLogonSettings api_endpoint="${your_membership_endpoint}"
-                                                  api_key="${your_membership_key}" />
+		<your:registerYourMembershipLogonSettings api_endpoint="${your_membership_endpoint}"
+				api_key="${your_membership_key}" />
+
+		<!-- Course Tab Preference Configuration -->
+		<configure zcml:condition="installed nti.app.products.courseware">
+			<class class="nti.app.sites.hrpros.tab_preference.CourseTabConfigurationUtility">
+				<implements interface="nti.app.products.courseware.interfaces.ICourseTabConfigurationUtility" />
+			</class>
+			<utility
+				factory="nti.app.sites.hrpros.tab_preference.CourseTabConfigurationUtility"
+				provides="nti.app.products.courseware.interfaces.ICourseTabConfigurationUtility" />
+		</configure>
+
 	</appsite:registerInNamedComponents>
 
 </configure>
