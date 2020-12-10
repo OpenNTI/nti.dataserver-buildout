@@ -2,7 +2,8 @@
 <configure	xmlns="http://namespaces.zope.org/zope"
 			xmlns:appsite="http://nextthought.com/ntp/appsite"
 			xmlns:hrpros="http://nextthought.com/ntp/hrpros"
-			xmlns:your="http://nextthought.com/ntp/yourmembership">
+			xmlns:your="http://nextthought.com/ntp/yourmembership"
+			xmlns:zcml="http://namespaces.zope.org/zcml">
 
 	<include package="nti.app.site" file="meta.zcml" />
 	<include package="nti.app.sites.hrpros" file="meta.zcml" />
