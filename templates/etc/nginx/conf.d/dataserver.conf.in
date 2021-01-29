@@ -87,6 +87,10 @@
 			try_files $uri $uri/ @login;
 		}
 
+		location = /login {
+			return 301 $uri_scheme://$host/login/;
+		}
+
 		location = /favicon.ico {
 			root ${sites_basedir}/$host/shared/;
 			try_files $uri @default_favicon;
