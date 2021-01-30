@@ -59,10 +59,6 @@ ${nginx_extra_server_config}
 			}
 		}
 
-		location ${hosted_badge_images_location} {
-			alias ${hosted_badge_images_directory/.|shell-path}/;
-		}
-		
 		location = /_ops/identify {
 			proxy_pass http://dataserver/_ops/identify;
 			proxy_set_header Connection "";
@@ -78,7 +74,7 @@ ${nginx_extra_server_config}
 			deny  all;
 		}
 
-		# shutdown .svn and .git, apperantly 
+		# shutdown .svn and .git, apperantly
 		location ~ /\.svn/ {
 			deny all;
 		}
