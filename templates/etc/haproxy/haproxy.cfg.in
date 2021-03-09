@@ -3,7 +3,7 @@ global
     # Total Max Connections. This is dependent on ulimit.
     maxconn ${maxconn}
 
-    stats socket ${haproxy_stats_socket} mode 600 level admin
+    stats socket ${haproxy_stats_socket} mode 600 expose-fd listeners level admin
     stats timeout 2m
 
     ${extra_globals}
@@ -20,26 +20,35 @@ defaults
 
     ${extra_defaults}
 
-listen ssl-term
+resolvers nextthought
+    parse-resolv-conf
+    resolve_retries       300
+    timeout resolve       500
+    timeout retry         500
+    hold other           30s
+    hold refused         30s
+    hold nx              1s
+    hold timeout         30s
+    hold valid           10s
+    hold obsolete        30s
+
+frontend stats
     mode http
-    ${ssl_binds}
-
-    # Let gunicorn/nginx know if we are dealing with an incoming HTTPS request
-    # (This is a default 'secure-header' in gunicorns conf)
-    # If we fail do do this, the server cannot correctly generate
-    # absolute URLs, and that includes the wss:// URLs used for
-    # websockets (and Safari 6 at least, has a problem if the server
-    # returns a ws:// URL over SSL; Chrome doesn't care)
-    reqidel ^X-FORWARDED-PROTOCOL:.*
-    reqadd X-FORWARDED-PROTOCOL:\ ssl if { ssl_fc }
-
-    ${reverse_proxy_servers}
+    bind *:8404
+    option http-use-htx
+    http-request use-service prometheus-exporter if { path /metrics }
+    stats enable
+    stats uri /stats
+    stats refresh 10s
 
 frontend all
     mode http
     log global
     timeout client 86400000
     option httplog
+
+    # Listen on the socket for incoming secure connections
+    ${ssl_binds}
 
     # TCP Port for Proxy Protocol connections
     bind ${haproxy_addr}:${proxy_port} id ${proxy_port} accept-proxy
@@ -51,6 +60,9 @@ frontend all
     ${extra_binds}
 
     default_backend ${default_backend}
+
+    http-request del-header X-FORWARDED-PROTOCOL
+    http-request add-header X-FORWARDED-PROTOCOL ssl if { ssl_fc }
 
     acl is_ssl hdr(X-FORWARDED-PROTOCOL) -i ssl
     http-request set-header X-Forwarded-Proto https
