@@ -187,7 +187,7 @@ config = ${deployment:etc-directory/gunicorn.conf.py}
 # Begin logging configuration
 
 [loggers]
-keys = root, dataserver, analytics, completion, repoze, plastex, boto, zodb, zope, relstorage
+keys = root, dataserver, analytics, completion, pysolr, repoze, plastex, boto, zodb, zope, relstorage
 
 [handlers]
 keys = console
@@ -213,6 +213,11 @@ qualname = nti.analytics
 level = ${completion_log_level}
 handlers =
 qualname = nti.contenttypes.completion
+
+[logger_pysolr]
+level = WARNING
+handlers =
+qualname = pysolr
 
 [logger_repoze]
 level = WARNING
