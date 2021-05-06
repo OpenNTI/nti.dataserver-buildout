@@ -41,9 +41,9 @@
 		if_modified_since before;
 		lingering_close on;
 
-		set_real_ip_from 192.168.0.0/24;
-		set_real_ip_from 10.50.0.0/16;
-		set_real_ip_from 172.16.48.0/22;
+		set_real_ip_from 10.0.0.0/8;
+		set_real_ip_from 172.16.0.0/12;
+		set_real_ip_from 192.168.0.0/16;
 		set_real_ip_from 127.0.0.1;
 		set_real_ip_from unix:;
 		real_ip_recursive on;
@@ -78,17 +78,24 @@
 			index  index.html index.htm;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
+			try_files $uri $uri/ @default_landing;
 		}
 
 		location = /index.html {
 			root ${sites_basedir}/landing/$host;
 			expires +1h;
 			add_header Cache-Control proxy-revalidate;
-			try_files $uri $uri/ @login;
+			try_files $uri $uri/ @default_landing;
 		}
 
 		location = /login {
 			return 301 $uri_scheme://$host/login/;
+		}
+
+		location @default_landing {
+			root ${sites_basedir}/landing;
+			try_files $uri @login;
+			internal;
 		}
 
 		location = /favicon.ico {
@@ -101,7 +108,19 @@
 		}
 
 		location @default_favicon {
-			root ${default_site_assets}/dist/shared/;
+			root ${default_site_assets}/dist/shared;
+			try_files $uri @legacy_default_favicon;
+			internal;
+		}
+
+		location @legacy_default_favicon {
+			root ${default_site_assets}/dist/shared;
+			try_files $uri @default_default_favicon;
+			internal;
+		}
+
+		location @default_default_favicon {
+			root ${nt_site_assets}/dist/shared;
 			internal;
 		}
 
@@ -135,7 +154,19 @@
 		}
 
 		location @default_site_assets {
-			root ${sites_basedir}/default-assets/;
+			root ${sites_basedir}/$host;
+			try_files $uri @legacy_default_site_assets;
+			internal;
+		}
+
+		location @legacy_default_site_assets {
+			root ${sites_basedir}/default-assets;
+			try_files $uri @default_default_site_assets;
+			internal;
+		}
+
+		location @default_default_site_assets {
+			root ${sites_basedir}/default-default-assets;
 			internal;
 		}
 
