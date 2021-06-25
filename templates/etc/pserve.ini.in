@@ -91,6 +91,7 @@ retry.sleep_ms = ${retry_sleep_ms}
 web_app_root = ${webapp_location}
 login_app_root = ${loginapp_location}
 invitation_redirect_url = ${invitation_redirect_url}
+password_reset_url = ${loginapp_location}${password_reset_route}
 
 ###
 ## Purchase email confirmations
