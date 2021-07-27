@@ -133,8 +133,8 @@
 			try_files $uri @default_site_assets;
 		}
 
-		location /site-assets/loginapp/ {
-			alias ${sites_basedir}/$host/loginapp/;
+		location /site-assets/login/ {
+			alias ${sites_basedir}/$host/login/;
 			try_files $uri @default_site_assets;
 		}
 
