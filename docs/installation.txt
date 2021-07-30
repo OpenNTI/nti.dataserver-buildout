@@ -61,13 +61,13 @@
 
 11) cd ~/Projects
 	execute:
-		svn co https://repos.nextthought.com/svn/nti-svn/NextThoughtPlatform/trunk/nti.dataserver-buildout nti.dataserver-buildout
+		git clone https://github.com/NextThought/nti.dataserver-buildout.git
 
 12) cd nti.dataserver-buildout
 	execute:
 		python bootstrap.py
 
-13) edit dataserver_buildout.cfg file and comment # lxml entry e.g.
+13) edit dataserver_buildout.cfg file and comment out (#) lxml entry e.g.
 
 parts =
 	libgmp
@@ -87,12 +87,9 @@ parts =
     graphviz -> /opt/local/include/graphviz/
     openssl -> /opt/local/include/openssl
 
-17) in ~/Projects create library and images directories
+17) in ~/Projects create library
 	execute:
 		mkdir DataserverGlobalLibrary
-		mkdir hosted_badge_images
-
-	[Download Sample content if available]
 
 18) edit ~/VirtualEnvs/nti.dataserver-buildout/bin/postactivate and add
 	PATH=/Users/{your user}/Projects/nti.dataserver-buildout/bin:$PATH
@@ -119,8 +116,6 @@ parts =
 
 20) Install NPM
 	visit https://nodejs.org/en/
-	download v6.xx.x release (e.g. v6.11.3 LTS)
-	install the downloaded node-v6.xx.x.pkg (e.g. node-v6.11.3.pkg)
 
 ==================
 
