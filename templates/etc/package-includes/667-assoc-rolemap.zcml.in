@@ -9,16 +9,12 @@
 	-->
 	
 	<sp:principal id="janelle.barrick" login="janelle.barrick" title="Janelle Barrick"/>
-	<sp:grant principal="janelle.barrick" role="nti.roles.contentlibrary.admin"/>
 	
 	<sp:principal id="julie.zhu" login="julie.zhu" title="Julie Zhu"/>
-	<sp:grant principal="julie.zhu" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
-	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="troy.savaiinaea" login="troy.savaiinaea" title="Troy Savaiinaea"/>
-	<sp:grant principal="troy.savaiinaea" role="nti.roles.contentlibrary.admin"/>
 
 	<!-- Setup Global admins -->
 	<sp:grant principal="troy.savaiinaea" role="role:nti.globalsupport.admin"/>
