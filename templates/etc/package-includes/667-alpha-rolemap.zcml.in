@@ -12,17 +12,13 @@
 	to have any effect.
 	-->
 	<sp:principal id="troy.savaiinaea" login="troy.savaiinaea" title="Troy Savaiinaea"/>
-	<sp:grant principal="troy.savaiinaea" role="nti.roles.contentlibrary.admin"/>
 
 	<!-- For testing -->
 	<sp:principal id="julie.zhu.admin" login="julie.zhu.admin" title="Julie Zhu"/>
-	<sp:grant principal="julie.zhu.admin" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="global.admin.alpha" login="global.admin.alpha" title="Global Admin Alpha"/>
-	<sp:grant principal="global.admin.alpha" role="nti.roles.contentlibrary.admin"/>
 
 	<sp:principal id="global.admin.alpha1" login="global.admin.alpha1" title="Global Admin Alpha 1"/>
-	<sp:grant principal="global.admin.alpha1" role="nti.roles.contentlibrary.admin"/>
 
 	<!-- Setup Global admins -->
 	<sp:grant principal="troy.savaiinaea" role="role:nti.globalsupport.admin"/>
