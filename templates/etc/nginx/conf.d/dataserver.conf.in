@@ -4,14 +4,11 @@
 		~nti.landing_site_name=(?<mc>[^\;]+) $mc;
 	}
 
-	upstream dataserver {
-		server ${nginx_dataserver_port};
-
-		keepalive 16;
-	}
-
 	server {
 		charset utf-8;
+
+		# Configure DNS server
+        resolver 10.50.4.9 ipv6=off;
 
 		# All non-debug traffic should come from HAProxy in the PROXY protocol.
 		# This is more efficient than communicating over HTTP.
@@ -199,7 +196,7 @@
 		}
 
 		location = /_ops/identify {
-			proxy_pass http://dataserver/_ops/identify;
+			proxy_pass https://$host/_ops/identify;
 			proxy_set_header Connection "";
 			proxy_set_header Host "$host";
 			proxy_http_version 1.1;
